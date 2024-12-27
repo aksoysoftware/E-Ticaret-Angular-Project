@@ -13,3 +13,8 @@ step 3 -->ng serve -o
 step-1 -->npm install -g json-server
 
 step 2 -->json-server --watch db.json
+
+# DB Relations
+
+
+![img.png](img.png)

@@ -39,18 +39,18 @@ export class ProductDetailsComponent implements OnInit {
 
         this.product.cartData.subscribe((result)=>{
           console.log(result)
-  
+
           let item = result.filter((item:product)=>productId?.toString()===item.productId?.toString())
-        
+
            if(item.length){
         this.cartData=item[0];
         this.removeCart=true;
        }
         });
         this.product.getCartList(userId);
-      }      
+      }
     })
-    
+
   }
   //-------------------------------------------------
   minus() {
@@ -94,7 +94,7 @@ export class ProductDetailsComponent implements OnInit {
     }
     {
       console.warn("cartData", this.cartData);
-      
+
       this.cartData && this.product.removeToCartApi(this.cartData.id)
       .subscribe((result)=>{
         let user = localStorage.getItem('user');
