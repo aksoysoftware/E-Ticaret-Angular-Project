@@ -48,11 +48,11 @@ ngOnInit(): void {
 
      this.product.orderNow(orderData).subscribe((result)=>{
       if(result){
-        this.orderMsg='Your order has been successfully placed'
+        this.orderMsg = 'Siparişiniz başarıyla oluşturuldu';
         setTimeout(() => {
           this.route.navigate(['/my-order'])
           this.orderMsg=undefined
-        }, 2000);
+        }, 3000);
       }
      })
     }
