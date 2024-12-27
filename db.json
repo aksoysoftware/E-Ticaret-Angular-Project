@@ -15,7 +15,7 @@
   ],
   "product": [
     {
-      "name": "Smart Watch",
+      "name": "Akıllı Saat",
       "price": "3000",
       "color": "Silver",
       "category": "Electronic",
@@ -24,7 +24,7 @@
       "id": 3
     },
     {
-      "name": "Shoes",
+      "name": "Ayakkabı",
       "price": "3500",
       "color": "White",
       "category": "Footwear",
@@ -81,7 +81,7 @@
       "name": "Galaxy Watch4 Bluetooth ",
       "price": "999.16",
       "color": "Pink Gold",
-      "category": "Smart Watch",
+      "category": "Akıllı Saat",
       "description": "Measure body composition with BioActive Sensor",
       "url": "https://images.samsung.com/is/image/samsung/p6pim/in/2108/gallery/in-galaxy-watch4-sm-r860nzdainu-481079019?$730_584_PNG$",
       "id": "11"
