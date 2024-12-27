@@ -11,7 +11,7 @@ import { PopupboxService } from '../services/popupbox.service';
 })
 export class SellerHomeComponent implements OnInit {
   delletMsg:undefined|string=''
-    
+
   id:number|undefined
   constructor(private prouct:ProductService, private popup:PopupboxService){
 
@@ -32,20 +32,20 @@ export class SellerHomeComponent implements OnInit {
       this.popup.productPopup();
     }
 
-    deleteProduct(id:any){  
+    deleteProduct(id:any){
       this.prouct.deleteProduct(id).subscribe((result)=>{
         if(result){
-          this.delletMsg="Product Deleted successfully"
+          this.delletMsg="Ürün başarıyla silindi"
         }this.call()
       });
       this.call()
-      setTimeout(() => this.delletMsg=undefined, 3000);  
-      
+      setTimeout(() => this.delletMsg=undefined, 3000);
+
     }
    call(){
-    this.prouct.productList().subscribe((result)=>{     
+    this.prouct.productList().subscribe((result)=>{
       this.productList=result
     })
-   } 
+   }
 
 }

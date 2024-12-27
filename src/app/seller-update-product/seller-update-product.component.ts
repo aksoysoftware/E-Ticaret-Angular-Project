@@ -23,17 +23,16 @@ export class SellerUpdateProductComponent implements OnInit {
       this.productData=data
      })
   }
-  
+
   submint(data:any){
     this.product.updateProduct(data,this.productId).subscribe((result)=>{
       //show masseg to user seller
       if(result){
-        this.addPrductMesg='Product is successfully updated'
-      }   
-      //after 5 ses msg is deleted
-      setTimeout(() => this.addPrductMesg=undefined, 2000);  
-      
-    }) 
+        this.addPrductMesg='Ürün başarıyla güncellendi'
+      }
+      setTimeout(() => this.addPrductMesg=undefined, 2000);
+
+    })
     setTimeout(()=>this.router.navigate(['seller-home']),1500)
   }
 
