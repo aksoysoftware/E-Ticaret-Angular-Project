@@ -64,19 +64,42 @@
       <div>
         <h2>Ürün Yorumları</h2>
 
-        <!-- Comments List -->
         <div *ngIf="comments.length; else noComments">
-          <div *ngFor="let comment of comments" class="comment">
-            <p><b>{{ comment.userName || 'Anonim' }}</b>: {{ comment.content }}</p>
-            <p><small><i>{{ comment.timestamp | date: 'short' }}</i></small></p>
+          <div *ngFor="let comment of comments" class="comment d-flex justify-content-between align-items-center mb-3">
+            <div class="comment-text">
+              <p><b>{{ comment.userName || 'Anonim' }}</b>: {{ comment.content }}</p>
+              <p><small><i>{{ comment.timestamp | date: 'short' }}</i></small></p>
+
+              <p>
+                Ortalama Puan:
+                <ng-container *ngIf="comment.ratings?.length > 0; else noRatings">
+                  {{ comment.averageRating | number: '1.1-1' }} / 5
+                </ng-container>
+                <ng-template #noRatings>Henüz Puan Yok</ng-template>
+              </p>
+            </div>
+
+            <div *ngIf="isAuthenticated" class="rating-section" style="margin-top: 10px;">
+              <span style="font-size: 1rem; margin-right: 10px;">Yorumu Puanlayın:</span>
+              <div class="d-flex mt-1">
+                <i
+                  *ngFor="let star of stars; let i = index"
+                  class="fa-solid fa-star"
+                  [ngClass]="{ 'text-warning': i < comment.averageRating, 'text-secondary': i >= comment.averageRating }"
+                  style="cursor: pointer; margin-right: 5px; transition: color 0.3s ease;"
+                  (click)="rateComment(comment.id, i + 1)"
+                ></i>
+              </div>
+            </div>
           </div>
         </div>
+
         <ng-template #noComments>
           <p>Henüz yorum yok.</p>
         </ng-template>
-      </div>
 
-      <div class="mt-4" *ngIf="isAuthenticated; else loginPrompt">
+
+        <div class="mt-4" *ngIf="isAuthenticated; else loginPrompt">
         <h4>Yorum Ekle</h4>
         <textarea [(ngModel)]="newComment" class="form-control" rows="3" placeholder="Yorumunuzu yazın"></textarea>
         <button class="btn btn-primary mt-2" (click)="addComment()">Yorumu Gönder</button>

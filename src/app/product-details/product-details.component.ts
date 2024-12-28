@@ -20,6 +20,9 @@ export class ProductDetailsComponent implements OnInit {
   comments: Comments[] = [];
   msgUserNotLogin: string = '';
   isAuthenticated: boolean = false;
+  stars: number[] = [1, 2, 3, 4, 5];
+  currentRating: number = 0;
+
 
   constructor(private activeRoute: ActivatedRoute,
               private product: ProductService,
@@ -131,6 +134,7 @@ export class ProductDetailsComponent implements OnInit {
     if (this.newComment.trim()) {
       const user = JSON.parse(localStorage.getItem('user') || '{}');
       const commentData: Comments = {
+        averageRating: 0, ratings: undefined,
         userName: user.name,
         productId: this.productData?.id,
         userId: user.id,
@@ -144,4 +148,23 @@ export class ProductDetailsComponent implements OnInit {
       });
     }
   }
+
+  rateComment(commentId: string | undefined, stars: number): void {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const userId = user.id;
+
+    if (userId) {
+      this.commentsService.rateComment(commentId, userId, stars).subscribe((updatedComment) => {
+        const index = this.comments.findIndex((c) => c.id === commentId);
+        if (index > -1) {
+          this.comments[index] = {...this.comments[index], ...updatedComment};
+          this.comments[index].averageRating = stars;
+        }
+      });
+    } else {
+      console.warn('User must be logged in to rate a comment.');
+    }
+  }
+
+
 }

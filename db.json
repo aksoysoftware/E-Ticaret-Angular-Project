@@ -278,5 +278,116 @@
       "userId": "24ba"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "id": "5702",
+      "averageRating": 4.5,
+      "userName": "Aman",
+      "productId": "10",
+      "userId": "2",
+      "content": "VDSVS",
+      "timestamp": "2024-12-28T13:29:17.883Z",
+      "ratings": [
+        {
+          "userId": "2",
+          "stars": 5
+        },
+        {
+          "userId": "1",
+          "stars": 4
+        }
+      ]
+    },
+    {
+      "id": "1cc9",
+      "averageRating": 1.5,
+      "userName": "Aman",
+      "productId": "10",
+      "userId": "2",
+      "content": "VDVSV",
+      "timestamp": "2024-12-28T13:31:50.396Z",
+      "ratings": [
+        {
+          "userId": "2",
+          "stars": 2
+        },
+        {
+          "userId": "1",
+          "stars": 1
+        }
+      ]
+    },
+    {
+      "id": "91ef",
+      "averageRating": 3,
+      "userName": "Muhammed",
+      "productId": "10",
+      "userId": "1",
+      "content": "dscacsacsac",
+      "timestamp": "2024-12-28T13:51:22.352Z",
+      "ratings": [
+        {
+          "userId": "1",
+          "stars": 3
+        }
+      ]
+    },
+    {
+      "id": "ee85",
+      "averageRating": 1.5,
+      "userName": "Muhammed",
+      "productId": "5",
+      "userId": "1",
+      "content": "csacsa",
+      "timestamp": "2024-12-28T13:56:54.821Z",
+      "ratings": [
+        {
+          "userId": "1",
+          "stars": 2
+        },
+        {
+          "userId": "2",
+          "stars": 1
+        }
+      ]
+    },
+    {
+      "id": "983a",
+      "averageRating": 3.5,
+      "userName": "Muhammed",
+      "productId": "5",
+      "userId": "1",
+      "content": "cdsv",
+      "timestamp": "2024-12-28T13:59:22.975Z",
+      "ratings": [
+        {
+          "userId": "1",
+          "stars": 5
+        },
+        {
+          "userId": "2",
+          "stars": 2
+        }
+      ]
+    },
+    {
+      "id": "6138",
+      "averageRating": 4,
+      "userName": "Muhammed",
+      "productId": "3",
+      "userId": "1",
+      "content": "KÖTÜ BİR ÜRÜN ALMAYIN",
+      "timestamp": "2024-12-28T14:13:37.772Z",
+      "ratings": [
+        {
+          "userId": "1",
+          "stars": 5
+        },
+        {
+          "userId": "2",
+          "stars": 3
+        }
+      ]
+    }
+  ]
 }
