@@ -38,7 +38,7 @@ export class UserService {
       if (response.isSeller) {
         // Kullanıcı satıcı ise, "seller" bilgilerini kaydet
         localStorage.setItem('seller', JSON.stringify(response.user));
-        this.router.navigate(['/seller-dashboard']); // Satıcı yönlendirmesi
+        this.router.navigate(['/seller-home']); // Satıcı yönlendirmesi
         this.isLoginFail.emit(false);
       } else if (response.isUser) {
         // Kullanıcı normal kullanıcı ise, "user" bilgilerini kaydet
