@@ -27,8 +27,11 @@
     <div class="tab-pane fade show active" id="popular" role="tabpanel" aria-labelledby="popular-tab">
       <ngb-carousel *ngIf="popularProduct">
         <ng-template *ngFor="let item of popularProduct" ngbSlide>
-          <div class="picsum-img-wrapper">
+          <div class="picsum-img-wrapper position-relative">
             <img routerLink="/product-details/{{item.id}}" class="img-home" src="{{item.url}}" alt="Rastgele ilk slayt" />
+            <span class="badge rounded-pill bg-primary position-absolute top-0 end-0 m-3">
+              {{item.commentCount || 0}} Yorum
+            </span>
           </div>
           <div class="carousel-caption">
             <h2 class="black">{{item.name}}</h2>
@@ -42,8 +45,11 @@
     <div class="tab-pane fade" id="campaign" role="tabpanel" aria-labelledby="campaign-tab">
       <div class="row" *ngIf="campaignProducts">
         <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let item of campaignProducts">
-          <div class="card card-style mb-5 card-hower">
+          <div class="card card-style mb-5 card-hower position-relative">
             <img routerLink="/product-details/{{item.id}}" src="{{item.url}}" class="card-img-to card-img" alt="...">
+            <span class="badge rounded-pill bg-primary position-absolute top-0 end-0 m-3">
+              {{item.commentCount || 0}} Yorum
+            </span>
             <div class="card-body">
               <div class="text-center">
                 <h2 class="card-title"><b>{{item.name}}</b></h2>
@@ -63,8 +69,11 @@
     <div class="tab-pane fade" id="all-products" role="tabpanel" aria-labelledby="all-products-tab">
       <div class="row" *ngIf="allProduct">
         <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let item of allProduct">
-          <div class="card card-style mb-5 card-hower">
+          <div class="card card-style mb-5 card-hower position-relative">
             <img routerLink="/product-details/{{item.id}}" src="{{item.url}}" class="card-img-to card-img" alt="...">
+            <span class="badge rounded-pill bg-primary position-absolute top-0 end-0 m-3">
+              {{item.commentCount || 0}} Yorum
+            </span>
             <div class="card-body">
               <div class="text-center">
                 <h2 class="card-title"><b>{{item.name}}</b></h2>

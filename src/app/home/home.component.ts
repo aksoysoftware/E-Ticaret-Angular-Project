@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
+import { CommentsService } from '../services/comments.service';
 import { product } from '../data-type';
 
 @Component({
@@ -13,19 +14,27 @@ export class HomeComponent implements OnInit {
   campaignProducts: product[] | undefined;
   allProduct: product[] | undefined;
 
-  constructor(private product: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private commentsService: CommentsService
+  ) {}
 
   ngOnInit(): void {
-    this.product.getAllProducts().subscribe((data) => {
-      this.allProduct = data;
+    // Fetch all products
+    this.productService.getAllProducts().subscribe((products) => {
+      this.commentsService.getAllComments().subscribe((comments) => {
+        // Map products to include comment count
+        this.allProduct = products.map((product) => ({
+          ...product,
+          commentCount: comments.filter((comment) => comment.productId === product.id).length,
+        }));
 
-      this.campaignProducts = data.filter((item) => item.isCampaign);
-    });
+        // Filter campaign products
+        this.campaignProducts = this.allProduct.filter((item) => item.isCampaign);
 
-    // Fetch popular products
-    this.product.popularProducts().subscribe((data) => {
-      this.popularProduct = data;
+        // Example: Filter popular products if needed
+        this.popularProduct = this.allProduct.filter((item) => item.isPopular);
+      });
     });
   }
-
 }

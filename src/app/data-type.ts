@@ -10,6 +10,7 @@ export interface login{
 }
 
 export interface product{
+    commentCount: number;
     name:string,
     price:number,
     color:string,
@@ -20,6 +21,7 @@ export interface product{
     id:number,
     quantity:undefined|number
     isCampaign: boolean;
+    isPopular: boolean;
 }
 
 export interface cart{
