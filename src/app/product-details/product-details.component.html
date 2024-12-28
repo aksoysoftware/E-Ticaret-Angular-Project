@@ -62,8 +62,12 @@
         </div>
       </div>
       <div>
-        <h2>Ürün Yorumları</h2>
-
+        <div class="mt-4 d-flex justify-content-between align-items-center">
+          <h2>Ürün Yorumları</h2>
+          <button class="btn btn-secondary" (click)="toggleSortOrder()">
+            Yorumları Sırala ({{ sortAscending ? 'Artan' : 'Azalan' }})
+          </button>
+        </div>
         <div *ngIf="comments.length; else noComments">
           <div *ngFor="let comment of comments" class="comment d-flex justify-content-between align-items-center mb-3">
             <div class="comment-text">
@@ -116,4 +120,5 @@
 
     </div>
   </div>
+</div>
 </div>

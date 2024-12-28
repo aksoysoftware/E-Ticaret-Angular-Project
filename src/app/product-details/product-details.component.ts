@@ -22,7 +22,7 @@ export class ProductDetailsComponent implements OnInit {
   isAuthenticated: boolean = false;
   stars: number[] = [1, 2, 3, 4, 5];
   currentRating: number = 0;
-
+  sortAscending = true;
 
   constructor(private activeRoute: ActivatedRoute,
               private product: ProductService,
@@ -166,5 +166,14 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
+
+  toggleSortOrder(): void {
+    this.sortAscending = !this.sortAscending;
+    this.comments.sort((a, b) => {
+      return this.sortAscending
+        ? a.averageRating - b.averageRating
+        : b.averageRating - a.averageRating;
+    });
+  }
 
 }
