@@ -12,7 +12,7 @@ import { SellerHomeComponent } from '../seller-home/seller-home.component';
 export class SellerUpdateProductComponent implements OnInit {
   addPrductMesg: string | undefined
   constructor(private route: ActivatedRoute, private router:Router ,private product: ProductService , private list:RouterModule) { }
-  productData:undefined|product;
+  productData?:product;
 
   productId:any
   ngOnInit(): void {

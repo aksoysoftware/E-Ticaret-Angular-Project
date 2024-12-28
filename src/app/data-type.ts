@@ -19,7 +19,7 @@ export interface product{
     productId:undefined|number,
     id:number,
     quantity:undefined|number
-    
+    isCampaign: boolean;
 }
 
 export interface cart{

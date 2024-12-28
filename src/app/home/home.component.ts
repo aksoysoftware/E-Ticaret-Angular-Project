@@ -1,32 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
-import { cart, product } from '../data-type';
-import { UserService } from '../services/user.service';
+import { product } from '../data-type';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-
 export class HomeComponent implements OnInit {
 
-  popularProduct: product[] | undefined
-  allProduct: product[] | undefined
+  popularProduct: product[] | undefined;
+  campaignProducts: product[] | undefined;
+  allProduct: product[] | undefined;
 
-  removeCart:boolean=false
-  constructor(private product: ProductService,private user:UserService) { }
+  constructor(private product: ProductService) {}
 
   ngOnInit(): void {
-  //  console.log(this.removeCart)
+    this.product.getAllProducts().subscribe((data) => {
+      this.allProduct = data;
+
+      this.campaignProducts = data.filter((item) => item.isCampaign);
+    });
+
+    // Fetch popular products
     this.product.popularProducts().subscribe((data) => {
-      this.popularProduct = data
-      // console.log(data)
-      this.product.getAllProducts().subscribe((data) => {
-        this.allProduct = data;
-      })
-    })
+      this.popularProduct = data;
+    });
   }
 
-  
 }
