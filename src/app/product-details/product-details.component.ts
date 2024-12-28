@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { cart, product } from '../data-type';
+import {Comments, CommentsService} from "../services/comments.service";
+import {UserService} from "../services/user.service";
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -13,7 +15,12 @@ export class ProductDetailsComponent implements OnInit {
   productQuantity:number=1;
   removeCart=false;
   cartData:product|undefined;
-  constructor(private activeRoute:ActivatedRoute, private product:ProductService) { }
+  newComment: string = '';
+  comments: Comments[] = [];
+  constructor(private activeRoute:ActivatedRoute,
+              private product:ProductService,
+              private commentsService: CommentsService,
+              private userService:UserService) { }
 
   ngOnInit(): void {
     let productId= this.activeRoute.snapshot.paramMap.get('productId');
@@ -50,6 +57,7 @@ export class ProductDetailsComponent implements OnInit {
         this.product.getCartList(userId);
       }
     })
+    this.loadComments(productId);
 
   }
   //-------------------------------------------------
@@ -105,4 +113,28 @@ export class ProductDetailsComponent implements OnInit {
     this.removeCart=false
   }
 
+  loadComments(productId: string | null): void {
+    this.commentsService.getCommentsByProductId(productId).subscribe((result) => {
+      this.comments = result;
+    });
+
+  }
+
+  addComment(): void {
+    if (this.newComment.trim()) {
+      const user = JSON.parse(localStorage.getItem('user') || '{}');
+      const commentData: Comments = {
+        userName: user.name,
+        productId: this.productData?.id,
+        userId: user.id,
+        content: this.newComment,
+        timestamp: new Date().toISOString()
+      };
+
+      this.commentsService.addComment(commentData).subscribe((comment) => {
+        this.comments.push(comment);
+        this.newComment = '';
+      });
+    }
+  }
   }

@@ -1,11 +1,8 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ProductService } from '../services/product.service';
-import { product } from '../data-type';
-import { SearchComponent } from '../search/search.component';
-import { UserAuthComponent } from '../user-auth/user-auth.component';
-import { PopupboxService } from '../services/popupbox.service';
-import { Subscription } from 'rxjs';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {ProductService} from '../services/product.service';
+import {product} from '../data-type';
+import {PopupboxService} from '../services/popupbox.service';
 
 @Component({
   selector: 'app-header',
@@ -20,7 +17,7 @@ export class HeaderComponent implements OnInit {
   userName: any = ''
   cartItemsNumber = 0
   constructor(private route: Router, private product: ProductService, private popup: PopupboxService) {
-   
+
  this.popup.userLogoutEvent().subscribe((result)=>{
       if(result==true){
         this.userlogout();
@@ -31,7 +28,7 @@ export class HeaderComponent implements OnInit {
     this.logout();
   }
  })
-  
+
   }
   ngOnInit(): void {
 
@@ -77,7 +74,7 @@ export class HeaderComponent implements OnInit {
       }
     });
   }
-  
+
   userlogoutpopup(){
     this.popup.openPopUp();
   }
@@ -93,9 +90,9 @@ export class HeaderComponent implements OnInit {
   logout() {
     localStorage.removeItem('seller');
     this.route.navigate(['/']);
-  }      
+  }
 
- 
+
   searchProduct(word: KeyboardEvent) {
     if (word) {
       const element = word.target as HTMLInputElement;

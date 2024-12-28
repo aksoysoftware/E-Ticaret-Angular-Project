@@ -59,25 +59,34 @@
           </div>
         </div>
       </div>
-<!--      <div class="row mt-5">-->
-<!--        <div class="col-sm-12">-->
-<!--          <h3><b>Yorumlar</b></h3>-->
+      <div>
+        <h2>Ürün Yorumları</h2>
 
-<!--          &lt;!&ndash; Yorum Listeleme &ndash;&gt;-->
-<!--          <div *ngFor="let comment of comments" class="comment mt-3 p-3 border rounded">-->
-<!--            <p><b>Kullanıcı {{comment.userId}}:</b> {{comment.content}}</p>-->
-<!--            <small class="text-muted">{{comment.timestamp | date:'medium'}}</small>-->
-<!--          </div>-->
+        <!-- Comments List -->
+        <div *ngIf="comments.length; else noComments">
+          <div *ngFor="let comment of comments" class="comment">
+            <p><b>{{ comment.userName || 'Anonim' }}</b>: {{ comment.content }}</p>
+            <p><small><i>{{ comment.timestamp | date: 'short' }}</i></small></p>
+          </div>
+        </div>
+        <ng-template #noComments>
+          <p>Henüz yorum yok.</p>
+        </ng-template>
+      </div>
 
-<!--          &lt;!&ndash; Yorum Ekleme &ndash;&gt;-->
-<!--          <div class="add-comment mt-4">-->
-<!--            <h4>Yorum Ekle</h4>-->
-<!--            <textarea [(ngModel)]="newComment" rows="3" class="form-control" placeholder="Yorumunuzu yazın..."></textarea>-->
-<!--            <button (click)="addComment()" class="btn btn-primary mt-2">Gönder</button>-->
-<!--          </div>-->
-<!--    </div>-->
-<!--  </div>-->
+      <!-- Add Comment -->
+      <div class="mt-4">
+      <!--*ngIf="isAuthenticated; else loginPrompt">-->
+   <h4>Yorum Ekle</h4>
+   <textarea [(ngModel)]="newComment" class="form-control" rows="3" placeholder="Yorumunuzu yazın"></textarea>
+   <button class="btn btn-primary mt-2" (click)="addComment()">Yorumu Gönder</button>
+ </div>
 
-    </div>
-  </div>
+ <ng-template #loginPrompt>
+   <p>Yorum yapmak için lütfen giriş yapın.</p>
+ </ng-template>
+
+
+</div>
+</div>
 </div>

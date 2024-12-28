@@ -1,16 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { cart, order, product } from '../data-type';
+import {Comments} from "../product-details/comment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
- 
+
 
     cartData = new EventEmitter<product[] | []>();
     productName=new EventEmitter<string>();
-    
+
   constructor(private http: HttpClient) { }
 
   addProduct(data: product) {
@@ -61,7 +62,7 @@ export class ProductService {
       localStorage.setItem('localCart', JSON.stringify(cartData))
       this.cartData.emit(cartData)
     }
-    
+
   }
 
   removeItemsFromCart(productId: number) {
@@ -72,7 +73,7 @@ export class ProductService {
       //it item all data come except productId and we set thode details in local storege
       localStorage.setItem('localCart', JSON.stringify(items))
       this.cartData.emit(items)
-    }  
+    }
   }
 
   userAddToCart(cartData:cart){
@@ -98,7 +99,7 @@ export class ProductService {
   }
 
   orderNow(data:order){
-    return this.http.post('http://localhost:3000/orders', data); 
+    return this.http.post('http://localhost:3000/orders', data);
   }
 
   orderList(){
