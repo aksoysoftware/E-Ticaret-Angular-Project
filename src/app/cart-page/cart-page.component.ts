@@ -103,14 +103,22 @@ export class CartPageComponent implements OnInit {
     if (discountPercentage) {
       this.discountAmount = (this.priceSummary.price * discountPercentage) / 100;
       this.priceSummary.discount = this.discountAmount;
-      this.priceSummary.total = this.priceSummary.price - this.priceSummary.discount + this.priceSummary.tax + this.priceSummary.delivery;
+      this.priceSummary.total = this.priceSummary.price - this.discountAmount + this.priceSummary.tax + this.priceSummary.delivery;
       this.discountApplied = true;
       this.invalidDiscount = false;
+
+      // Discounted total price'ı ProductService'e gönder
+      this.product.setDiscountedTotalPrice(this.priceSummary.total);
+
+      console.log('Discount Applied:', this.priceSummary.total); // Kontrol için log
     } else {
       this.invalidDiscount = true;
       this.discountApplied = false;
     }
   }
+
+
+
 
   redirectToLogin() {
     this.route.navigate(['/login']);

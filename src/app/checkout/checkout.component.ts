@@ -18,20 +18,56 @@ export class CheckoutComponent implements OnInit {
   constructor(private product: ProductService, private route: Router) {}
 
   ngOnInit(): void {
-    this.product.currentCartData().subscribe((result) => {
-      let price = 0;
-      this.cartData = result;
-      result.forEach((item) => {
-        let productPrice = 0;
-        if (item.quantity) {
-          productPrice += +item.price * +item.quantity;
-        }
-        price += productPrice;
-      });
-
-      this.totalPrice = price + price / 10 + 100 - price / 100 * 8;
+    this.product.getDiscountedTotalPrice().subscribe((price) => {
+      if (price !== null && price > 0) {
+        this.totalPrice = price; // İndirimli toplam fiyat
+      } else {
+        this.calculateTotalPrice(); // İndirim uygulanmamışsa hesapla
+      }
+      console.log('Total Price in Checkout:', this.totalPrice); // Kontrol için log
     });
+
+    if(this.totalPrice === null || this.totalPrice === 0) {
+      this.product.currentCartData().subscribe((result) => {
+        let price = 0;
+        this.cartData = result;
+        result.forEach((item) => {
+          let productPrice = 0;
+          if (item.quantity) {
+            productPrice += +item.price * +item.quantity;
+          }
+          price += productPrice;
+        });
+
+        this.totalPrice = price + price / 10 + 100 - price / 100 * 8;
+      });
+    }
+
   }
+
+
+  calculateTotalPrice() {
+    let price = 0;
+    this.cartData?.forEach((item) => {
+      let productPrice = 0;
+      if (item.quantity) {
+        productPrice += +item.price * +item.quantity;
+      }
+      price += productPrice;
+    });
+
+    console.log('Hesaplanan Fiyat:', price); // Sepet toplamını logla
+
+    if (price > 0) {
+      this.totalPrice = price + price / 10 + 100 - price / 100 * 8;
+    } else {
+      this.totalPrice = 0;
+    }
+
+    console.log('Toplam Tutar:', this.totalPrice); // Toplam tutarı logla
+  }
+
+
 
   oderNow(data: { email: string; address: string; contact: string; cardNumber?: string; expiryDate?: string; cvc?: string; deliveryTime: string }) {
     let user = localStorage.getItem('user');

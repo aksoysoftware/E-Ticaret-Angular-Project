@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { cart, order, product } from '../data-type';
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,17 @@ export class ProductService {
     productName=new EventEmitter<string>();
 
   constructor(private http: HttpClient) { }
+
+  private discountedTotalPrice = new BehaviorSubject<number | null>(null); // Varsayılan null
+
+  setDiscountedTotalPrice(price: number) {
+    console.log('Discounted Total Price Set:', price); // Kontrol için log
+    this.discountedTotalPrice.next(price);
+  }
+
+  getDiscountedTotalPrice() {
+    return this.discountedTotalPrice.asObservable();
+  }
 
   addProduct(data: product) {
     return this.http.post('http://localhost:3000/product', data);
@@ -75,8 +86,6 @@ export class ProductService {
     }
   }
 
-
-
   removeItemsFromCart(productId: string) {
     let cartData = localStorage.getItem('localCart');
     if (cartData) {
@@ -100,6 +109,7 @@ export class ProductService {
       }
     });
   }
+
   removeToCartApi(cartId:string){
     return this.http.delete('http://localhost:3000/cart/'+cartId);
   }
