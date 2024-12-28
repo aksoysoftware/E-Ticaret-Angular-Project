@@ -77,7 +77,7 @@ export class ProductService {
 
 
 
-  removeItemsFromCart(productId: number) {
+  removeItemsFromCart(productId: string) {
     let cartData = localStorage.getItem('localCart');
     if (cartData) {
       let items: product[] = JSON.parse(cartData);
@@ -100,7 +100,7 @@ export class ProductService {
       }
     });
   }
-  removeToCartApi(cartId:number){
+  removeToCartApi(cartId:string){
     return this.http.delete('http://localhost:3000/cart/'+cartId);
   }
 
@@ -126,7 +126,7 @@ export class ProductService {
     let userData=userStore && JSON.parse(userStore);
     return this.http.get<order[]>('http://localhost:3000/orders?userId='+userData.id );
   }
-  deleteCartItems(cartId:number|undefined){
+  deleteCartItems(cartId:string|undefined){
     return this.http.delete('http://localhost:3000/cart/'+cartId,{observe:'response'}).subscribe((result)=>{
       if(result){
         this.cartData.emit([])
@@ -140,7 +140,7 @@ export class ProductService {
     this.productName.emit(data)
   }
 
-  updateCartQuantity(productId: number, quantity: number) {
+  updateCartQuantity(productId: string, quantity: number) {
     return this.http.patch(`http://localhost:3000/cart/${productId}`, { quantity });
   }
 

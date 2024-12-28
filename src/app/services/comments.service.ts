@@ -6,7 +6,7 @@ export interface Comments {
   averageRating: number;
   ratings: any;
   id?: string;
-  productId?: number;
+  productId?: string;
   userId?: string;
   content: string;
   timestamp: string;

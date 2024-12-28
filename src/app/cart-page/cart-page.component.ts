@@ -78,10 +78,10 @@ export class CartPageComponent implements OnInit {
     }
 
     if (!localStorage.getItem('user')) {
-      this.product.removeItemsFromCart(Number(id));
+      this.product.removeItemsFromCart(id);
       this.call();
     } else {
-      this.cartData && this.product.removeToCartApi(Number(id)).subscribe(() => {
+      this.cartData && this.product.removeToCartApi(id).subscribe(() => {
         const user = JSON.parse(localStorage.getItem('user') || '{}');
         this.product.getCartList(user.id);
         this.call();
@@ -116,7 +116,7 @@ export class CartPageComponent implements OnInit {
     this.route.navigate(['/login']);
   }
 
-  updateQuantity(productId: number, quantity: number) {
+  updateQuantity(productId: string, quantity: number) {
     if (!productId || quantity < 1) {
       console.error('Geçersiz ürün ID veya miktar.');
       return;

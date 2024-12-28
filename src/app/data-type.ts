@@ -18,7 +18,7 @@ export interface product{
     description:string,
     url:string,
     productId:undefined|number,
-    id:number,
+    id:string,
     quantity:undefined|number
     isCampaign: boolean;
     isPopular: boolean;
@@ -31,10 +31,10 @@ export interface cart{
     category:string,
     description:string,
     url:string,
-    id:number|undefined,
+    id:string|undefined,
     quantity:undefined|number,
     userId:number,
-    productId:number
+    productId:string
 }
 
 export interface priceSummary{

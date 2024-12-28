@@ -12,7 +12,7 @@ import { PopupboxService } from '../services/popupbox.service';
 export class SellerHomeComponent implements OnInit {
   delletMsg:undefined|string=''
 
-  id:number|undefined
+  id:string|undefined
   constructor(private prouct:ProductService, private popup:PopupboxService){
 
     this.popup.deleteProductEvent().subscribe((result)=>{
@@ -27,7 +27,7 @@ export class SellerHomeComponent implements OnInit {
     this.call()
     }
 
-    deletePopup(id:number){
+    deletePopup(id:string){
         this.id=id;
       this.popup.productPopup();
     }
