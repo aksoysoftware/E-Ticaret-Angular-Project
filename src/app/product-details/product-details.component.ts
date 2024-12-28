@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ProductService } from '../services/product.service';
-import { cart, product } from '../data-type';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {ProductService} from '../services/product.service';
+import {cart, product} from '../data-type';
 import {Comments, CommentsService} from "../services/comments.service";
 import {UserService} from "../services/user.service";
+
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -11,48 +12,53 @@ import {UserService} from "../services/user.service";
 
 })
 export class ProductDetailsComponent implements OnInit {
-  productData:undefined | product;
-  productQuantity:number=1;
-  removeCart=false;
-  cartData:product|undefined;
+  productData: undefined | product;
+  productQuantity: number = 1;
+  removeCart = false;
+  cartData: product | undefined;
   newComment: string = '';
   comments: Comments[] = [];
-  constructor(private activeRoute:ActivatedRoute,
-              private product:ProductService,
+  msgUserNotLogin: string = '';
+  isAuthenticated: boolean = false;
+
+  constructor(private activeRoute: ActivatedRoute,
+              private product: ProductService,
               private commentsService: CommentsService,
-              private userService:UserService) { }
+              private userService: UserService) {
+  }
 
   ngOnInit(): void {
-    let productId= this.activeRoute.snapshot.paramMap.get('productId');
+    this.isAuthenticated = !!localStorage.getItem('user');
+    let productId = this.activeRoute.snapshot.paramMap.get('productId');
     console.warn(productId);
 
-    productId && this.product.getProduct(productId).subscribe((result)=>{
-      this.productData= result;
-      let cartData= localStorage.getItem('localCart');
-      if(productId && cartData){
+    productId && this.product.getProduct(productId).subscribe((result) => {
+      this.productData = result;
+      let cartData = localStorage.getItem('localCart');
+      if (productId && cartData) {
         let items = JSON.parse(cartData);
-        items = items.filter((item:product)=>productId=== item.id.toString());
-        if(items.length){
-          this.removeCart=true
-        }else{
-          this.removeCart=false
+        items = items.filter((item: product) => productId === item.id.toString());
+        if (items.length) {
+          this.removeCart = true
+        } else {
+          this.removeCart = false
         }
       }
 
       let user = localStorage.getItem('user');
-      if(user){
-        let userId= user && JSON.parse(user).id;
+      if (user) {
+        let userId = user && JSON.parse(user).id;
         this.product.getCartList(userId);
 
-        this.product.cartData.subscribe((result)=>{
+        this.product.cartData.subscribe((result) => {
           console.log(result)
 
-          let item = result.filter((item:product)=>productId?.toString()===item.productId?.toString())
+          let item = result.filter((item: product) => productId?.toString() === item.productId?.toString())
 
-           if(item.length){
-        this.cartData=item[0];
-        this.removeCart=true;
-       }
+          if (item.length) {
+            this.cartData = item[0];
+            this.removeCart = true;
+          }
         });
         this.product.getCartList(userId);
       }
@@ -60,12 +66,14 @@ export class ProductDetailsComponent implements OnInit {
     this.loadComments(productId);
 
   }
+
   //-------------------------------------------------
   minus() {
     if (this.productQuantity > 1) {
       this.productQuantity -= 1
     }
   }
+
   plush() {
     return this.productQuantity += 1
   }
@@ -77,11 +85,10 @@ export class ProductDetailsComponent implements OnInit {
 
       if (!localStorage.getItem('user')) {
         this.product.localAddToCart(this.productData)
-      }
-      else {
+      } else {
         let user = localStorage.getItem('user')
         let userId = user && JSON.parse(user).id;
-        let cartData: cart = { ...this.productData, userId, productId: this.productData.id }
+        let cartData: cart = {...this.productData, userId, productId: this.productData.id}
 
         delete cartData.id
         this.product.userAddToCart(cartData).subscribe((result) => {
@@ -104,13 +111,13 @@ export class ProductDetailsComponent implements OnInit {
       console.warn("cartData", this.cartData);
 
       this.cartData && this.product.removeToCartApi(this.cartData.id)
-      .subscribe((result)=>{
-        let user = localStorage.getItem('user');
-        let userId= user && JSON.parse(user).id;
-        this.product.getCartList(userId)
-      })
+        .subscribe((result) => {
+          let user = localStorage.getItem('user');
+          let userId = user && JSON.parse(user).id;
+          this.product.getCartList(userId)
+        })
     }
-    this.removeCart=false
+    this.removeCart = false
   }
 
   loadComments(productId: string | null): void {
@@ -137,4 +144,4 @@ export class ProductDetailsComponent implements OnInit {
       });
     }
   }
-  }
+}

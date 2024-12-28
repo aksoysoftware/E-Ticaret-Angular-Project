@@ -172,18 +172,6 @@
   ],
   "cart": [
     {
-      "id": "6c8c",
-      "name": "Ayakkabı",
-      "price": "3500",
-      "color": "White",
-      "category": "Footwear",
-      "description": "White shoes",
-      "url": "https://rukminim2.flixcart.com/image/850/1000/l3ahpjk0/shoe/z/d/a/6-2202-6-xtoon-white-original-imagefct8fcmpdkd.jpeg?q=90",
-      "quantity": 1,
-      "userId": "1",
-      "productId": "5"
-    },
-    {
       "id": "be81",
       "name": "DSLR Camera",
       "price": "70000",
@@ -194,6 +182,54 @@
       "quantity": 7,
       "userId": "1352",
       "productId": "9"
+    },
+    {
+      "id": "1194",
+      "name": "LED Display",
+      "price": "41000",
+      "color": "Black",
+      "category": "Electronic",
+      "description": "Sumsung LED Display 24-inch-60-4-cm-ips-bezel-less-75-hz",
+      "url": "https://5.imimg.com/data5/SELLER/Default/2021/9/JZ/QM/LY/119909507/samsung-24-inch-60-4-cm-ips-bezel-less-75-hz-flat-flicker-free-led-monitor-500x500.jpg",
+      "quantity": 4,
+      "productId": "7",
+      "userId": "1"
+    },
+    {
+      "id": "9b6b",
+      "name": "DSLR Camera",
+      "price": "70000",
+      "color": "Black",
+      "category": "Camera",
+      "description": "Nikon D850. Best High megapixel DSLR. .",
+      "url": "https://wallpaperaccess.com/full/1724580.jpg",
+      "quantity": 1,
+      "productId": "9",
+      "userId": "1"
+    },
+    {
+      "id": "e298",
+      "name": "LED Display",
+      "price": "41000",
+      "color": "Black",
+      "category": "Electronic",
+      "description": "Sumsung LED Display 24-inch-60-4-cm-ips-bezel-less-75-hz",
+      "url": "https://5.imimg.com/data5/SELLER/Default/2021/9/JZ/QM/LY/119909507/samsung-24-inch-60-4-cm-ips-bezel-less-75-hz-flat-flicker-free-led-monitor-500x500.jpg",
+      "quantity": 4,
+      "productId": "7",
+      "userId": "1"
+    },
+    {
+      "id": "e3c6",
+      "name": "DSLR Camera",
+      "price": "70000",
+      "color": "Black",
+      "category": "Camera",
+      "description": "Nikon D850. Best High megapixel DSLR. .",
+      "url": "https://wallpaperaccess.com/full/1724580.jpg",
+      "quantity": 1,
+      "productId": "9",
+      "userId": "1"
     }
   ],
   "orders": [
@@ -231,107 +267,6 @@
     }
   ],
   "comments": [
-    {
-      "id": "1",
-      "productId": 3,
-      "userId": 1,
-      "content": "Bu ürün harika!",
-      "timestamp": "2024-12-01T10:00:00.000Z"
-    },
-    {
-      "id": "1360",
-      "productId": "5",
-      "userId": "24ba",
-      "content": "efeeeeee",
-      "timestamp": "2024-12-27T17:01:35.686Z"
-    },
-    {
-      "id": "0e4d",
-      "productId": "5",
-      "content": "fafasf",
-      "timestamp": "2024-12-28T11:44:45.220Z"
-    },
-    {
-      "id": "574f",
-      "productId": "5",
-      "content": "ddvd",
-      "timestamp": "2024-12-28T11:44:55.718Z"
-    },
-    {
-      "id": "4426",
-      "productId": "5",
-      "content": "gsdgsdgsd",
-      "timestamp": "2024-12-28T11:44:59.716Z"
-    },
-    {
-      "id": "0634",
-      "productId": "5",
-      "content": "gdsgdsgsdg",
-      "timestamp": "2024-12-28T11:45:01.501Z"
-    },
-    {
-      "id": "f19c",
-      "productId": "5",
-      "content": "gdssdgsdg",
-      "timestamp": "2024-12-28T11:45:03.632Z"
-    },
-    {
-      "id": "7131",
-      "productId": "5",
-      "userId": "1",
-      "content": "aaaa",
-      "timestamp": "2024-12-28T11:47:21.750Z"
-    },
-    {
-      "id": "12c3",
-      "productId": "5",
-      "userId": "1",
-      "content": "efeeeeeeeee",
-      "timestamp": "2024-12-28T11:50:28.505Z"
-    },
-    {
-      "id": "2fb1",
-      "productId": "5",
-      "userId": "1",
-      "content": "FDSFS",
-      "timestamp": "2024-12-28T11:53:31.862Z"
-    },
-    {
-      "id": "05f4",
-      "productId": "5",
-      "userId": "1",
-      "content": "fsdfs",
-      "timestamp": "2024-12-28T11:59:10.750Z"
-    },
-    {
-      "id": "ab13",
-      "productId": "5",
-      "userId": "1",
-      "content": "fsdfs",
-      "timestamp": "2024-12-28T11:59:11.741Z"
-    },
-    {
-      "id": "2a39",
-      "productId": "5",
-      "userId": "1",
-      "content": "fsdfs",
-      "timestamp": "2024-12-28T11:59:11.906Z"
-    },
-    {
-      "id": "d213",
-      "userName": "Muhammed",
-      "productId": "5",
-      "userId": "1",
-      "content": "sfasfa",
-      "timestamp": "2024-12-28T12:02:29.413Z"
-    },
-    {
-      "id": "e2a8",
-      "userName": "Muhammed",
-      "productId": "5",
-      "userId": "1",
-      "content": "fewfwf",
-      "timestamp": "2024-12-28T12:02:31.959Z"
-    }
+
   ]
 }
