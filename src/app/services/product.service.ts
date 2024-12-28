@@ -140,6 +140,10 @@ export class ProductService {
     this.productName.emit(data)
   }
 
+  updateCartQuantity(productId: number, quantity: number) {
+    return this.http.patch(`http://localhost:3000/cart/${productId}`, { quantity });
+  }
+
 
 
 }

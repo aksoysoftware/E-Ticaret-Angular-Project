@@ -116,6 +116,38 @@ export class CartPageComponent implements OnInit {
     this.route.navigate(['/login']);
   }
 
+  updateQuantity(productId: number, quantity: number) {
+    if (!productId || quantity < 1) {
+      console.error('Geçersiz ürün ID veya miktar.');
+      return;
+    }
+
+    if (localStorage.getItem('user')) {
+      // Kullanıcı giriş yaptıysa, sunucuda güncelleme
+      this.product.updateCartQuantity(productId, quantity).subscribe(() => {
+        console.log('Sepet güncellendi.');
+        this.call(); // Sepeti yeniden yükle
+      });
+    } else {
+      // Kullanıcı giriş yapmadıysa, localStorage'da güncelle
+      const localCart = localStorage.getItem('localCart');
+      if (localCart) {
+        const cartItems: cart[] = JSON.parse(localCart);
+        const itemIndex = cartItems.findIndex((item) => item.id === productId);
+        if (itemIndex !== -1) {
+          cartItems[itemIndex].quantity = quantity;
+          localStorage.setItem('localCart', JSON.stringify(cartItems));
+          console.log('Local cart güncellendi.');
+          this.call(); // Sepeti yeniden yükle
+        }
+      }
+    }
+  }
+
+
+
+
+
 
   protected readonly String = String;
 }

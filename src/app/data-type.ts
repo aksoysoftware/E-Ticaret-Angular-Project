@@ -51,4 +51,10 @@ export interface  order{
     totalPrice:number,
     userId:number,
     id:number|undefined
+    paymentMethod:string,
+    shippingCompany:string,
+    cardNumber?: string, // Opsiyonel
+    expiryDate?: string, // Opsiyonel
+    cvc?: string, // Opsiyonel
+    deliveryTime?: string, // Yeni alan
 }

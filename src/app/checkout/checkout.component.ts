@@ -9,52 +9,58 @@ import { Router } from '@angular/router';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
+  totalPrice: number | undefined;
+  cartData: cart[] | undefined;
+  orderMsg: string | undefined;
+  paymentMethod: string = 'kapıda'; // Default ödeme yöntemi
+  selectedShippingCompany: string = 'mng'; // Default kargo şirketi
 
-  constructor(private product:ProductService,private route:Router){}
-  totalPrice:number|undefined
-  cartData:cart[]|undefined
-  orderMsg:string|undefined
-ngOnInit(): void {
-      this.product.currentCartData().subscribe((result)=>{
-      let price =0;
-      this.cartData=result;
-      result.forEach(item => {
-        let productPrice=0;
-        if(item.quantity){
-         productPrice+=(+item.price)*(+item.quantity)
+  constructor(private product: ProductService, private route: Router) {}
+
+  ngOnInit(): void {
+    this.product.currentCartData().subscribe((result) => {
+      let price = 0;
+      this.cartData = result;
+      result.forEach((item) => {
+        let productPrice = 0;
+        if (item.quantity) {
+          productPrice += +item.price * +item.quantity;
         }
-        price+=productPrice
+        price += productPrice;
       });
 
-      this.totalPrice=price+(price/10)+100-((price/100*8))
-})
-}
-  oderNow(data:{email:string,address:string,contact:string}){
-    let user = localStorage.getItem('user')
-    let userId=user && JSON.parse(user).id;
-    if(this.totalPrice){
-     let orderData:order={
-      ...data,
-      totalPrice:this.totalPrice,
-      userId,
-      id:undefined
-     }
+      this.totalPrice = price + price / 10 + 100 - price / 100 * 8;
+    });
+  }
 
-     this.cartData?.forEach(items => {
+  oderNow(data: { email: string; address: string; contact: string; cardNumber?: string; expiryDate?: string; cvc?: string; deliveryTime: string }) {
+    let user = localStorage.getItem('user');
+    let userId = user && JSON.parse(user).id;
+    if (this.totalPrice) {
+      let orderData: order = {
+        ...data,
+        totalPrice: this.totalPrice,
+        userId,
+        id: undefined,
+        paymentMethod: this.paymentMethod,
+        shippingCompany: this.selectedShippingCompany,
+      };
+
+      this.cartData?.forEach((items) => {
         setTimeout(() => {
-         items.id && this.product.deleteCartItems(items.id)
+          items.id && this.product.deleteCartItems(items.id);
         }, 700);
-     });
+      });
 
-     this.product.orderNow(orderData).subscribe((result)=>{
-      if(result){
-        this.orderMsg = 'Siparişiniz başarıyla oluşturuldu';
-        setTimeout(() => {
-          this.route.navigate(['/my-order'])
-          this.orderMsg=undefined
-        }, 3000);
-      }
-     })
+      this.product.orderNow(orderData).subscribe((result) => {
+        if (result) {
+          this.orderMsg = 'Siparişiniz başarıyla oluşturuldu';
+          setTimeout(() => {
+            this.route.navigate(['/my-order']);
+            this.orderMsg = undefined;
+          }, 3000);
+        }
+      });
     }
   }
 }

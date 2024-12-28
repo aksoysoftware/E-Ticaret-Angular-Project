@@ -10,18 +10,41 @@
     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
       <div class="text-center">
         <h1 class="heading">Teslimat Adresi Ekle</h1>
-        <form class="mt-4" #orderData="ngForm"  (ngSubmit)="oderNow(orderData.value)">
+        <form class="mt-4" #orderData="ngForm" (ngSubmit)="oderNow(orderData.value)">
           <input type="text" name="email" placeholder="E-posta Adresinizi Girin" ngModel #mailInput="ngModel"><br>
-          <input type="text" name="address" placeholder="Adresinizi Girin" ngModel #adderssInput="ngModel"><br>
+          <input type="text" name="address" placeholder="Adresinizi Girin" ngModel #addressInput="ngModel"><br>
           <input type="text" name="contact" placeholder="İletişim Numaranızı Girin" ngModel #contactInput="ngModel"><br>
-          <button type="submit" [disabled]="mailInput.invalid && adderssInput.invalid && contactInput.invalid && contactInput.touched">Şimdi Sipariş Ver</button>
+
+          <h3>Ödeme Yöntemi:</h3>
+          <select [(ngModel)]="paymentMethod" name="paymentMethod" required>
+            <option value="kapıda">Kapıda Ödeme</option>
+            <option value="krediKartı">Kredi Kartı</option>
+          </select><br>
+
+          <div *ngIf="paymentMethod === 'krediKartı'" class="mt-3">
+            <input type="text" name="cardNumber" placeholder="Kart Numarası" ngModel><br>
+            <input type="text" name="expiryDate" placeholder="Son Kullanma Tarihi (AA/YY)" ngModel><br>
+            <input type="text" name="cvc" placeholder="CVC" ngModel><br>
+          </div>
+
+          <h3>Kargo Firması:</h3>
+          <select [(ngModel)]="selectedShippingCompany" name="shippingCompany" required>
+            <option value="mng">MNG Kargo</option>
+            <option value="ptt">PTT Kargo</option>
+          </select><br>
+
+          <h3>Teslimat Saati:</h3>
+          <input type="text" name="deliveryTime" placeholder="Örn: 10:00 - 12:00" ngModel required><br>
+
+          <button type="submit" [disabled]="!orderData.valid">Şimdi Sipariş Ver</button>
         </form>
       </div>
     </div>
     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mt-5">
       <div class="text-center mt-5">
         <h1>Toplam Tutar: <b>₺{{totalPrice}}</b></h1>
-        <h2>Ödeme Yöntemleri: <b>Kapıda Ödeme</b></h2>
+        <h2>Ödeme Yöntemleri: <b>{{ paymentMethod === 'krediKartı' ? 'Kredi Kartı' : 'Kapıda Ödeme' }}</b></h2>
+        <h2>Kargo Şirketi: <b>{{ selectedShippingCompany | titlecase }}</b></h2>
       </div>
     </div>
   </div>

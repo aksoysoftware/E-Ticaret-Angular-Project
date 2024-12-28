@@ -8,7 +8,7 @@
       <h2 class="text-center red mt-5">{{ noProductMsg }}</h2>
     </div>
     <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12" *ngIf="cartData?.length">
-      <div class="card mb-3 card-style mb-4 card-hower" *ngFor="let item of cartData">
+      <div class="card mb-3 card-style mb-4 card-hower" *ngFor="let item of cartData; let i = index">
         <div class="row g-0">
           <div class="col-md-3">
             <a>
@@ -20,7 +20,22 @@
               <div class="d-flex justify-content-between">
                 <p>{{ item.name }}</p>
                 <p>Fiyat: ₺{{ item.price }}</p>
-                <p>Miktar: {{ item.quantity }}</p>
+                <div>
+                  <!-- Miktar Güncelleme -->
+                  <label for="quantity-{{i}}">Miktar:</label>
+                  <input
+                    *ngIf="item.id"
+                    id="quantity-{{ item.id }}"
+                    type="number"
+                    [(ngModel)]="item.quantity"
+                    (change)="updateQuantity(item.id!, item.quantity || 1)"
+                    min="1"
+                    class="quantity-input"
+                  />
+
+
+
+                </div>
                 <div>
                   <button type="button" (click)="removeTocart(String(item.id))" class="btn btn-danger">Sepetten Çıkar</button>
                 </div>
