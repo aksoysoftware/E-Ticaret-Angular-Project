@@ -109,4 +109,8 @@ export class HeaderComponent implements OnInit {
     this.route.navigate([`/search/${name}`]);
     this.searchName = name;
   }
+
+  routeAdminOrUser(){
+    this.sellerName !== '' ? this.route.navigate(['/seller-home']) : this.route.navigate([''])
+  }
 }
