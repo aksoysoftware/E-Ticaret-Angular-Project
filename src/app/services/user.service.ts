@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { login, singUp, product, cart } from '../data-type';
-import { Observable } from 'rxjs';
+import {catchError, map, Observable, of} from 'rxjs';
 import { ProductService } from './product.service';
 
 @Injectable({
@@ -11,12 +11,14 @@ import { ProductService } from './product.service';
 export class UserService {
   isUserLogedIn = new EventEmitter<boolean>(false);
   isLoginFail = new EventEmitter<boolean>(false);
+  private apiUrl: string = "http://localhost:3000/user";
 
-  constructor(private http: HttpClient, private router: Router, private productService: ProductService) {}
+  constructor(private http: HttpClient, private router: Router, private productService: ProductService) {
+  }
 
   // Kullanıcı kaydı
   singUp(value: singUp) {
-    this.http.post('http://localhost:3000/user', value, { observe: 'response' }).subscribe((result) => {
+    this.http.post('http://localhost:3000/user', value, {observe: 'response'}).subscribe((result) => {
       this.isUserLogedIn.emit(true);
       if (result) {
         localStorage.setItem('user', JSON.stringify(result.body));
@@ -75,13 +77,12 @@ export class UserService {
           }
 
           // Sonuçları gönder
-          observer.next({ isSeller, isUser, user });
+          observer.next({isSeller, isUser, user});
           observer.complete();
         });
       });
     });
   }
-
 
 
   localCartToRemotecart() { //düzeltilecek
@@ -95,7 +96,6 @@ export class UserService {
       // Sunucudan mevcut kullanıcı sepetini al
       this.productService.currentCartData().subscribe((serverCart) => {
         const serverProductIds = serverCart.map(item => item.productId); // Sunucudaki ürün ID'leri
-        console.log("serverProductIds: " + JSON.stringify(serverProductIds));
 
         // Local cart'taki ürünleri sunucudaki ürünlerle karşılaştır
         let newProducts = cartDatalist.filter(product => !serverProductIds.includes(product.id));
@@ -120,7 +120,6 @@ export class UserService {
               quantity: product.quantity || 1 // Miktarı kontrol et
             };
             delete cartData.id; // Lokal cart'taki ID'yi kaldır
-            console.log("cartData: " + JSON.stringify(cartData, null, 2));
             return this.productService.userAddToCart(cartData).toPromise();
           });
 
@@ -140,9 +139,65 @@ export class UserService {
     }
   }
 
+  getUserProfile(): Observable<any> {
+    const user = this.getLoggedUser();
+    if (user?.id) {
+      return this.http.get(`${this.apiUrl}/${user.id}`).pipe(
+        catchError(err => {
+          console.error('Error fetching profile:', err);
+          throw new Error('Unable to fetch user profile.');
+        })
+      );
+    } else {
+      throw new Error('No user session found.');
+    }
+  }
+
+
+  private getLoggedUser(): any {
+    const user = localStorage.getItem('user');
+    return user ? JSON.parse(user) : null;
+  }
+
+
+  updateProfileWithPassword(updatedData: {
+    name: string;
+    newPassword: string;
+    email: string;
+    currentPassword: string;
+  }): Observable<any> {
+    const user = this.getLoggedUser();
+    if (user?.id) {
+      return this.http.put(`${this.apiUrl}/${user.id}`, updatedData).pipe(
+        map((response: any) => {
+          const updatedUser = {
+            ...user,
+            name: updatedData.name,
+            email: updatedData.email,
+            password: updatedData.newPassword
+          };
+          localStorage.setItem('user', JSON.stringify(updatedUser));
+          return response;
+        }),
+        catchError((err) => {
+          console.error('Error updating profile:', err);
+          throw new Error('Unable to update profile.');
+        })
+      );
+    } else {
+      throw new Error('No user session found.');
+    }
+  }
 
 
 
+  verifyCurrentPassword(currentPassword: string): boolean {
+    const user = this.getLoggedUser();
 
-
+    if (user && user.password) {
+      return user.password === currentPassword;
+    } else {
+      throw new Error('Kullanıcı oturumu mevcut değil veya şifre bulunamadı.');
+    }
+  }
 }

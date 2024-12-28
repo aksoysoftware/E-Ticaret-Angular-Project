@@ -23,6 +23,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AlertBoxComponent } from './alert-box/alert-box.component';
 import { LoginComponent } from './login/login.component';
+import {UpdateProfileComponent} from "./update-profile/update-profile.component";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { LoginComponent } from './login/login.component';
     CheckoutComponent,
     MyOrdersComponent,
     AlertBoxComponent,
-    LoginComponent
+    LoginComponent,
+    UpdateProfileComponent
   ],
   imports: [
     BrowserModule,

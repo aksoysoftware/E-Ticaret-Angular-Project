@@ -1,0 +1,108 @@
+<div class="update-profile-container">
+  <h2>Profili Güncelle</h2>
+  <form #updateForm="ngForm" (ngSubmit)="onSubmit(updateForm)">
+    <!-- Name Field -->
+    <div>
+      <label for="name">Ad:</label>
+      <input
+        id="name"
+        name="name"
+        type="text"
+        [(ngModel)]="userData.name"
+        #name="ngModel"
+        required
+      />
+      <div *ngIf="name.invalid && name.touched" class="error-message">
+        Ad alanı zorunludur.
+      </div>
+    </div>
+
+    <!-- Email Field -->
+    <div>
+      <label for="email">E-posta:</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        [(ngModel)]="userData.email"
+        #email="ngModel"
+        required
+        email
+      />
+      <div *ngIf="email.invalid && email.touched" class="error-message">
+        Geçerli bir e-posta adresi giriniz.
+      </div>
+    </div>
+
+    <!-- Current Password Field -->
+    <div>
+      <label for="currentPassword">Mevcut Şifre:</label>
+      <input
+        id="currentPassword"
+        name="currentPassword"
+        type="password"
+        [(ngModel)]="userData.currentPassword"
+        #currentPassword="ngModel"
+        required
+      />
+      <div *ngIf="currentPassword.invalid && currentPassword.touched" class="error-message">
+        Mevcut şifre zorunludur.
+      </div>
+      <div *ngIf="currentPasswordError" class="error-message">
+        Mevcut şifre doğru değil.
+      </div>
+    </div>
+
+    <!-- New Password Field -->
+    <div>
+      <label for="newPassword">Yeni Şifre:</label>
+      <input
+        id="newPassword"
+        name="newPassword"
+        type="password"
+        [(ngModel)]="userData.newPassword"
+        #newPassword="ngModel"
+        required
+        minlength="6"
+      />
+      <div *ngIf="newPassword.invalid && newPassword.touched" class="error-message">
+        Yeni şifre en az 6 karakter olmalıdır.
+      </div>
+    </div>
+
+    <!-- Confirm New Password Field -->
+    <div>
+      <label for="confirmNewPassword">Yeni Şifre Tekrar:</label>
+      <input
+        id="confirmNewPassword"
+        name="confirmNewPassword"
+        type="password"
+        [(ngModel)]="userData.confirmNewPassword"
+        #confirmNewPassword="ngModel"
+        required
+      />
+      <div *ngIf="confirmNewPassword.invalid && confirmNewPassword.touched" class="error-message">
+        Yeni şifre tekrar zorunludur.
+      </div>
+      <div *ngIf="userData.newPassword !== userData.confirmNewPassword && confirmNewPassword.touched" class="error-message">
+        Yeni şifreler eşleşmiyor.
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      type="submit"
+      [disabled]="updateForm.invalid || userData.newPassword !== userData.confirmNewPassword"
+    >
+      Güncelle
+    </button>
+  </form>
+
+  <!-- Success/Error Message -->
+  <div *ngIf="updateSuccess" class="success-message">
+    Profil başarıyla güncellendi!
+  </div>
+  <div *ngIf="updateError" class="error-message">
+    Profil güncellenemedi. Lütfen tekrar deneyiniz.
+  </div>
+</div>

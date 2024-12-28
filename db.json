@@ -162,13 +162,15 @@
     {
       "name": "Muhammed",
       "email": "muhammed@gmail.com",
-      "password": "123456",
+      "oldPassword": "123456",
+      "newPassword": "123456",
       "id": "1"
     },
     {
       "name": "Aman",
       "email": "aman@gmail.com",
-      "password": "123456",
+      "currentPassword": "1234567",
+      "newPassword": "123456789",
       "id": "2"
     },
     {
