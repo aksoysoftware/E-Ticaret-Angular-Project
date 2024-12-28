@@ -22,6 +22,7 @@ import { CartPageComponent } from './cart-page/cart-page.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AlertBoxComponent } from './alert-box/alert-box.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AlertBoxComponent } from './alert-box/alert-box.component';
     CartPageComponent,
     CheckoutComponent,
     MyOrdersComponent,
-    AlertBoxComponent
+    AlertBoxComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +57,6 @@ import { AlertBoxComponent } from './alert-box/alert-box.component';
 })
 export class AppModule {
   constructor(){
-    
+
   }
  }

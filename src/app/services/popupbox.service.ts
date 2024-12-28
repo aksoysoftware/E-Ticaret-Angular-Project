@@ -6,10 +6,10 @@ import { Subject , Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class PopupboxService {
-  
+
   constructor( ) { }
-  private subject=new Subject<any>(); 
-  private subject2=new Subject<any>(); 
+  private subject=new Subject<any>();
+  private subject2=new Subject<any>();
 
 //User Logout
   openPopUp(){
@@ -22,10 +22,10 @@ export class PopupboxService {
   ueserLogout(){
     this.subject2.next(true);
   }
-  
+
   userLogoutEvent(){
     return this.subject2.asObservable();
-    
+
   }
 
   private sellerpopup=new Subject<any>();
@@ -45,14 +45,14 @@ sellerLogout(){
       this.sellerpopupLogout.next(true);
 }
 
-sellerLogoutEvenr(){
+sellerLogoutEvent(){
   return this.sellerpopupLogout.asObservable();
 }
 
 //Product delete
   private product=new Subject<any>();
   private deleteProductList=new Subject<any>();
- 
+
 productPopup(){
   this.product.next(true);
 }

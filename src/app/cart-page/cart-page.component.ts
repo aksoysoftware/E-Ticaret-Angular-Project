@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
-import { cart, priceSummary, product } from '../data-type';
+import { cart, priceSummary } from '../data-type';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,8 +9,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./cart-page.component.css']
 })
 export class CartPageComponent implements OnInit {
-  constructor(private product: ProductService, private route: Router) { }
-  localCartData: any;
   cartData: cart[] | undefined;
   noProductMsg = '';
   msgUserNotLogin = '';
@@ -30,6 +28,8 @@ export class CartPageComponent implements OnInit {
     'MERHABA10': 10
   };
 
+  constructor(private product: ProductService, private route: Router) { }
+
   ngOnInit(): void {
     this.call();
   }
@@ -38,83 +38,68 @@ export class CartPageComponent implements OnInit {
     if (localStorage.getItem('user')) {
       this.product.currentCartData().subscribe((result) => {
         this.cartData = result;
-        let amount = 0;
-
-        result.forEach(item => {
-          let productPrice = 0;
-          if (item.quantity) {
-            productPrice += (+item.price) * (+item.quantity);
-          }
-          amount += productPrice;
-        });
-
-        if (amount != 0) {
-          this.priceSummary.price = amount;
-          this.priceSummary.discount = (amount / 100) * 8;
-          this.priceSummary.tax = amount / 10;
-          this.priceSummary.delivery = 100;
-        } else {
-          this.noProductMsg = 'Sepete Ürün Eklenmemiş...';        }
-
-        let totalAmount = this.priceSummary.price - this.priceSummary.discount + this.priceSummary.tax + this.priceSummary.delivery;
-        this.priceSummary.total = totalAmount;
+        this.calculatePriceSummary(result);
       });
     } else {
       let userStore = localStorage.getItem('localCart');
-      let userData = userStore && JSON.parse(userStore);
-      console.log("cartData=", userData);
-      this.cartData = userData;
-
-      let amount = 0;
-      userData.forEach((item: { quantity: string | number; price: string | number; }) => {
-        let productPrice = 0;
-        if (item.quantity) {
-          productPrice += (+item.price) * (+item.quantity);
-        }
-        amount += productPrice;
-      });
-
-      if (amount != 0) {
-        this.priceSummary.price = amount;
-        this.priceSummary.discount = (amount / 100) * 8;
-        this.priceSummary.tax = amount / 10;
-        this.priceSummary.delivery = 100;
+      console.log("userStore: " + JSON.stringify(userStore, null, 2));
+      if (userStore) {
+        const userData = JSON.parse(userStore);
+        this.cartData = userData;
+        this.calculatePriceSummary(userData);
       } else {
-        this.noProductMsg = 'Sepete Ürün Eklenmemiş...';      }
-
-      let totalAmount = this.priceSummary.price - this.priceSummary.discount + this.priceSummary.tax + this.priceSummary.delivery;
-      this.priceSummary.total = totalAmount;
+        this.noProductMsg = 'Sepete Ürün Eklenmemiş...';
+      }
     }
   }
 
-  removeTocart(id: any) {
-    let cartData = localStorage.getItem('localCart');
+  calculatePriceSummary(cartItems: cart[]) {
+    let amount = 0;
+    cartItems.forEach((item) => {
+      if (item.quantity) {
+        amount += (+item.price) * (+item.quantity);
+      }
+    });
+    if (amount > 0) {
+      this.priceSummary.price = amount;
+      this.priceSummary.discount = (amount / 100) * 8;
+      this.priceSummary.tax = amount / 10;
+      this.priceSummary.delivery = 100;
+      this.priceSummary.total = this.priceSummary.price - this.priceSummary.discount + this.priceSummary.tax + this.priceSummary.delivery;
+    } else {
+      this.noProductMsg = 'Sepete Ürün Eklenmemiş...';
+    }
+  }
+
+  removeTocart(id: string | undefined) {
+    if (!id) {
+      console.error('Invalid ID provided for removal.');
+      return;
+    }
+
     if (!localStorage.getItem('user')) {
-      this.product.removeItemsFromCart(id);
+      this.product.removeItemsFromCart(Number(id));
       this.call();
     } else {
-      this.cartData && this.product.removeToCartApi(id)
-        .subscribe((result: any) => {
-          let user = localStorage.getItem('user');
-          let userId = user && JSON.parse(user).id;
-          this.product.getCartList(userId);
-          this.call();
-        });
+      this.cartData && this.product.removeToCartApi(Number(id)).subscribe(() => {
+        const user = JSON.parse(localStorage.getItem('user') || '{}');
+        this.product.getCartList(user.id);
+        this.call();
+      });
     }
   }
+
 
   checkOut() {
     if (localStorage.getItem('user')) {
       this.route.navigate(['/checkout']);
     } else {
       this.msgUserNotLogin = 'Hesaba Giriş Yapmalısınız...';
-      this.call();
     }
   }
 
   applyDiscount() {
     const discountPercentage = this.validDiscountCodes[this.discountCode.toUpperCase() as keyof typeof this.validDiscountCodes];
-
     if (discountPercentage) {
       this.discountAmount = (this.priceSummary.price * discountPercentage) / 100;
       this.priceSummary.discount = this.discountAmount;
@@ -127,4 +112,10 @@ export class CartPageComponent implements OnInit {
     }
   }
 
+  redirectToLogin() {
+    this.route.navigate(['/login']);
+  }
+
+
+  protected readonly String = String;
 }

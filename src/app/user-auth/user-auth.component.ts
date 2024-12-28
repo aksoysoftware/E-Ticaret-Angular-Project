@@ -26,8 +26,8 @@ export class UserAuthComponent implements OnInit {
     this.showLogin = true
   }
   opneSingup() {
-    this.showLogin = false  
-  } 
+    this.showLogin = false
+  }
 
   login(value: login) {
     this.user.userLogin(value);
@@ -42,35 +42,31 @@ export class UserAuthComponent implements OnInit {
   }
 
   localCartToRemotecart() {
-    let data = localStorage.getItem('localCart');
-    let user = localStorage.getItem('user');
-    let userId = user && JSON.parse(user).id;
-    if (data) {
-      let cartDatalist: product[] = JSON.parse(data);
+    const localCart = localStorage.getItem('localCart');
+    const user = localStorage.getItem('user');
+    const userId = user && JSON.parse(user).id;
 
+    if (localCart && userId) {
+      const cartDatalist: product[] = JSON.parse(localCart);
 
-      cartDatalist.forEach((prduct: product, index) => {
-        let cartData: cart = {
-          ...prduct,
-          productId: prduct.id,
+      // Tüm ürünleri sunucuya ekleyin
+      cartDatalist.forEach((product: product, index) => {
+        const cartData: cart = {
+          ...product,
+          productId: product.id,
           userId
         };
-        delete cartData.id;
-        setTimeout(() => {
-          this.product.userAddToCart(cartData).subscribe((result) => {
-            if (result) {
-              console.log("Item store in DB");
-            }
-          });
-          if (cartDatalist.length === index + 1) {
+        delete cartData.id; // Lokal id'yi kaldır
+        this.product.userAddToCart(cartData).subscribe((result) => {
+          if (result && index === cartDatalist.length - 1) {
             localStorage.removeItem('localCart');
+            this.product.getCartList(userId);
           }
-        }, 500);
+        });
       });
     }
-    setTimeout(() => {
-      this.product.getCartList(userId)
-    }, 2000);
-
   }
+
+
+
 }
