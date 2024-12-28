@@ -230,6 +230,18 @@
       "quantity": 1,
       "productId": "9",
       "userId": "1"
+    },
+    {
+      "id": "2544",
+      "name": "Mouse",
+      "price": "500",
+      "color": "Black",
+      "category": "Electronic",
+      "description": "HP Mouse",
+      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdIN7ABCjTyVmmipaJCEJu1oi8fNQk6O5oKw&usqp=CAU",
+      "quantity": 6,
+      "productId": "6",
+      "userId": "2"
     }
   ],
   "orders": [
@@ -266,7 +278,5 @@
       "userId": "24ba"
     }
   ],
-  "comments": [
-
-  ]
+  "comments": []
 }

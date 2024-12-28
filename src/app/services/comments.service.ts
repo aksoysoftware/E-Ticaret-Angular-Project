@@ -1,31 +1,34 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {map, Observable, switchMap} from 'rxjs';
 
 export interface Comments {
-    id?: string;
-    productId?: number;
-    userId?: string;
-    content: string;
-    timestamp: string;
-    userName: string;
+  id?: string;
+  productId?: number;
+  userId?: string;
+  content: string;
+  timestamp: string;
+  userName: string;
+  ratings?: { userId: string; stars: number }[];
+  averageRating?: number;
 }
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root',
 })
 export class CommentsService {
-    private baseUrl = 'http://localhost:3000/comments';
+  private baseUrl = 'http://localhost:3000/comments';
 
-    constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
-    getCommentsByProductId(productId: string | null): Observable<Comments[]> {
-        return this.http.get<Comments[]>(`${this.baseUrl}?productId=${productId}`);
-    }
+  getCommentsByProductId(productId: string | null): Observable<Comments[]> {
+    return this.http.get<Comments[]>(`${this.baseUrl}?productId=${productId}`);
+  }
 
-    addComment(comment: Comments): Observable<Comments> {
-        return this.http.post<Comments>(this.baseUrl, comment);
-    }
+  addComment(comment: Comments): Observable<Comments> {
+    return this.http.post<Comments>(this.baseUrl, comment);
+  }
 
 
     updateComment(commentId: string, updatedComment: Partial<Comments>): Observable<Comments> {
