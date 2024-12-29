@@ -49,6 +49,7 @@ export class CartPageComponent implements OnInit {
         this.calculatePriceSummary(userData);
       } else {
         this.noProductMsg = 'Sepete Ürün Eklenmemiş...';
+
       }
     }
   }
@@ -68,6 +69,13 @@ export class CartPageComponent implements OnInit {
       this.priceSummary.total = this.priceSummary.price - this.priceSummary.discount + this.priceSummary.tax + this.priceSummary.delivery;
     } else {
       this.noProductMsg = 'Sepete Ürün Eklenmemiş...';
+      this.priceSummary = {
+        price: 0,
+        discount: 0,
+        tax: 0,
+        delivery: 0,
+        total: 0
+      };
     }
   }
 

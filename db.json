@@ -850,31 +850,9 @@
       "quantity": 3,
       "productId": "10",
       "userId": "24ba"
-    },
-    {
-      "id": "b2a9",
-      "name": "Akıllı Saat",
-      "price": "3000",
-      "color": "Silver",
-      "category": "Electronic",
-      "description": "Fire-bolt rise smart watch",
-      "url": "https://www.parents.com/thmb/lbAe5r-0X6LrjdLQBxUhC-zWRfY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/best-smartwatches-for-kids-tout-858482f6463a4780be5ba918f51b9a19.jpg",
-      "isCampaign": true,
-      "isPopular": true,
-      "quantity": 1,
-      "userId": "1",
-      "productId": "3"
     }
   ],
   "orders": [
-    {
-      "id": "7add",
-      "email": "csdv",
-      "address": "wgfewf",
-      "contact": "wefew",
-      "totalPrice": 54669.1432,
-      "userId": "1"
-    },
     {
       "id": "980b",
       "email": "",
