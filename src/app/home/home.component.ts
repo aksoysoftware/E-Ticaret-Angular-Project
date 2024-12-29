@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { CommentsService } from '../services/comments.service';
 import { product } from '../data-type';
+import {ChatService} from "../services/chat.service";
 
 @Component({
   selector: 'app-home',
@@ -27,7 +28,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private commentsService: CommentsService
+    private commentsService: CommentsService,
+    private chatService: ChatService
   ) {}
 
   ngOnInit(): void {
@@ -50,21 +52,52 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  loadMessages(): void {
+    this.chatService.getMessages().subscribe((messages) => {
+      this.messages = messages;
+    });
+  }
+
   toggleChat(): void {
     this.isChatOpen = !this.isChatOpen;
   }
 
   sendMessage(): void {
     if (this.newMessage.trim()) {
-      this.messages.push({ text: this.newMessage, isUser: true });
+      const message = {
+        text: this.newMessage,
+        isUser: true,
+        timestamp: new Date().toISOString(),
+        answeredBySeller: false, // Varsayılan değer
+      };
+
+      // Mesajı listeye ekle ve UI'yi güncelle
+      this.messages.push(message);
       this.newMessage = '';
 
-      // Simulate a response from support
+      // Mesajı database'e kaydet
+      this.chatService.saveMessage(message).subscribe(() => {
+        console.log('Mesaj kaydedildi');
+      });
+
+      // Destek mesajını simüle et
       setTimeout(() => {
-        this.messages.push({ text: 'Destek ekibi yakında sizinle iletişime geçecektir.', isUser: false });
+        const supportMessage = {
+          text: 'Destek ekibi yakında sizinle iletişime geçecektir.',
+          isUser: false,
+          timestamp: new Date().toISOString(),
+          answeredBySeller: false, // Varsayılan değer
+        };
+        this.messages.push(supportMessage);
+
+        // Destek mesajını database'e kaydet
+        this.chatService.saveMessage(supportMessage).subscribe(() => {
+          console.log('Destek mesajı kaydedildi');
+        });
       }, 1000);
     }
   }
+
 
   addToCompare(product: product): void {
     if (!this.selectedProducts.find(p => p.id === product.id)) {

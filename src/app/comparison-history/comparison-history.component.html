@@ -1,26 +1,28 @@
-<div class="container mt-5">
-  <h2 class="text-center">Karşılaştırma Geçmişi</h2>
+<div class="container mt-5 comparison-history-container">
+  <h2 class="text-center comparison-title">Karşılaştırma Geçmişi</h2>
 
   <!-- Karşılaştırma Geçmişi Listesi -->
   <div *ngIf="comparisonHistory.length > 0; else noHistory">
-    <div class="list-group">
-      <div class="list-group-item" *ngFor="let comparison of comparisonHistory">
+    <div class="comparison-card" *ngFor="let comparison of comparisonHistory">
+      <div class="comparison-header">
         <h5>Karşılaştırma Tarihi: {{ comparison.date | date: 'medium' }}</h5>
-        <ul class="list-group mt-2">
-          <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let product of comparison.products">
-            <div>
-              <strong>{{ product.name }}</strong> ({{ product.category }})<br>
-              <span>Fiyat: ₺{{ product.price }}</span><br>
+      </div>
+      <ul class="comparison-products">
+        <li *ngFor="let product of comparison.products">
+          <div class="product-info">
+            <strong>{{ product.name }}</strong> ({{ product.category }})
+            <div class="product-details">
+              <span>Fiyat: ₺{{ product.price }}</span>
               <span>Renk: {{ product.color }}</span>
             </div>
-          </li>
-        </ul>
-      </div>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 
   <!-- Eğer geçmiş yoksa gösterilecek mesaj -->
   <ng-template #noHistory>
-    <p class="text-center text-muted">Henüz bir karşılaştırma geçmişi yok.</p>
+    <p class="text-center no-history-message">Henüz bir karşılaştırma geçmişi yok.</p>
   </ng-template>
 </div>

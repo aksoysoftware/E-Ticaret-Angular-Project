@@ -1,0 +1,97 @@
+/* Container Stil */
+.comparison-history-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Başlık */
+.comparison-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+/* Karşılaştırma Kartı */
+.comparison-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.comparison-header h5 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #34495e;
+  margin-bottom: 10px;
+}
+
+/* Ürün Listesi */
+.comparison-products {
+  list-style: none;
+  padding: 0;
+}
+
+.comparison-products li {
+  background-color: #ecf0f1;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.comparison-products li:hover {
+  transform: translateY(-3px);
+  background-color: #dff9fb;
+}
+
+/* Ürün Bilgisi */
+.product-info {
+  font-size: 1rem;
+  color: #2d3436;
+}
+
+.product-info strong {
+  font-size: 1.1rem;
+  color: #0984e3;
+}
+
+.product-details span {
+  display: block;
+  font-size: 0.9rem;
+  color: #636e72;
+}
+
+/* Boş Geçmiş Mesajı */
+.no-history-message {
+  font-size: 1.2rem;
+  color: #b2bec3;
+  font-style: italic;
+}
+
+/* Mobil Uyum */
+@media (max-width: 768px) {
+  .comparison-title {
+    font-size: 1.8rem;
+  }
+
+  .comparison-card {
+    padding: 10px;
+  }
+
+  .product-info strong {
+    font-size: 1rem;
+  }
+
+  .product-details span {
+    font-size: 0.8rem;
+  }
+}

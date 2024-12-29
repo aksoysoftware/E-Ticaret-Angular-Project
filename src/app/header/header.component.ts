@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { product } from '../data-type';
 import { PopupboxService } from '../services/popupbox.service';
+import {SellerService} from "../services/seller.service";
+import {UserService} from "../services/user.service";
 
 @Component({
   selector: 'app-header',
@@ -17,7 +19,7 @@ export class HeaderComponent implements OnInit {
   searchName: string = '';
   cartItemsNumber = 0;
 
-  constructor(private route: Router, private product: ProductService, private popup: PopupboxService) {
+  constructor(private route: Router, private product: ProductService, private popup: PopupboxService, private userService: UserService, private sellerService: SellerService) {
     this.popup.userLogoutEvent().subscribe((result) => {
       if (result) {
         this.userlogout();
@@ -29,41 +31,51 @@ export class HeaderComponent implements OnInit {
         this.logout();
       }
     });
+
+    this.userService.isUserLoggedIn.subscribe(() => {
+      this.updateMenuType();
+    });
+
+    this.sellerService.isSellerLoggedIn.subscribe(() => {
+      this.updateMenuType();
+    });
   }
 
   ngOnInit(): void {
+    this.updateMenuType();
     this.updateCartItemCount();
     this.handleRouteChanges();
   }
 
+  updateMenuType(): void {
+    if (localStorage.getItem('seller')) {
+      this.menuType = 'seller';
+      const sellerData = JSON.parse(localStorage.getItem('seller') || '{}');
+      this.sellerName = sellerData.name || '';
+    } else if (localStorage.getItem('user')) {
+      this.menuType = 'user';
+      const userData = JSON.parse(localStorage.getItem('user') || '{}');
+      this.userName = userData.name || '';
+    } else {
+      this.menuType = 'default';
+    }
+  }
+
+
+
   handleRouteChanges() {
-    this.route.events.subscribe((val: any) => {
-      if (val?.url) {
-        if (localStorage.getItem('seller') && val.url.includes('seller')) {
-          const sellerData = JSON.parse(localStorage.getItem('seller') || '{}');
-          this.sellerName = sellerData.name;
-          this.menuType = 'seller';
-        } else if (localStorage.getItem('user')) {
-          const userData = JSON.parse(localStorage.getItem('user') || '{}');
-          this.userName = userData.name;
-          this.menuType = 'user';
-          this.product.getCartList(userData.id);
-        } else {
-          this.menuType = 'default';
-        }
-      }
+    this.route.events.subscribe(() => {
+      this.updateMenuType();
     });
   }
 
+
   updateCartItemCount() {
-    const cartItem = localStorage.getItem('localCart');
-    if (cartItem) {
-      this.cartItemsNumber = JSON.parse(cartItem).length;
-    }
     this.product.cartData.subscribe((items) => {
       this.cartItemsNumber = items.length;
     });
   }
+
 
   userlogoutpopup() {
     this.popup.openPopUp();
@@ -71,9 +83,13 @@ export class HeaderComponent implements OnInit {
 
   userlogout() {
     localStorage.removeItem('user');
-    this.route.navigate(['/login']);
     this.product.cartData.emit([]);
+    this.updateMenuType(); // Menü tipini güncelle
+    this.route.navigate(['/login']);
   }
+
+
+
 
   sellerlogoutpopup() {
     this.popup.sellerOpenPopUp();
@@ -81,6 +97,7 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('seller');
+    this.updateMenuType(); // Menü tipini güncelle
     this.route.navigate(['/login']);
   }
 

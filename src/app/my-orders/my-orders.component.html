@@ -3,28 +3,24 @@
   <router-outlet></router-outlet>
 </div>
 <div class="container">
-  <h1>Siparişlerim</h1>
-  <div *ngIf="!orderData?.length" class="for-footer">
-    <h2 class="text-center red mt-5">Henüz hiçbir ürün sipariş etmediniz..... </h2>
+  <h1 class="page-title">Siparişlerim</h1>
+
+  <div *ngIf="!orderData?.length" class="no-order">
+    <h2 class="text-center">Henüz hiçbir ürün sipariş etmediniz...</h2>
   </div>
-  <div class="card mb-3 card-style mb-4 card-hower mt-5" *ngFor="let item of orderData" >
-    <div class="row g-0">
-      <div class="col-md-1">
-        <div class="logo-margin ms-3">
-          <i class="fa-solid fa-cart-shopping fa-2xl" style="color: #437adb;"></i>
-        </div>
+
+  <div class="order-card mb-4" *ngFor="let item of orderData">
+    <div class="order-card-header">
+      <i class="fa-solid fa-cart-shopping fa-2xl icon"></i>
+      <p class="order-id">Sipariş No: <strong>#{{ item.id }}</strong></p>
+    </div>
+    <div class="order-card-body">
+      <div class="order-info">
+        <p>Fiyat: <strong>₺{{ item.totalPrice }}</strong></p>
+        <p>Durum: <span class="status">Yolda</span></p>
       </div>
-      <div class="col-md-11 ">
-        <div class="card-body">
-          <div class="d-flex justify-content-between">
-            <p>Sipariş No: <br>#{{item.id}}</p>
-            <p>Fiyat: <br>₺{{item.totalPrice}}</p>
-            <p>Durum: <br>Yolda</p>
-            <div>
-              <button type="button" (click)="cancleOrder(item.id)" class="btn btn-danger mt-2">Siparişi İptal Et</button>
-            </div>
-          </div>
-        </div>
+      <div class="order-actions">
+        <button type="button" (click)="cancleOrder(item.id)" class="btn btn-danger">Siparişi İptal Et</button>
       </div>
     </div>
   </div>

@@ -4,24 +4,22 @@
 </div>
 <div class="container mt-5">
   <div *ngIf="productDetails">
-    <div class="card mb-3 card-style mb-4 card-hower" *ngFor="let item of productDetails">
+    <div class="card mb-4 product-card" *ngFor="let item of productDetails">
       <div class="row g-0">
         <div class="col-md-4">
           <a routerLink="/product-details/{{item.id}}">
-            <img src="{{item.url}}" class="img-fluid rounded-start " alt="Product Image">
+            <img src="{{item.url}}" class="img-fluid product-image" alt="Product Image">
           </a>
         </div>
-        <div class="col-md-8 ">
+        <div class="col-md-8">
           <div class="card-body">
-            <a routerLink="/product-details/{{item.id}}">
-              <h2 class=""><b>{{item.name}}</b></h2>
+            <a routerLink="/product-details/{{item.id}}" class="product-link">
+              <h2 class="product-name"><b>{{item.name}}</b></h2>
             </a>
-
-            <span>Fiyat - {{item.price}}</span><br><br>
-            <span>Renk - {{item.color}}</span><br><br>
-            <span>Kategori - {{item.category}}</span><br><br>
-            <p class="card-text">Açıklama - {{item.description}}</p>
-
+            <p><strong>Fiyat:</strong> ₺{{item.price}}</p>
+            <p><strong>Renk:</strong> {{item.color}}</p>
+            <p><strong>Kategori:</strong> {{item.category}}</p>
+            <p class="product-description"><strong>Açıklama:</strong> {{item.description}}</p>
           </div>
         </div>
       </div>
@@ -29,7 +27,7 @@
   </div>
   <div>
     <div *ngIf="noDataPersent" class="footer-margin">
-      <h1 class="text-center red ">{{noDataPersent}}</h1>
+      <h1 class="text-center text-danger">{{noDataPersent}}</h1>
     </div>
   </div>
 </div>

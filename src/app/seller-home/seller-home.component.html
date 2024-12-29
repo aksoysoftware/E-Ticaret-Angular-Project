@@ -3,44 +3,42 @@
   <router-outlet></router-outlet>
 </div>
 
-<div class="container ">
-  <div>
-    <h2>Ürün Listesi</h2>
+<div class="container mt-5">
+  <div class="text-center mb-4">
+    <h2 class="text-primary fw-bold">Ürün Listesi</h2>
   </div>
-  <table class="table table-striped mt-3 ">
-    <thead >
+  <table class="table table-bordered table-hover shadow-sm">
+    <thead class="table-primary">
     <tr>
-      <th class="table-head" scope="col">Id</th>
-      <th class="table-head" scope="col">Ad</th>
-      <th class="table-head" scope="col">Fiyat</th>
-      <th class="table-head" scope="col">Renk</th>
-      <th class="table-head" scope="col">Kategori</th>
-      <th class="table-head" scope="col">Açıklama</th>
-      <th class="table-head" scope="col">Resim</th>
-      <th class="table-head" scope="col">İşlem</th>
+      <th scope="col">ID</th>
+      <th scope="col">Ad</th>
+      <th scope="col">Fiyat</th>
+      <th scope="col">Renk</th>
+      <th scope="col">Kategori</th>
+      <th scope="col">Açıklama</th>
+      <th scope="col">Resim</th>
+      <th scope="col">İşlemler</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let item of productList">
-      <th scope="row">{{item.id}}</th>
+    <tr *ngFor="let item of productList" class="align-middle">
+      <td>{{item.id}}</td>
       <td>{{item.name}}</td>
       <td>{{item.price}} TL</td>
       <td>{{item.color}}</td>
       <td>{{item.category}}</td>
       <td>{{item.description}}</td>
-      <td><img src="{{item.url}}" alt="Resim"></td>
+      <td><img [src]="item.url" alt="Resim" class="product-img"></td>
       <td>
-        <button class="red"  (click)="deletePopup(item.id)">Sil</button>
-        <i class="fa-solid fa-trash" (click)="deletePopup(item.id)" style="color: #ff0000;"></i>
-        |
-        <button class="green"  routerLink="/seller-update-product/{{item.id}}">Düzenle</button>
-        <i class="fa-solid fa-pen-to-square" style="color: #097b17;"></i>
+        <button class="btn btn-danger btn-sm me-2" (click)="deletePopup(item.id)">
+          <i class="fa-solid fa-trash"></i> Sil
+        </button>
+        <button class="btn btn-success btn-sm" routerLink="/seller-update-product/{{item.id}}">
+          <i class="fa-solid fa-pen-to-square"></i> Düzenle
+        </button>
       </td>
     </tr>
     </tbody>
   </table>
-  <h4 class="red text-center">{{delletMsg}}</h4>
-  <div class="mb">
-
-  </div>
+  <h4 class="text-danger text-center mt-3">{{delletMsg}}</h4>
 </div>

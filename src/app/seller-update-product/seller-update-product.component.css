@@ -1,25 +1,61 @@
-.card-style{
-    width: 60%;
-    position: relative;
-    left: 21%;
-    background-color: rgb(169, 237, 241);
-}
-.center{
-   background-color: rgb(199, 202, 165);
-   width: 40%;
-   font-size: large;
-   font-weight: 500;
-   color: rgb(41, 163, 82);
+/* Genel Ayarlar */
+body {
+  font-family: 'Roboto', sans-serif;
 }
 
-.red{
-    color: red;
-}
-.green{
-     color: green;
-}
-
-.h-size{
-    font-size: xx-large;
+/* Başlık */
+.h-size {
+  font-size: 2rem;
+  color: #007bff;
+  font-weight: bold;
 }
 
+/* Kart Stili */
+.card-style {
+  width: 60%;
+  margin: auto;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+/* Girdi Alanları */
+.input-style {
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.input-style:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+/* Buton */
+.center {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.center:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Mesaj */
+.text-success {
+  font-size: 1rem;
+  color: #28a745;
+  font-weight: bold;
+}

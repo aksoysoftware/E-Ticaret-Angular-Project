@@ -1,5 +1,5 @@
 <div class="compare-container">
-  <h2>Ürün Karşılaştırma</h2>
+  <h2 class="compare-heading">Ürün Karşılaştırma</h2>
   <table class="compare-table">
     <thead>
     <tr>
@@ -17,13 +17,13 @@
       <td>{{ item.color }}</td>
       <td>{{ item.category }}</td>
       <td>
-        <button class="btn btn-danger" (click)="removeFromCompare(item.id)">Kaldır</button>
+        <button class="btn btn-remove" (click)="removeFromCompare(item.id)">Kaldır</button>
       </td>
     </tr>
     </tbody>
   </table>
 
   <div class="text-center mt-3">
-    <button class="btn btn-success" (click)="saveComparison()">Karşılaştır ve Kaydet</button>
+    <button class="btn btn-save" (click)="saveComparison()">Karşılaştır ve Kaydet</button>
   </div>
 </div>

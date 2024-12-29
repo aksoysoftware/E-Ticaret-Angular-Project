@@ -1,47 +1,94 @@
 <h1 class="green h-size text-center mt-5"><b>Ürün Detaylarını Güncelle</b></h1>
 <div class="container">
-  <div class="card mt-5 card-style">
+  <div class="card mt-5 shadow-sm rounded card-style">
     <div class="card-body">
-
-      <form #sellerUpdateProduct="ngForm" (ngSubmit)="submint(sellerUpdateProduct.value)" >
+      <form #sellerUpdateProduct="ngForm" (ngSubmit)="submint(sellerUpdateProduct.value)">
         <div class="mb-4">
-          <!-- <label for="exampleInputPassword1" class="form-label">Ad</label> -->
-          <input type="text" required class="form-control" ngModel="{{productData?.name}}" name="name" placeholder="Ürün adını girin"
-                 id="exampleInputName">
+          <input
+            type="text"
+            required
+            class="form-control input-style"
+            [ngModel]="productData?.name"
+            name="name"
+            placeholder="Ürün adını girin"
+            id="exampleInputName"
+          />
         </div>
 
         <div class="mb-4">
-          <input type="number" required class="form-control" ngModel="{{productData?.price}}" name="price" id="exampleInputPrice"
-                 placeholder="Ürün fiyatını girin" aria-describedby="emailHelp">
+          <input
+            type="number"
+            required
+            class="form-control input-style"
+            [ngModel]="productData?.price"
+            name="price"
+            id="exampleInputPrice"
+            placeholder="Ürün fiyatını girin"
+          />
         </div>
 
         <div class="mb-4">
-          <input type="text" required class="form-control" ngModel="{{productData?.color}}" name="color" id="exampleInputColor"
-                 placeholder="Ürün rengini girin" >
+          <input
+            type="text"
+            required
+            class="form-control input-style"
+            [ngModel]="productData?.color"
+            name="color"
+            id="exampleInputColor"
+            placeholder="Ürün rengini girin"
+          />
         </div>
 
         <div class="mb-4">
-          <input type="text" required class="form-control" ngModel="{{productData?.category}}" name="category" placeholder="Ürün kategorisini girin"
-                 id="exampleInputCategory">
+          <input
+            type="text"
+            required
+            class="form-control input-style"
+            [ngModel]="productData?.category"
+            name="category"
+            placeholder="Ürün kategorisini girin"
+            id="exampleInputCategory"
+          />
         </div>
 
         <div class="mb-4">
-          <textarea class="form-control" ngModel="{{productData?.description}}" name="description" placeholder="Ürün açıklamasını girin" id="exampleInputDescription" rows="3"></textarea>
+          <textarea
+            class="form-control input-style"
+            [ngModel]="productData?.description"
+            name="description"
+            placeholder="Ürün açıklamasını girin"
+            id="exampleInputDescription"
+            rows="3"
+          ></textarea>
         </div>
 
         <div class="mb-4">
-          <input type="url" required class="form-control" ngModel="{{productData?.url}}" name="url" placeholder="Ürün resim URL'sini girin"
-                 id="exampleInputUrl">
+          <input
+            type="url"
+            required
+            class="form-control input-style"
+            [ngModel]="productData?.url"
+            name="url"
+            placeholder="Ürün resim URL'sini girin"
+            id="exampleInputUrl"
+          />
         </div>
 
         <div class="mb-4 form-check">
-          <input type="checkbox" class="form-check-input" ngModel="{{productData?.isCampaign}}" name="isCampaign" id="exampleInputCampaign">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            [ngModel]="productData?.isCampaign"
+            name="isCampaign"
+            id="exampleInputCampaign"
+          />
           <label for="exampleInputCampaign" class="form-check-label">Kampanyalı Ürün mü?</label>
         </div>
+
         <div class="text-center">
-          <button type="submit" class="btn center" >Ürünü Güncelle</button>
+          <button type="submit" class="btn center btn-primary">Ürünü Güncelle</button>
         </div>
-        <h4 class="green text-center mt-4">{{addPrductMesg}}</h4>
+        <h4 class="text-success text-center mt-4">{{ addPrductMesg }}</h4>
       </form>
     </div>
   </div>

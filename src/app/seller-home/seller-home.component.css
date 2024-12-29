@@ -1,32 +1,96 @@
-.table-head{
-    background-color: rgb(160, 241, 241);
-    
+/* Genel Ayarlar */
+body {
+  font-family: 'Roboto', sans-serif;
 }
 
-h2{
-    color: green;
-    margin-top: 20px;
-    font-size: xx-large;
-    font-style: italic;
+/* Başlık */
+h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-top: 20px;
+  color: #007bff;
+  text-align: center;
+  font-style: italic;
 }
-table{
-    border: 4px;
-    border-left-color: blueviolet;
-    border-top-color: blueviolet;
-    border-bottom-color: blueviolet;
-    border-right-color: blueviolet;
+
+/* Tablo */
+.table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-img{
-    width: 100px;
-    height: 120px;
+
+.table thead {
+  background-color: #007bff;
+  color: #ffffff;
 }
-.red{
-    color: red;
+
+.table-hover tbody tr:hover {
+  background-color: #f8f9fa;
 }
-button{
-    border: none;
-    background-color: none;
+
+.table-bordered td,
+.table-bordered th {
+  border: 1px solid #dee2e6;
 }
-.green{
-    color: green;
+
+th {
+  text-align: center;
+  font-size: 1rem;
+}
+
+td {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 0.9rem;
+}
+
+/* Resim */
+.product-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Butonlar */
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+  color: #fff;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+.btn-success {
+  background-color: #28a745;
+  border: none;
+  color: #fff;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+/* Mesaj */
+.text-danger {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 15px;
 }

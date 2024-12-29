@@ -1,25 +1,25 @@
-<nav class="navbar navbar-expand-lg nav-styel">
+<nav class="navbar navbar-expand-lg navbar-style">
   <div class="container-fluid">
-    <a class="navbar-logo text-color" routerLink="/">E-TİCARET UYGULAMASI</a>
+    <a class="navbar-logo" routerLink="/">E-TİCARET UYGULAMASI</a>
 
-    <button class="navbar-toggler nav-tex" type="button" data-bs-toggle="collapse"
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Gezinmeyi aç">
-      <span class="navbar-toggler-icon nav-tex bg-white"></span>
+      <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse ms-5" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link nav-text" aria-current="page" routerLink="/">Ana Sayfa</a>
+          <a class="nav-link nav-text" routerLink="/">Ana Sayfa</a>
         </li>
       </ul>
 
       <!-- Arama Formu -->
-      <div class="search-margin">
-        <form class="d-flex me-auto" role="search">
-          <input #searchInput value="{{searchName}}" class="saerch me-1" type="search" (keyup)="searchProduct($event)"
+      <div class="search-container">
+        <form class="search-form">
+          <input #searchInput value="{{searchName}}" class="search-input" type="search" (keyup)="searchProduct($event)"
                  (blur)="hideSearch()" placeholder="Ürün ara" aria-label="Search">
-          <button class="btn btn-outline-success" (click)="submintSearch(searchInput.value)" type="button">Ara</button>
+          <button class="search-button" (click)="submintSearch(searchInput.value)" type="button">Ara</button>
 
           <!-- Arama Önerileri -->
           <ul class="suggested-result" *ngIf="searchResult">
@@ -34,23 +34,23 @@
       <div>
         <ul class="navbar-nav mb-lg-0" *ngIf="menuType === 'default'">
           <li class="nav-item">
-            <a class="nav-link nav-text" routerLink="login" aria-current="page">Giriş</a>
+            <a class="nav-link nav-text" routerLink="login">Giriş</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-text" href routerLink="cart-page">Sepetim({{cartItemsNumber}})</a>
+            <a class="nav-link nav-text" routerLink="cart-page">Sepetim({{cartItemsNumber}})</a>
           </li>
         </ul>
 
         <!-- Satıcı Menüsü -->
         <ul class="navbar-nav mb-lg-0" *ngIf="menuType === 'seller'">
           <li class="nav-item">
-            <a class="nav-link nav-text" aria-current="page" routerLink="seller-home">Ürün Listesi</a>
+            <a class="nav-link nav-text" routerLink="seller-home">Ürün Listesi</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-text" aria-current="page" routerLink="seller-add-product">Ürün Ekle</a>
+            <a class="nav-link nav-text" routerLink="seller-add-product">Ürün Ekle</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-text" aria-current="page">{{sellerName | titlecase}}</a>
+            <a class="nav-link nav-text">{{sellerName | titlecase}}</a>
           </li>
           <li class="nav-item">
             <a class="nav-link nav-text logout" (click)="sellerlogoutpopup()">Çıkış</a>
@@ -60,16 +60,16 @@
         <!-- Kullanıcı Menüsü -->
         <ul class="navbar-nav mb-lg-0" *ngIf="menuType === 'user'">
           <li class="nav-item">
-            <a class="nav-link nav-text" aria-current="page">{{userName | titlecase}}</a>
+            <a class="nav-link nav-text">{{userName | titlecase}}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-text" routerLink="update-profile" aria-current="page">Profili Güncelle</a>
+            <a class="nav-link nav-text" routerLink="update-profile">Profili Güncelle</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-text" routerLink="my-order" aria-current="page">Siparişlerim</a>
+            <a class="nav-link nav-text" routerLink="my-order">Siparişlerim</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-text" aria-current="page" href routerLink="cart-page">Sepetim({{cartItemsNumber}})</a>
+            <a class="nav-link nav-text" routerLink="cart-page">Sepetim({{cartItemsNumber}})</a>
           </li>
           <li class="nav-item">
             <a class="nav-link nav-text logout" (click)="userlogoutpopup()">Çıkış</a>

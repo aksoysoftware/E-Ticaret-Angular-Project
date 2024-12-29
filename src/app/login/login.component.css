@@ -1,0 +1,137 @@
+/* Genel Yerleşim */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  font-family: 'Roboto', sans-serif;
+  padding: 20px;
+}
+
+.login-card {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Kullanıcı Türü Seçimi */
+.user-type-selector {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.type-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 30px;
+  background: #f9f9f9;
+  color: #666;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: 0.3s all ease;
+}
+
+.type-button:hover {
+  background: #6e8efb;
+  color: #fff;
+}
+
+.type-button.active {
+  background: #6e8efb;
+  color: #fff;
+  border: none;
+}
+
+/* Form Grupları */
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  transition: 0.3s all ease;
+}
+
+.form-input:focus {
+  border-color: #6e8efb;
+  outline: none;
+}
+
+.error-message {
+  font-size: 14px;
+  color: #e74c3c;
+  margin-top: 5px;
+}
+
+/* Giriş Yap Butonu */
+.login-button {
+  width: 100%;
+  padding: 12px 15px;
+  background: #6e8efb;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s all ease;
+}
+
+.login-button:hover {
+  background: #5a7ee6;
+}
+
+/* Hata Mesajı */
+.error-box {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+  .login-card {
+    padding: 20px 30px;
+  }
+
+  .login-title {
+    font-size: 20px;
+  }
+
+  .type-button {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+
+  .form-input {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .login-button {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+}

@@ -1,49 +1,130 @@
-.nav-styel{
-    background-color: rgb(41, 41, 41);
-   
-}
-.nav-text{
-    color: white;
-    font-size: medium;
-    font-weight: 500;
-    
-}
-.logout{
-    cursor: pointer;
-}
-.saerch{
-    border-radius: 5px;
-    border: none;
-    width: 300px;
-    background-color: rgb(215, 241, 241);
-    
-}
-.navbar-logo{
-    text-decoration: none;
-    font-size: x-large;
-    font-weight: 500;
+/* Genel Navbar Stil */
+.navbar-style {
+  background-color: #2c3e50;
+  padding: 10px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.suggested-result{
-    position: absolute;
-    display: list-item ;
-    z-index: 10;
-    background-color: white;
-    width: 300px;
-    top: 46px;
-    /* border: 1px solid #ddd; */
-    list-style-type: none;
-    font-size: medium;
+.navbar-logo {
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ecf0f1;
+  transition: color 0.3s ease;
 }
-.suggested-result li{
-    /* border: 1px solid #fff; */
-    padding: 5px;
-    list-style-type: none;
+
+.navbar-logo:hover {
+  color: #1abc9c;
 }
-.suggested-result li a{
-    cursor: pointer;
-    color: green
+
+/* Navbar Metin Stili */
+.nav-text {
+  color: #ecf0f1;
+  font-size: 1rem;
+  margin: 0 10px;
+  transition: color 0.3s ease;
 }
-.search-margin{
-    margin-right: 140px;
+
+.nav-text:hover {
+  color: #1abc9c;
+}
+
+/* Arama Kutusu */
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 300px;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  background-color: #ecf0f1;
+  font-size: 1rem;
+  margin-right: 10px;
+  transition: box-shadow 0.3s ease;
+}
+
+.search-input:focus {
+  box-shadow: 0 0 8px rgba(41, 128, 185, 0.5);
+  outline: none;
+}
+
+.search-button {
+  background-color: #1abc9c;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #16a085;
+}
+
+/* Öneri Listesi */
+.suggested-result {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 300px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  list-style-type: none;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.suggested-result li {
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.suggested-result li:hover {
+  background-color: #f1f1f1;
+}
+
+.suggested-result li a {
+  text-decoration: none;
+  color: #1abc9c;
+  font-size: 0.9rem;
+}
+
+/* Logout Butonu */
+.logout {
+  color: #e74c3c;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.logout:hover {
+  color: #c0392b;
+}
+
+/* Mobil Uyum */
+@media (max-width: 768px) {
+  .navbar-logo {
+    font-size: 1.2rem;
+  }
+
+  .search-input {
+    width: 200px;
+  }
+
+  .nav-text {
+    font-size: 0.9rem;
+  }
 }

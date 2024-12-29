@@ -18,10 +18,6 @@ export class UserAuthComponent implements OnInit {
     this.user.userAuthReload();
   }
 
-  singUp(value: singUp) {
-    this.user.singUp(value);
-  }
-
   opneLogin() {
     this.showLogin = true
   }

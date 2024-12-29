@@ -7,31 +7,31 @@
     <h1 class="text-color"><b>Ödeme</b></h1>
   </div>
   <div class="row">
-    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-      <div class="text-center">
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <div class="card">
         <h1 class="heading">Teslimat Adresi Ekle</h1>
         <form class="mt-4" #orderData="ngForm" (ngSubmit)="oderNow(orderData.value)">
-          <input type="text" name="email" placeholder="E-posta Adresinizi Girin" ngModel #mailInput="ngModel"><br>
-          <input type="text" name="address" placeholder="Adresinizi Girin" ngModel #addressInput="ngModel"><br>
-          <input type="text" name="contact" placeholder="İletişim Numaranızı Girin" ngModel #contactInput="ngModel"><br>
+          <input type="email" name="email" placeholder="E-posta Adresinizi Girin" ngModel required><br>
+          <input type="text" name="address" placeholder="Adresinizi Girin" ngModel required><br>
+          <input type="tel" name="contact" placeholder="İletişim Numaranızı Girin" ngModel required><br>
 
           <h3>Ödeme Yöntemi:</h3>
           <select [(ngModel)]="paymentMethod" name="paymentMethod" required>
             <option value="kapıda">Kapıda Ödeme</option>
             <option value="krediKartı">Kredi Kartı</option>
-          </select><br>
+          </select>
 
           <div *ngIf="paymentMethod === 'krediKartı'" class="mt-3">
-            <input type="text" name="cardNumber" placeholder="Kart Numarası" ngModel><br>
-            <input type="text" name="expiryDate" placeholder="Son Kullanma Tarihi (AA/YY)" ngModel><br>
-            <input type="text" name="cvc" placeholder="CVC" ngModel><br>
+            <input type="text" name="cardNumber" placeholder="Kart Numarası" ngModel required><br>
+            <input type="text" name="expiryDate" placeholder="Son Kullanma Tarihi (AA/YY)" ngModel required><br>
+            <input type="text" name="cvc" placeholder="CVC" ngModel required><br>
           </div>
 
           <h3>Kargo Firması:</h3>
           <select [(ngModel)]="selectedShippingCompany" name="shippingCompany" required>
             <option value="mng">MNG Kargo</option>
             <option value="ptt">PTT Kargo</option>
-          </select><br>
+          </select>
 
           <h3>Teslimat Saati:</h3>
           <input type="text" name="deliveryTime" placeholder="Örn: 10:00 - 12:00" ngModel required><br>
@@ -40,8 +40,8 @@
         </form>
       </div>
     </div>
-    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mt-5">
-      <div class="text-center mt-5">
+    <div class="col-lg-6 col-md-6 col-sm-12 mt-5">
+      <div class="card text-center mt-5">
         <h1>Toplam Tutar: <b>₺{{totalPrice}}</b></h1>
         <h2>Ödeme Yöntemleri: <b>{{ paymentMethod === 'krediKartı' ? 'Kredi Kartı' : 'Kapıda Ödeme' }}</b></h2>
         <h2>Kargo Şirketi: <b>{{ selectedShippingCompany | titlecase }}</b></h2>
@@ -49,9 +49,8 @@
     </div>
   </div>
 
-  <div class="d-flex text-center msg-margin" *ngIf="orderMsg">
-    <h3 class="text-color me-2"><b>{{orderMsg}}</b></h3>
-    <div class="spinner-border text-primary" role="status">
-    </div>
+  <div class="msg-margin" *ngIf="orderMsg">
+    <h3 class="text-color"><b>{{orderMsg}}</b></h3>
+    <div class="spinner-border text-primary" role="status"></div>
   </div>
 </div>

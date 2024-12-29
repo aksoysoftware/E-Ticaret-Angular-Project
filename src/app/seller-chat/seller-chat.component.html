@@ -1,0 +1,12 @@
+<div class="container">
+  <h2>Destek Talepleri</h2>
+  <div *ngFor="let message of messages">
+    <p><strong>Mesaj:</strong> {{ message.text }}</p>
+    <p><strong>Gönderim Zamanı:</strong> {{ message.timestamp | date: 'short' }}</p>
+    <div>
+      <textarea [(ngModel)]="message.reply" placeholder="Cevap yaz..."></textarea>
+      <button (click)="answerMessage(message.id, message.reply)" class="btn btn-primary mt-2">Cevapla</button>
+    </div>
+    <hr />
+  </div>
+</div>

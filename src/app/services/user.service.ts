@@ -2,30 +2,20 @@ import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { login, singUp, product, cart } from '../data-type';
-import {catchError, map, Observable, of} from 'rxjs';
+import {BehaviorSubject, catchError, map, Observable, of, Subject} from 'rxjs';
 import { ProductService } from './product.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  isUserLogedIn = new EventEmitter<boolean>(false);
-  isLoginFail = new EventEmitter<boolean>(false);
+  isUserLoggedIn = new BehaviorSubject<boolean>(false); // BehaviorSubject kullanımı
+  isLoginFail = new Subject<boolean>(); // Hata için Subject
   private apiUrl: string = "http://localhost:3000/user";
 
   constructor(private http: HttpClient, private router: Router, private productService: ProductService) {
   }
 
-  // Kullanıcı kaydı
-  singUp(value: singUp) {
-    this.http.post('http://localhost:3000/user', value, {observe: 'response'}).subscribe((result) => {
-      this.isUserLogedIn.emit(true);
-      if (result) {
-        localStorage.setItem('user', JSON.stringify(result.body));
-        this.router.navigate(['/']);
-      }
-    });
-  }
 
   // Kullanıcı oturumu yeniden yükleme
   userAuthReload() {
@@ -34,26 +24,19 @@ export class UserService {
     }
   }
 
-  // Kullanıcı girişi
   userLogin(data: login) {
-    this.checkUserType(data).subscribe((response: { isSeller: boolean; isUser: boolean; user: any }) => {
-      if (response.isSeller) {
-        // Kullanıcı satıcı ise, "seller" bilgilerini kaydet
-        localStorage.setItem('seller', JSON.stringify(response.user));
-        this.router.navigate(['/seller-home']); // Satıcı yönlendirmesi
-        this.isLoginFail.emit(false);
-      } else if (response.isUser) {
-        // Kullanıcı normal kullanıcı ise, "user" bilgilerini kaydet
-        localStorage.setItem('user', JSON.stringify(response.user));
-        this.localCartToRemotecart(); // Local cart'ı sunucuya senkronize et
-        this.router.navigate(['/']); // Kullanıcı yönlendirmesi
-        this.isLoginFail.emit(false);
-      } else {
-        // Kullanıcı bulunamadı
-        this.isLoginFail.emit(true);
-      }
-    });
+    this.http.get<singUp[]>(`http://localhost:3000/user?email=${data.email}&password=${data.password}`, { observe: 'response' })
+      .subscribe((result: any) => {
+        if (result && result.body.length) {
+          localStorage.setItem('user', JSON.stringify(result.body[0]));
+          this.router.navigate(['/']);
+          this.isUserLoggedIn.next(true); // emit yerine next kullanımı
+        } else {
+          this.isLoginFail.next(true); // emit yerine next kullanımı
+        }
+      });
   }
+
 
   // Kullanıcı tipini kontrol et
   checkUserType(data: login): Observable<{ isSeller: boolean; isUser: boolean; user: any }> {

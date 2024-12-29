@@ -299,6 +299,62 @@
           "category": "alet"
         }
       ]
+    },
+    {
+      "id": "17af",
+      "date": "2024-12-29T02:47:59.393Z",
+      "products": [
+        {
+          "id": "5",
+          "name": "Ayakkabı",
+          "price": "3500",
+          "color": "White",
+          "category": "Footwear"
+        },
+        {
+          "id": "10",
+          "name": "MacBook Pro",
+          "price": "249900",
+          "color": "Gray",
+          "category": "Laptop"
+        }
+      ]
+    },
+    {
+      "id": "3578",
+      "date": "2024-12-29T03:04:57.313Z",
+      "products": [
+        {
+          "id": "6",
+          "name": "Mouse",
+          "price": "500",
+          "color": "Black",
+          "category": "Electronic"
+        },
+        {
+          "id": "7",
+          "name": "LED Display",
+          "price": "41000",
+          "color": "Black",
+          "category": "Electronic"
+        }
+      ]
+    }
+  ],
+  "messages": [
+    {
+      "id": "e009",
+      "text": "asdfasdf",
+      "isUser": true,
+      "timestamp": "2024-12-29T01:03:53.237Z",
+      "answeredBySeller": false
+    },
+    {
+      "id": "39f7",
+      "text": "Destek ekibi yakında sizinle iletişime geçecektir.",
+      "isUser": false,
+      "timestamp": "2024-12-29T01:03:54.242Z",
+      "answeredBySeller": false
     }
   ],
   "user": [
@@ -335,102 +391,6 @@
   ],
   "cart": [
     {
-      "id": "5a3e",
-      "name": "Earbuds",
-      "price": 2999,
-      "color": "White",
-      "category": "Earphone",
-      "description": "Nothing Ear (1) wireless earbuds ",
-      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCmeb82HCD51Xr7kUMCzOJduRult2r-n71cA&usqp=CAU",
-      "quantity": 1,
-      "productId": "8",
-      "userId": "24ba"
-    },
-    {
-      "id": "fbdb",
-      "name": "LED Display",
-      "price": "41000",
-      "color": "Black",
-      "category": "Electronic",
-      "description": "Sumsung LED Display 24-inch-60-4-cm-ips-bezel-less-75-hz",
-      "url": "https://5.imimg.com/data5/SELLER/Default/2021/9/JZ/QM/LY/119909507/samsung-24-inch-60-4-cm-ips-bezel-less-75-hz-flat-flicker-free-led-monitor-500x500.jpg",
-      "quantity": 1,
-      "productId": "7",
-      "userId": "24ba"
-    },
-    {
-      "id": "1a67",
-      "name": "LED Display",
-      "price": "41000",
-      "color": "Black",
-      "category": "Electronic",
-      "description": "Sumsung LED Display 24-inch-60-4-cm-ips-bezel-less-75-hz",
-      "url": "https://5.imimg.com/data5/SELLER/Default/2021/9/JZ/QM/LY/119909507/samsung-24-inch-60-4-cm-ips-bezel-less-75-hz-flat-flicker-free-led-monitor-500x500.jpg",
-      "quantity": 1,
-      "productId": "7",
-      "userId": "24ba"
-    },
-    {
-      "id": "6a9f",
-      "name": "Galaxy Watch4 Bluetooth ",
-      "price": "999.16",
-      "color": "Pink Gold",
-      "category": "Akıllı Saat",
-      "description": "Measure body composition with BioActive Sensor",
-      "url": "https://images.samsung.com/is/image/samsung/p6pim/in/2108/gallery/in-galaxy-watch4-sm-r860nzdainu-481079019?$730_584_PNG$",
-      "quantity": 1,
-      "productId": "11",
-      "userId": "24ba"
-    },
-    {
-      "id": "6fc0",
-      "name": "Galaxy Watch4 Bluetooth ",
-      "price": "999.16",
-      "color": "Pink Gold",
-      "category": "Akıllı Saat",
-      "description": "Measure body composition with BioActive Sensor",
-      "url": "https://images.samsung.com/is/image/samsung/p6pim/in/2108/gallery/in-galaxy-watch4-sm-r860nzdainu-481079019?$730_584_PNG$",
-      "quantity": 1,
-      "productId": "11",
-      "userId": "24ba"
-    },
-    {
-      "id": "f8c1",
-      "name": "Men Shoes",
-      "price": "1200",
-      "color": "Brown",
-      "category": "Footwear",
-      "description": "A pair of round toe brown sneakers ,has regular styling",
-      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRje9t52oOLhiC4dI7th6jwWkmlvnIHO9ffLA&usqp=CAU",
-      "quantity": 1,
-      "productId": "12",
-      "userId": "24ba"
-    },
-    {
-      "id": "9a3d",
-      "name": "Men Shoes",
-      "price": "1200",
-      "color": "Brown",
-      "category": "Footwear",
-      "description": "A pair of round toe brown sneakers ,has regular styling",
-      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRje9t52oOLhiC4dI7th6jwWkmlvnIHO9ffLA&usqp=CAU",
-      "quantity": 1,
-      "productId": "12",
-      "userId": "24ba"
-    },
-    {
-      "id": "efe2",
-      "name": "MacBook Pro",
-      "price": "249900",
-      "color": "Gray",
-      "category": "Laptop",
-      "description": "Apple M2 Pro with 12‑core CPU, 19‑core  512GB SSD ",
-      "url": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp16-spacegray-gallery7-202301?wid=2000&hei=1536&fmt=jpeg&qlt=95&.v=1670626224500",
-      "quantity": 1,
-      "productId": "10",
-      "userId": "24ba"
-    },
-    {
       "id": "4118",
       "name": "MacBook Pro",
       "price": "249900",
@@ -438,7 +398,7 @@
       "category": "Laptop",
       "description": "Apple M2 Pro with 12‑core CPU, 19‑core  512GB SSD ",
       "url": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp16-spacegray-gallery7-202301?wid=2000&hei=1536&fmt=jpeg&qlt=95&.v=1670626224500",
-      "quantity": 1,
+      "quantity": 3,
       "productId": "10",
       "userId": "24ba"
     }
@@ -459,14 +419,6 @@
       "contact": "",
       "totalPrice": 513466,
       "userId": "1"
-    },
-    {
-      "id": "db30",
-      "email": "",
-      "address": "",
-      "contact": "",
-      "totalPrice": 18460,
-      "userId": "24ba"
     },
     {
       "id": "4620",
@@ -665,6 +617,21 @@
         {
           "userId": "1",
           "stars": 1
+        }
+      ]
+    },
+    {
+      "id": "0160",
+      "averageRating": 3,
+      "userName": "efe berk kırmızıdöl",
+      "productId": "6",
+      "userId": "24ba",
+      "content": "efe",
+      "timestamp": "2024-12-29T03:24:14.440Z",
+      "ratings": [
+        {
+          "userId": "24ba",
+          "stars": 3
         }
       ]
     }

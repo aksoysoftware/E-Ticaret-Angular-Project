@@ -11,7 +11,7 @@
     <div class="card mt-5 card-style">
       <div class="card-body">
 
-        <form #sellerSingUp="ngForm" (ngSubmit)="singUp(sellerSingUp.value)">
+        <form #sellerSingUp="ngForm">
 
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Ad</label>
@@ -23,7 +23,6 @@
           </div>
 
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">E-posta Adresi</label>
             <input type="email" required ngModel name="email" class="form-control" placeholder="E-posta adresinizi girin"
                    #emailInput="ngModel">
             <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="error-message">
@@ -76,13 +75,11 @@
         <form #sellerLogIn="ngForm" (ngSubmit)="login(sellerLogIn.value)">
 
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">E-posta Adresi</label>
             <input type="email" required ngModel name="email" class="form-control" placeholder="E-posta adresinizi girin"
                    #emailInput="ngModel">
             <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="error-message">
               <span class="red">Geçerli bir e-posta girin.</span>
             </div>
-            <div id="emailHelp" class="form-text">E-posta adresinizi kimseyle paylaşmayacağız.</div>
           </div>
 
           <div class="mb-3">

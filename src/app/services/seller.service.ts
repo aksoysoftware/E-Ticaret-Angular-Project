@@ -2,7 +2,7 @@ import { EventEmitter, Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { singUp } from '../data-type';
 import { login } from '../data-type';
-import { BehaviorSubject } from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 import { Router } from '@angular/router';
 import { AlertBoxComponent } from '../alert-box/alert-box.component';
 @Injectable({
@@ -10,11 +10,11 @@ import { AlertBoxComponent } from '../alert-box/alert-box.component';
 })
 export class SellerService implements OnInit {
 
-  isSellerLoggedIn = new BehaviorSubject<boolean>(false)
+  isSellerLoggedIn = new BehaviorSubject<boolean>(false); // BehaviorSubject kullanımı
+  isLoginFail = new Subject<boolean>(); // Hata için Subject
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  isLoginFail=new EventEmitter<boolean>(false)
 
   ngOnInit(): void { }
 
@@ -25,22 +25,25 @@ export class SellerService implements OnInit {
       if(result){
       localStorage.setItem('seller',JSON.stringify(result.body))
       this.router.navigate(['seller-home']);
-    } 
-    }) 
-  }   
-  userLogin(data:login){
-    this.http.get(`http://localhost:3000/seller?email=${data.email}&password=${data.password}`,
-    {observe:'response'}).subscribe((result:any)=>{ 
-
-      if(result && result.body && result.body.length){
-        localStorage.setItem('seller',JSON.stringify(result.body))
-        this.router.navigate(['seller-home'])
-      }
-      else{
-        this.isLoginFail.emit(true)
-      } 
-    });
+    }
+    })
   }
+  userLogin(data: login) {
+    this.http.get(`http://localhost:3000/seller?email=${data.email}&password=${data.password}`, { observe: 'response' })
+      .subscribe((result: any) => {
+        console.log('API Response:', result); // Backend yanıtını logla
+        if (result && result.body && result.body.length) {
+          localStorage.setItem('seller', JSON.stringify(result.body[0]));
+          this.router.navigate(['seller-home']);
+          this.isLoginFail.next(false);
+        } else {
+          this.isLoginFail.next(true);
+        }
+      });
+  }
+
+
+
 
   reloadSeller(){
     if(localStorage.getItem('seller')){
@@ -48,5 +51,5 @@ export class SellerService implements OnInit {
       this.router.navigate(['seller-home'])
     }
   }
-  
+
 }

@@ -26,6 +26,7 @@ import { LoginComponent } from './login/login.component';
 import {UpdateProfileComponent} from "./update-profile/update-profile.component";
 import { CompareComponent } from './compare/compare.component';
 import { ComparisonHistoryComponent } from './comparison-history/comparison-history.component';
+import { SellerChatComponent } from './seller-chat/seller-chat.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ComparisonHistoryComponent } from './comparison-history/comparison-hist
     LoginComponent,
     UpdateProfileComponent,
     CompareComponent,
-    ComparisonHistoryComponent
+    ComparisonHistoryComponent,
+    SellerChatComponent
   ],
   imports: [
     BrowserModule,

@@ -9,33 +9,46 @@ import { login } from '../data-type';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  @Input() isSeller: boolean = false; // Bu flag artık opsiyonel
+  @Input() isSeller: boolean = false;
   showLogin: boolean = true;
   authError: string = '';
 
   constructor(private userService: UserService, private sellerService: SellerService) { }
 
   ngOnInit(): void {
-    // Yeniden yetkilendirme işlemleri
+    this.isSeller = false; // Varsayılan olarak "Kullanıcı"
     this.userService.userAuthReload();
     this.sellerService.reloadSeller();
   }
+
 
   toggleLogin() {
     this.showLogin = !this.showLogin;
   }
 
   handleLogin(data: login) {
-    this.userService.userLogin(data);
-    this.userService.isLoginFail.subscribe((isError) => {
-      if (isError) {
-        this.authError = 'Email veya Şifre Hatalı!';
-      } else {
-        // Giriş başarılı, localCart'ı sunucuya aktar
-        this.userService.localCartToRemotecart();
-      }
-    });
+    if (this.isSeller) {
+      // Satıcı login işlemi
+      this.sellerService.userLogin(data);
+      this.sellerService.isLoginFail.subscribe((isError) => {
+        if (isError) {
+          this.authError = 'Email veya Şifre Hatalı!';
+        }
+      });
+    } else {
+      // Kullanıcı login işlemi
+      this.userService.userLogin(data);
+      this.userService.isLoginFail.subscribe((isError) => {
+        if (isError) {
+          this.authError = 'Kullanıcı Email veya Şifre Hatalı!';
+        } else {
+          this.userService.localCartToRemotecart();
+        }
+      });
+    }
   }
+
+
 
 
 
