@@ -7,17 +7,20 @@
 <div class="container mt-5">
   <ul class="nav nav-tabs" id="productTabs" role="tablist">
     <li class="nav-item" role="presentation">
-      <button class="nav-link active" id="popular-tab" data-bs-toggle="tab" data-bs-target="#popular" type="button" role="tab" aria-controls="popular" aria-selected="true">
+      <button class="nav-link active" id="popular-tab" data-bs-toggle="tab" data-bs-target="#popular" type="button"
+              role="tab" aria-controls="popular" aria-selected="true">
         Popüler Ürünler
       </button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link" id="campaign-tab" data-bs-toggle="tab" data-bs-target="#campaign" type="button" role="tab" aria-controls="campaign" aria-selected="false">
+      <button class="nav-link" id="campaign-tab" data-bs-toggle="tab" data-bs-target="#campaign" type="button"
+              role="tab" aria-controls="campaign" aria-selected="false">
         Kampanyalı Ürünler
       </button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link" id="all-products-tab" data-bs-toggle="tab" data-bs-target="#all-products" type="button" role="tab" aria-controls="all-products" aria-selected="false">
+      <button class="nav-link" id="all-products-tab" data-bs-toggle="tab" data-bs-target="#all-products" type="button"
+              role="tab" aria-controls="all-products" aria-selected="false">
         Tüm Ürünler
       </button>
     </li>
@@ -35,14 +38,15 @@
       <ngb-carousel *ngIf="popularProduct">
         <ng-template *ngFor="let item of popularProduct" ngbSlide>
           <div class="picsum-img-wrapper position-relative">
-            <img routerLink="/product-details/{{item.id}}" class="img-home" src="{{item.url}}" alt="Rastgele ilk slayt" />
+            <img routerLink="/product-details/{{item.id}}" class="img-home" src="{{item.url}}"
+                 alt="Rastgele ilk slayt"/>
             <span class="badge rounded-pill bg-primary position-absolute top-0 end-0 m-3">
-              {{item.commentCount || 0}} Yorum
+              {{ item.commentCount || 0 }} Yorum
             </span>
           </div>
           <div class="carousel-caption">
-            <h2 class="black">{{item.name}}</h2>
-            <p class="black">{{item.description}}</p>
+            <h2 class="black">{{ item.name }}</h2>
+            <p class="black">{{ item.description }}</p>
           </div>
         </ng-template>
       </ngb-carousel>
@@ -53,15 +57,19 @@
       <div class="row" *ngIf="campaignProducts">
         <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let item of campaignProducts">
           <div class="card card-style mb-5 card-hower position-relative">
+              <span *ngIf="item.isCampaign"
+                    class="badge rounded-pill bg-warning text-dark position-absolute top-0 start-0 m-3">
+             Kampanyalı
+           </span>
             <img routerLink="/product-details/{{item.id}}" src="{{item.url}}" class="card-img-to card-img" alt="...">
             <span class="badge rounded-pill bg-primary position-absolute top-0 end-0 m-3">
-              {{item.commentCount || 0}} Yorum
+              {{ item.commentCount || 0 }} Yorum
             </span>
             <div class="card-body">
               <div class="text-center">
-                <h2 class="card-title"><b>{{item.name}}</b></h2>
-                <span>Fiyat - {{item.price}}</span><br>
-                <span>Renk - {{item.color}}</span>
+                <h2 class="card-title"><b>{{ item.name }}</b></h2>
+                <span>Fiyat - {{ item.price }}</span><br>
+                <span>Renk - {{ item.color }}</span>
               </div>
               <div class="mt-2 text-center">
                 <button (click)="addToCompare(item)" class="btn btn-primary">Karşılaştır</button>
@@ -80,13 +88,17 @@
           <div class="card card-style mb-5 card-hower position-relative">
             <img routerLink="/product-details/{{item.id}}" src="{{item.url}}" class="card-img-to card-img" alt="...">
             <span class="badge rounded-pill bg-primary position-absolute top-0 end-0 m-3">
-              {{item.commentCount || 0}} Yorum
+              {{ item.commentCount || 0 }} Yorum
+            </span>
+            <span *ngIf="item.isCampaign"
+                  class="badge rounded-pill bg-warning text-dark position-absolute top-0 start-0 m-3">
+             Kampanyalı
             </span>
             <div class="card-body">
               <div class="text-center">
-                <h2 class="card-title"><b>{{item.name}}</b></h2>
-                <span>Fiyat - {{item.price}}</span><br>
-                <span>Renk - {{item.color}}</span>
+                <h2 class="card-title"><b>{{ item.name }}</b></h2>
+                <span>Fiyat - {{ item.price }}</span><br>
+                <span>Renk - {{ item.color }}</span>
               </div>
               <div class="mt-2 text-center">
                 <button (click)="addToCompare(item)" class="btn btn-primary">Karşılaştır</button>
@@ -106,8 +118,8 @@
           <ul>
             <li *ngFor="let comparison of comparisonHistory">
               Ürünler:
-              <span *ngFor="let product of comparison.products">{{product.name}}</span>
-              - Tarih: {{comparison.date | date:'short'}}
+              <span *ngFor="let product of comparison.products">{{ product.name }}</span>
+              - Tarih: {{ comparison.date | date:'short' }}
             </li>
           </ul>
         </div>
@@ -141,7 +153,7 @@
         </div>
       </div>
       <div class="chat-input">
-        <input [(ngModel)]="newMessage" placeholder="Mesajınızı yazın..." />
+        <input [(ngModel)]="newMessage" placeholder="Mesajınızı yazın..."/>
         <button (click)="sendMessage()">Gönder</button>
       </div>
     </div>
