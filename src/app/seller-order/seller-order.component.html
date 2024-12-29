@@ -1,0 +1,41 @@
+<div class="container">
+  <h1 class="page-title">Sipariş Yönetimi</h1>
+
+  <div *ngIf="!orders?.length" class="no-order">
+    <h2 class="text-center">Henüz sipariş bulunmamaktadır...</h2>
+  </div>
+
+  <div class="order-card mb-4" *ngFor="let order of orders">
+    <div class="order-card-header">
+      <i class="fa-solid fa-cart-shopping fa-2xl icon"></i>
+      <p class="order-id">Sipariş No: <strong>#{{ order.id }}</strong></p>
+    </div>
+    <div class="order-card-body">
+      <div class="order-info">
+        <p>E-posta: <strong>{{ order.email }}</strong></p>
+        <p>Adres: <strong>{{ order.address }}</strong></p>
+        <p>Telefon: <strong>{{ order.contact }}</strong></p>
+        <p>Fiyat: <strong>₺{{ order.totalPrice }}</strong></p>
+        <p>Durum: <strong>{{ order.status }}</strong></p>
+      </div>
+
+      <div class="order-actions">
+        <button *ngIf="order.status === 'Onay Bekleniyor'"
+                (click)="updateOrderStatus(order.id, 'Onaylandı')"
+                class="btn btn-primary">Onayla</button>
+
+        <button *ngIf="order.status === 'Onaylandı'"
+                (click)="updateOrderStatus(order.id, 'Kargoya Verildi')"
+                class="btn btn-secondary">Kargoya Ver</button>
+
+        <button *ngIf="order.status === 'Kargoya Verildi'"
+                (click)="updateOrderStatus(order.id, 'Yolda')"
+                class="btn btn-warning">Yolda</button>
+
+        <button *ngIf="order.status === 'Yolda'"
+                (click)="updateOrderStatus(order.id, 'İletildi')"
+                class="btn btn-success">Teslim Edildi</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -17,7 +17,7 @@
     <div class="order-card-body">
       <div class="order-info">
         <p>Fiyat: <strong>₺{{ item.totalPrice }}</strong></p>
-        <p>Durum: <span class="status">Yolda</span></p>
+        <p>Durum: <span class="status">{{ item.status }}</span></p>
       </div>
       <div class="order-actions">
         <button type="button" (click)="cancleOrder(item.id)" class="btn btn-danger">Siparişi İptal Et</button>

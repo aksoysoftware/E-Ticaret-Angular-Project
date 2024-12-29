@@ -929,18 +929,6 @@
   ],
   "cart": [
     {
-      "id": "4118",
-      "name": "MacBook Pro",
-      "price": "249900",
-      "color": "Gray",
-      "category": "Laptop",
-      "description": "Apple M2 Pro with 12‑core CPU, 19‑core  512GB SSD ",
-      "url": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp16-spacegray-gallery7-202301?wid=2000&hei=1536&fmt=jpeg&qlt=95&.v=1670626224500",
-      "quantity": 1,
-      "productId": "10",
-      "userId": "24ba"
-    },
-    {
       "id": "10d5",
       "name": "MacBook Pro",
       "price": "249900",
@@ -956,66 +944,39 @@
   "orders": [
     {
       "id": "980b",
-      "email": "",
-      "address": "",
-      "contact": "",
+      "email": "example@mail.com",
+      "address": "Adres 1",
+      "contact": "123456789",
       "totalPrice": 513466,
-      "userId": "1"
-    },
-    {
-      "id": "4620",
-      "email": "",
-      "address": "",
-      "contact": "",
-      "totalPrice": 3670,
-      "userId": "24ba"
+      "userId": "1",
+      "status": "Onaylandı"
     },
     {
       "id": "75c7",
       "email": "efeberkkaradol@gmail.com",
-      "address": "Mehmet Akif Ersoy Mahallesi,",
+      "address": "Mehmet Akif Ersoy Mahallesi",
       "contact": "123123123123",
-      "paymentMethod": "kapıda",
-      "shippingCompany": "mng",
+      "paymentMethod": "Kapıda",
+      "shippingCompany": "MNG",
       "deliveryTime": "10.00-12.00",
       "totalPrice": 334654.9,
-      "userId": "1"
-    },
-    {
-      "id": "e781",
-      "email": "efeberkkaradol@gmail.com",
-      "address": "Ankara",
-      "contact": "123123123123",
-      "paymentMethod": "kapıda",
-      "shippingCompany": "mng",
-      "deliveryTime": "10.00-12.00",
-      "totalPrice": 471457.8560000001,
-      "userId": "24ba"
-    },
-    {
-      "id": "9d83",
-      "name": "MacBook Pro",
-      "price": "249900",
-      "color": "Gray",
-      "category": "Laptop",
-      "description": "Apple M2 Pro with 12‑core CPU, 19‑core  512GB SSD ",
-      "url": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp16-spacegray-gallery7-202301?wid=2000&hei=1536&fmt=jpeg&qlt=95&.v=1670626224500",
-      "quantity": 2,
       "userId": "1",
-      "productId": "10"
+      "status": "İletildi"
     },
     {
-      "id": "d056",
-      "name": "Mouse",
-      "price": "500",
-      "color": "Black",
-      "category": "Electronic",
-      "description": "HP Mouse",
-      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdIN7ABCjTyVmmipaJCEJu1oi8fNQk6O5oKw&usqp=CAU",
-      "isCampaign": true,
-      "quantity": 2,
-      "userId": "1",
-      "productId": "6"
+      "id": "f3d0",
+      "email": "admin@pgadmin.com",
+      "address": "asdf",
+      "contact": "asdf",
+      "paymentMethod": "krediKartı",
+      "shippingCompany": "ptt",
+      "deliveryTime": "10:00-12:00",
+      "cardNumber": "asdf",
+      "expiryDate": "aasdf",
+      "cvc": "asdf",
+      "totalPrice": 254998,
+      "userId": "24ba",
+      "status": "İletildi"
     }
   ],
   "comments": [

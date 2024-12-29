@@ -42,7 +42,7 @@ sellerGetClickEvent():Observable<any>{
 }
 
 sellerLogout(){
-      this.sellerpopupLogout.next(true);
+  this.sellerpopupLogout.next(true);
 }
 
 sellerLogoutEvent(){

@@ -29,7 +29,13 @@ export class ProductService {
     return this.http.get<{ id: string; date: string; products: any[] }[]>('http://localhost:3000/comparisons');
   }
 
+  getOrders(): Observable<order[]> {
+    return this.http.get<order[]>('http://localhost:3000/orders');
+  }
 
+  updateOrder(orderId: string | undefined, updatedOrder: order): Observable<order> {
+    return this.http.put<order>(`http://localhost:3000/orders/${orderId}`, updatedOrder);
+  }
 
   addProduct(data: product) {
     return this.http.post('http://localhost:3000/product', data);
@@ -153,7 +159,7 @@ export class ProductService {
       }
     })
   }
-  cancelOrder(orderId:number|undefined){
+  cancelOrder(orderId:string){
     return this.http.delete('http://localhost:3000/orders/'+orderId);
   }
   setProductname(data:any){

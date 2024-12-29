@@ -50,11 +50,12 @@ export interface  order{
     contact:string,
     totalPrice:number,
     userId:number,
-    id:number|undefined
+    id:string | undefined
     paymentMethod:string,
     shippingCompany:string,
     cardNumber?: string, // Opsiyonel
     expiryDate?: string, // Opsiyonel
     cvc?: string, // Opsiyonel
     deliveryTime?: string, // Yeni alan
+    status: string
 }

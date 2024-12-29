@@ -77,6 +77,7 @@ export class CheckoutComponent implements OnInit {
         id: undefined,
         paymentMethod: this.paymentMethod,
         shippingCompany: this.selectedShippingCompany,
+        status: "Onay Bekleniyor"
       };
 
       this.cartData?.forEach((items) => {

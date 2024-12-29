@@ -87,12 +87,9 @@ export class HeaderComponent implements OnInit {
   userlogout() {
     localStorage.removeItem('user');
     this.product.cartData.emit([]);
-    this.updateMenuType(); // Menü tipini güncelle
+    this.updateMenuType();
     this.route.navigate(['/login']);
   }
-
-
-
 
   sellerlogoutpopup() {
     this.popup.sellerOpenPopUp();

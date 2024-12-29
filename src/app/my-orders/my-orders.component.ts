@@ -17,11 +17,11 @@ export class MyOrdersComponent implements OnInit{
      this.callCartList();
   }
   callCartList(){
-    this.product.orderList().subscribe((result)=>{   
-        this.orderData=result      
+    this.product.orderList().subscribe((result)=>{
+        this.orderData=result
   })
   }
-  cancleOrder(orderId:number|undefined){
+  cancleOrder(orderId:string | undefined){
     orderId && this.product.cancelOrder(orderId).subscribe((result)=>{
       this.callCartList();
     })

@@ -58,6 +58,9 @@
           <li class="nav-item">
             <a class="nav-link nav-text">{{sellerName | titlecase}}</a>
           </li>
+          <li class="nav-item" *ngIf="menuType === 'seller'">
+            <a class="nav-link nav-text" routerLink="seller-orders">Sipariş Takibi</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link nav-text logout" (click)="sellerlogoutpopup()">Çıkış</a>
           </li>

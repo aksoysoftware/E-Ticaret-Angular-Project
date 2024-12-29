@@ -15,7 +15,8 @@ import { LoginComponent } from './login/login.component';
 import {UpdateProfileComponent} from "./update-profile/update-profile.component";
 import {ComparisonHistoryComponent} from "./comparison-history/comparison-history.component"; // LoginComponent eklendi
 import {NotificationComponent} from "./notification/notification.component";
-import {MailComponent} from "./mail/mail.component"; // LoginComponent eklendi
+import {MailComponent} from "./mail/mail.component";
+import {SellerOrderComponent} from "./seller-order/seller-order.component"; // LoginComponent eklendi
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,9 +24,11 @@ const routes: Routes = [
   // LoginComponent kullanıcı ve satıcı girişi için kullanılacak
   { path: 'login', component: LoginComponent },
 
-  { path: 'notifications', component: NotificationComponent },
+  { path: 'notifications', component: NotificationComponent, canActivate: [AuthGuard] },
 
   { path: 'contact-seller', component: MailComponent },
+
+  { path: 'seller-orders', component: SellerOrderComponent, canActivate: [AuthGuard] },
 
   {
     path: 'seller-home',
