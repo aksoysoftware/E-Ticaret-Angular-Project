@@ -23,7 +23,6 @@ export class SellerAuthComponent implements OnInit {
   }
 
   login(data: login): void {
-    //console.warn(data)
     this.seller.userLogin(data);
     this.seller.isLoginFail.subscribe((isError) => {
       if (isError) {

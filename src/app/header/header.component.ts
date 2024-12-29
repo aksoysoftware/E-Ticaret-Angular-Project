@@ -5,6 +5,7 @@ import { product } from '../data-type';
 import { PopupboxService } from '../services/popupbox.service';
 import {SellerService} from "../services/seller.service";
 import {UserService} from "../services/user.service";
+import {NotificationService} from "../services/notification.service";
 
 @Component({
   selector: 'app-header',
@@ -18,8 +19,9 @@ export class HeaderComponent implements OnInit {
   searchResult: undefined | product[];
   searchName: string = '';
   cartItemsNumber = 0;
+  unreadMessagesCount = 0;
 
-  constructor(private route: Router, private product: ProductService, private popup: PopupboxService, private userService: UserService, private sellerService: SellerService) {
+  constructor(private route: Router, private product: ProductService, private popup: PopupboxService, private userService: UserService, private sellerService: SellerService, private notificationService: NotificationService) {
     this.popup.userLogoutEvent().subscribe((result) => {
       if (result) {
         this.userlogout();
@@ -45,6 +47,7 @@ export class HeaderComponent implements OnInit {
     this.updateMenuType();
     this.updateCartItemCount();
     this.handleRouteChanges();
+    this.loadUnreadMessagesCount();
   }
 
   updateMenuType(): void {
@@ -129,5 +132,15 @@ export class HeaderComponent implements OnInit {
 
   routeAdminOrUser(){
     this.sellerName !== '' ? this.route.navigate(['/seller-home']) : this.route.navigate([''])
+  }
+
+  loadUnreadMessagesCount(): void {
+    this.notificationService.getUnreadMessagesCount().subscribe((count: number) => {
+      this.unreadMessagesCount = count;
+    });
+  }
+
+  navigateToNotifications(): void {
+    this.route.navigate(['/notifications']);
   }
 }

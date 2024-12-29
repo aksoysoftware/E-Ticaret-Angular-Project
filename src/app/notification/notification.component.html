@@ -1,0 +1,19 @@
+<div class="notification-container">
+  <h2>Mesajlar</h2>
+
+  <div *ngIf="messages.length === 0" class="no-messages">
+    <p>Henüz mesaj yok.</p>
+  </div>
+
+  <div *ngFor="let message of messages" class="message-card" [ngClass]="{ 'unread': !message.read }">
+    <p class="message-text"><b>{{ message.isUser ? 'Kullanıcı:' : 'Siz:' }}</b> {{ message.text }}</p>
+    <p class="timestamp">{{ message.timestamp | date: 'short' }}</p>
+
+    <div *ngIf="!message.answeredBySeller && message.isUser" class="response-section">
+      <textarea placeholder="Yanıtınızı yazın" #responseInput class="response-input"></textarea>
+      <button (click)="respondToMessage(message.id, responseInput.value)" class="response-button">Gönder</button>
+    </div>
+
+    <button *ngIf="!message.read" (click)="markAsRead(message.id)" class="mark-read-button">Okundu Olarak İşaretle</button>
+  </div>
+</div>

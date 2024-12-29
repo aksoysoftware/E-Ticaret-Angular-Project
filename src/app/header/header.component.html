@@ -44,6 +44,12 @@
         <!-- Satıcı Menüsü -->
         <ul class="navbar-nav mb-lg-0" *ngIf="menuType === 'seller'">
           <li class="nav-item">
+            <button class="notification-button" (click)="navigateToNotifications()">
+              <i class="fa fa-bell"></i> Bildirimler
+              <span class="badge" *ngIf="unreadMessagesCount > 0">{{ unreadMessagesCount }}</span>
+            </button>
+          </li>
+          <li class="nav-item">
             <a class="nav-link nav-text" routerLink="seller-home">Ürün Listesi</a>
           </li>
           <li class="nav-item">

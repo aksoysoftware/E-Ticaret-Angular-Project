@@ -29,6 +29,7 @@ import { ComparisonHistoryComponent } from './comparison-history/comparison-hist
 import { SellerChatComponent } from './seller-chat/seller-chat.component';
 import {registerLocaleData} from "@angular/common";
 import localeTr from '@angular/common/locales/tr';
+import { NotificationComponent } from './notification/notification.component';
 
 registerLocaleData(localeTr);
 
@@ -53,7 +54,8 @@ registerLocaleData(localeTr);
     UpdateProfileComponent,
     CompareComponent,
     ComparisonHistoryComponent,
-    SellerChatComponent
+    SellerChatComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,

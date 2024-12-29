@@ -128,3 +128,75 @@
     font-size: 0.9rem;
   }
 }
+
+/* Notification Butonu */
+.notification-button {
+  color: #ecf0f1;
+  font-size: 1rem;
+  margin: 0 10px;
+  position: relative;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  transition: color 0.3s ease;
+}
+
+.notification-button:hover {
+  color: #1abc9c;
+}
+
+.notification-button .fa-bell {
+  margin-right: 5px;
+}
+
+.notification-button .badge {
+  position: absolute;
+  top: -8px; /* Yukarıdan konum ayarı */
+  right: -10px;
+  background-color: #e74c3c;
+  color: white;
+  font-size: 0.8rem;
+  padding: 0.2em 0.4em;
+  border-radius: 50%;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover efekti için */
+.notification-button:hover .badge {
+  background-color: #c0392b;
+}
+
+/* Navbar Hover ve Aktif Durumlar */
+.nav-item .nav-link {
+  color: #ecf0f1;
+  font-size: 1rem;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+.nav-item .nav-link:hover,
+.nav-item .notification-button:hover {
+  color: #1abc9c;
+}
+
+/* Mobil Uyum */
+@media (max-width: 768px) {
+  .notification-button {
+    font-size: 0.9rem;
+  }
+
+  .notification-button .fa-bell {
+    margin-right: 3px;
+  }
+
+  .notification-button .badge {
+    font-size: 0.7rem;
+    top: -5px; /* Mobil cihazlar için yukarıdan konum ayarı */
+    right: -8px;
+  }
+}
+
