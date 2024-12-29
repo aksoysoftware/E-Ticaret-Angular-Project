@@ -1,0 +1,36 @@
+<div class="mail-container">
+  <h2>Satıcı ile İletişime Geçin</h2>
+  <form (ngSubmit)="sendMessage()">
+    <div class="form-group">
+      <label for="email">E-posta Adresiniz</label>
+      <input
+        type="email"
+        id="email"
+        [(ngModel)]="userEmail"
+        name="email"
+        class="form-control"
+        placeholder="E-posta adresinizi girin"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="message">Mesajınız</label>
+      <textarea
+        id="message"
+        [(ngModel)]="messageContent"
+        name="message"
+        class="form-control"
+        rows="5"
+        placeholder="Mesajınızı buraya yazın"
+        required
+      ></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Gönder</button>
+  </form>
+
+  <div *ngIf="confirmationMessage" class="confirmation-message">
+    {{ confirmationMessage }}
+  </div>
+</div>

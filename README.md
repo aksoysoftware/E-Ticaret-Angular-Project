@@ -99,3 +99,15 @@
 ###  Product Review Statistics
 - Show key metrics on product pages, such as the total number of reviews and average ratings.
 - Provide visual insights into the overall reception of a product.
+
+
+###  JSON SERVER
+1. Install `json-server`
+   ```bash
+   npm install -g json-server
+   ```
+
+2. Start `json-server`
+   ```bash
+   json-server db.json
+   ```

@@ -30,6 +30,7 @@ import { SellerChatComponent } from './seller-chat/seller-chat.component';
 import {registerLocaleData} from "@angular/common";
 import localeTr from '@angular/common/locales/tr';
 import { NotificationComponent } from './notification/notification.component';
+import { MailComponent } from './mail/mail.component';
 
 registerLocaleData(localeTr);
 
@@ -55,7 +56,8 @@ registerLocaleData(localeTr);
     CompareComponent,
     ComparisonHistoryComponent,
     SellerChatComponent,
-    NotificationComponent
+    NotificationComponent,
+    MailComponent
   ],
   imports: [
     BrowserModule,
