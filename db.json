@@ -775,6 +775,15 @@
           "category": "Cep Telefonu"
         }
       ]
+    },
+    {
+      "id": "27bb",
+      "averageRating": 0,
+      "userName": "Efe Berk Karadöl",
+      "productId": "5",
+      "userId": "1",
+      "content": "asdfasdf",
+      "timestamp": "2024-12-29T12:31:35.928Z"
     }
   ],
   "messages": [
@@ -804,6 +813,20 @@
       "text": "Destek ekibi yakında sizinle iletişime geçecektir.",
       "isUser": false,
       "timestamp": "2024-12-29T07:40:51.335Z",
+      "answeredBySeller": false
+    },
+    {
+      "id": "6797",
+      "text": "jkhadfklgea",
+      "isUser": true,
+      "timestamp": "2024-12-29T09:06:16.575Z",
+      "answeredBySeller": false
+    },
+    {
+      "id": "57cd",
+      "text": "Destek ekibi yakında sizinle iletişime geçecektir.",
+      "isUser": false,
+      "timestamp": "2024-12-29T09:06:17.579Z",
       "answeredBySeller": false
     }
   ],
@@ -902,219 +925,66 @@
       "deliveryTime": "10.00-12.00",
       "totalPrice": 471457.8560000001,
       "userId": "24ba"
+    },
+    {
+      "id": "9d83",
+      "name": "MacBook Pro",
+      "price": "249900",
+      "color": "Gray",
+      "category": "Laptop",
+      "description": "Apple M2 Pro with 12‑core CPU, 19‑core  512GB SSD ",
+      "url": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp16-spacegray-gallery7-202301?wid=2000&hei=1536&fmt=jpeg&qlt=95&.v=1670626224500",
+      "quantity": 2,
+      "userId": "1",
+      "productId": "10"
+    },
+    {
+      "id": "d056",
+      "name": "Mouse",
+      "price": "500",
+      "color": "Black",
+      "category": "Electronic",
+      "description": "HP Mouse",
+      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdIN7ABCjTyVmmipaJCEJu1oi8fNQk6O5oKw&usqp=CAU",
+      "isCampaign": true,
+      "quantity": 2,
+      "userId": "1",
+      "productId": "6"
     }
   ],
   "comments": [
     {
-      "id": "5702",
-      "averageRating": 4,
-      "userName": "Aman",
-      "productId": "10",
-      "userId": "2",
-      "content": "VDSVS",
-      "timestamp": "2024-12-28T13:29:17.883Z",
-      "ratings": [
-        {
-          "userId": "2",
-          "stars": 4
-        },
-        {
-          "userId": "1",
-          "stars": 4
-        }
-      ]
-    },
-    {
-      "id": "1cc9",
-      "averageRating": 1.5,
-      "userName": "Aman",
-      "productId": "10",
-      "userId": "2",
-      "content": "VDVSV",
-      "timestamp": "2024-12-28T13:31:50.396Z",
-      "ratings": [
-        {
-          "userId": "2",
-          "stars": 2
-        },
-        {
-          "userId": "1",
-          "stars": 1
-        }
-      ]
-    },
-    {
-      "id": "91ef",
+      "id": "bc17",
       "averageRating": 3,
-      "userName": "Muhammed",
-      "productId": "10",
-      "userId": "1",
-      "content": "dscacsacsac",
-      "timestamp": "2024-12-28T13:51:22.352Z",
-      "ratings": [
-        {
-          "userId": "1",
-          "stars": 3
-        }
-      ]
-    },
-    {
-      "id": "ee85",
-      "averageRating": 1.5,
-      "userName": "Muhammed",
-      "productId": "5",
-      "userId": "1",
-      "content": "csacsa",
-      "timestamp": "2024-12-28T13:56:54.821Z",
-      "ratings": [
-        {
-          "userId": "1",
-          "stars": 2
-        },
-        {
-          "userId": "2",
-          "stars": 1
-        }
-      ]
-    },
-    {
-      "id": "983a",
-      "averageRating": 3.5,
-      "userName": "Muhammed",
-      "productId": "5",
-      "userId": "1",
-      "content": "cdsv",
-      "timestamp": "2024-12-28T13:59:22.975Z",
-      "ratings": [
-        {
-          "userId": "1",
-          "stars": 5
-        },
-        {
-          "userId": "2",
-          "stars": 2
-        }
-      ]
-    },
-    {
-      "id": "6138",
-      "averageRating": 1.5,
-      "userName": "Muhammed",
-      "productId": "3",
-      "userId": "1",
-      "content": "KÖTÜ BİR ÜRÜN ALMAYIN",
-      "timestamp": "2024-12-28T14:13:37.772Z",
-      "ratings": [
-        {
-          "userId": "1",
-          "stars": 1
-        },
-        {
-          "userId": "2",
-          "stars": 2
-        }
-      ]
-    },
-    {
-      "id": "6941",
-      "averageRating": 5,
-      "userName": "Aman",
-      "productId": "3",
-      "userId": "2",
-      "content": "csaca",
-      "timestamp": "2024-12-28T14:17:56.480Z",
-      "ratings": [
-        {
-          "userId": "2",
-          "stars": 5
-        },
-        {
-          "userId": "1",
-          "stars": 5
-        }
-      ]
-    },
-    {
-      "id": "3ce4",
-      "averageRating": 0,
-      "userName": "Muhammed",
-      "productId": "10",
-      "userId": "1",
-      "content": "SACSACASC",
-      "timestamp": "2024-12-28T14:25:12.106Z"
-    },
-    {
-      "id": "dd19",
-      "averageRating": 1,
-      "userName": "Muhammed",
-      "productId": "11",
-      "userId": "1",
-      "content": "aaaa\n",
-      "timestamp": "2024-12-28T14:40:46.580Z",
-      "ratings": [
-        {
-          "userId": "1",
-          "stars": 1
-        }
-      ]
-    },
-    {
-      "id": "c226",
-      "averageRating": 1,
-      "userName": "Muhammed",
-      "productId": "14",
-      "userId": "1",
-      "content": "ALMAYINNNN !!!!!!!!!!!!!!!!!!!!!!!!!!!\n",
-      "timestamp": "2024-12-28T14:46:20.224Z",
-      "ratings": [
-        {
-          "userId": "1",
-          "stars": 1
-        }
-      ]
-    },
-    {
-      "id": "0160",
-      "averageRating": 3,
-      "userName": "efe berk kırmızıdöl",
+      "userName": "Efe Berk Karadöl (Satıcı)",
       "productId": "6",
-      "userId": "24ba",
-      "content": "efe",
-      "timestamp": "2024-12-29T03:24:14.440Z",
+      "userId": "1",
+      "content": "asdf",
+      "timestamp": "2024-12-29T14:34:35.041Z",
       "ratings": [
         {
           "userId": "24ba",
           "stars": 3
-        },
-        {
-          "userId": "2",
-          "stars": 3
         }
       ]
     },
     {
-      "id": "875e",
-      "averageRating": 1,
-      "userName": "Muhammed",
-      "productId": "5",
-      "userId": "1",
-      "content": "bune ",
-      "timestamp": "2024-12-29T08:15:14.045Z",
-      "ratings": [
-        {
-          "userId": "1",
-          "stars": 1
-        }
-      ]
-    },
-    {
-      "id": "c01f",
+      "id": "29ef",
       "averageRating": 0,
-      "userName": "Muhammed",
-      "productId": "5",
+      "userName": "Efe Berk Karadöl (Satıcı)",
+      "productId": "6",
       "userId": "1",
-      "content": "casca",
-      "timestamp": "2024-12-29T11:52:36.382Z"
+      "content": "asdfasdf",
+      "timestamp": "2024-12-29T14:42:00.027Z"
+    },
+    {
+      "id": "e8d0",
+      "averageRating": 0,
+      "userName": "efe berk kırmızıdöl",
+      "productId": "6",
+      "userId": "24ba",
+      "content": "asdf",
+      "timestamp": "2024-12-29T15:00:45.667Z"
     }
   ]
 }

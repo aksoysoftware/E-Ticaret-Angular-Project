@@ -1,45 +1,40 @@
-.img-size{
-    width: 550px;
-    height: 450px;
-    border-radius: 15px;
-    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.2);
+.img-size {
+  width: 550px;
+  height: 450px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.text-col{
-    color: rgb(73, 148, 123);
-}
-.text-size{
-    font-size:large;
-}
-.name{
-    font-size: xx-large;
-}
-.right{
-    position: relative;
-    float: right;
-    margin-right: 40px;
-    border: none;
-    border-radius: 5px;
-    background-color: rgb(230, 152, 56);
-    height: 45px;
-    font-weight: 600;
-    font-size: large;
-    width: 110px;
-    font-style: oblique;
-    color: firebrick ;
-}
-.left{
-    width: 60px;
-    border: none;
-    border-radius: 5px;
-    background-color: rgb(230, 152, 56);
-    height: 45px;
-    font-weight: 600;
-    font-size: large;
-    font-style: oblique;
-    color: firebrick ;
+.text-col {
+  color: #49947b;
 }
 
+.text-size {
+  font-size: large;
+}
+
+.name {
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+.right,
+.left {
+  width: 110px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e69838;
+  height: 45px;
+  font-weight: 600;
+  font-size: large;
+  font-style: oblique;
+  color: #8b0000;
+}
+
+.right {
+  float: right;
+  margin-right: 40px;
+}
 
 .text-warning {
   color: #ffdd33;
@@ -49,5 +44,53 @@
   color: #d6d6d6;
 }
 
+.fa-star {
+  font-size: 1.5rem;
+  margin-right: 5px;
+  transition: transform 0.2s ease;
+}
 
+.fa-star:hover {
+  transform: scale(1.2);
+  color: #ffc107; /* Hover rengi */
+}
 
+.rating-section i {
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.reply {
+  margin-left: 20px;
+  padding: 10px;
+  border-left: 2px solid #ddd;
+  font-size: 0.9rem;
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.reply-section {
+  margin-top: 10px;
+}
+
+.reply-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.reply-button:hover {
+  background-color: #0056b3;
+}
+
+.replies {
+  margin-top: 15px;
+  padding-left: 15px;
+  border-left: 3px solid #ddd;
+}

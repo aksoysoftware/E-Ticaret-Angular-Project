@@ -11,7 +11,17 @@ export interface Comments {
   content: string;
   timestamp: string;
   userName: string;
-  replies?: { userName: string; content: string; timestamp: string }[];
+  replies?: Reply[]; // Yeni alan
+  currentUserRating?: number; // Yeni alan eklendi
+  replyContent?: string;
+}
+
+export interface Reply {
+  id?: string;
+  userId: string;
+  userName: string;
+  content: string;
+  timestamp: string;
 }
 
 @Injectable({
@@ -23,9 +33,26 @@ export class CommentsService {
   constructor(private http: HttpClient) {
   }
 
+  addReply(commentId: string, reply: Reply): Observable<Reply> {
+    return this.http.post<Reply>(`http://localhost:3000/comments/${commentId}/replies`, reply);
+  }
+
+
+
+
+
+  getReplies(commentId: string): Observable<Reply[]> {
+    return this.http.get<Reply[]>(`${this.baseUrl}/api/replies/${commentId}`);
+  }
+
   getCommentsByProductId(productId: string | null): Observable<Comments[]> {
     return this.http.get<Comments[]>(`${this.baseUrl}?productId=${productId}`);
   }
+
+  addReplyToComment(commentId: string | undefined, reply: Reply): Observable<Comments> {
+    return this.http.post<Comments>(`/api/comments/${commentId}/reply`, reply);
+  }
+
 
   addComment(comment: Comments): Observable<Comments> {
     return this.http.post<Comments>(this.baseUrl, comment);
@@ -62,16 +89,6 @@ export class CommentsService {
   private calculateAverage(ratings: { userId: string; stars: number }[]): number {
     const total = ratings.reduce((sum, rating) => sum + rating.stars, 0);
     return ratings.length > 0 ? total / ratings.length : 0;
-  }
-
-  addReply(commentId: string | undefined, replyData: { userName: string; content: string; timestamp: string }): Observable<Comments> {
-    return this.http.get<Comments>(`${this.baseUrl}/${commentId}`).pipe(
-      switchMap((comment) => {
-        comment.replies = comment.replies || [];
-        comment.replies.push(replyData);
-        return this.updateComment(commentId, { replies: comment.replies });
-      })
-    );
   }
 
   getAllComments(): Observable<Comments[]> {

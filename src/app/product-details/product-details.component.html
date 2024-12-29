@@ -69,7 +69,7 @@
           </button>
         </div>
         <div *ngIf="comments.length; else noComments">
-          <div *ngFor="let comment of comments" class="comment d-flex justify-content-between align-items-center mb-3">
+          <div *ngFor="let comment of comments" class="comment d-flex flex-column mb-3">
             <div class="comment-text">
               <p><b>{{ comment.userName || 'Anonim' }}</b>: {{ comment.content }}</p>
               <p><small><i>{{ comment.timestamp | date: 'short' }}</i></small></p>
@@ -83,42 +83,69 @@
               </p>
             </div>
 
-            <div *ngIf="isAuthenticated" class="rating-section" style="margin-top: 10px;">
+            <!-- Yıldız Puanlama -->
+            <div class="rating-section mt-2">
               <span style="font-size: 1rem; margin-right: 10px;">Yorumu Puanlayın:</span>
-              <div class="d-flex mt-1">
+              <div class="d-flex">
                 <i
                   *ngFor="let star of stars; let i = index"
                   class="fa-solid fa-star"
-                  [ngClass]="{ 'text-warning': i < comment.averageRating, 'text-secondary': i >= comment.averageRating }"
+                  [ngClass]="{
+          'text-warning': i < (comment.currentUserRating || 0),
+          'text-secondary': i >= (comment.currentUserRating || 0)
+        }"
                   style="cursor: pointer; margin-right: 5px; transition: color 0.3s ease;"
                   (click)="rateComment(comment.id, i + 1)"
                 ></i>
               </div>
             </div>
+
+            <!-- Yanıt Ekle -->
+            <div class="reply-section mt-3">
+    <textarea
+      [(ngModel)]="replyContentMap[comment.id || '']"
+      class="form-control"
+      rows="2"
+      placeholder="Yanıtınızı yazın">
+</textarea>
+
+              <button
+                class="btn btn-primary mt-2"
+                (click)="addReply(comment.id, replyContentMap[comment.id || ''])">
+                Yanıtı Gönder
+              </button>
+
+            </div>
+
+            <!-- Yanıtların Listesi -->
+            <div class="replies mt-3">
+              <div *ngFor="let reply of comment.replies" class="reply">
+                <p><b>{{ reply.userName }}</b>: {{ reply.content }}</p>
+                <p><small><i>{{ reply.timestamp | date: 'short' }}</i></small></p>
+              </div>
+            </div>
           </div>
+
         </div>
 
         <ng-template #noComments>
           <p>Henüz yorum yok.</p>
         </ng-template>
 
-
         <div class="mt-4" *ngIf="isAuthenticated; else loginPrompt">
-        <h4>Yorum Ekle</h4>
-        <textarea [(ngModel)]="newComment" class="form-control" rows="3" placeholder="Yorumunuzu yazın"></textarea>
-        <button class="btn btn-primary mt-2" (click)="addComment()">Yorumu Gönder</button>
-      </div>
-
-      <ng-template #loginPrompt>
-        <div class="mt-5 text-center">
-          <a routerLink="/user-auth">
-            <h3 class="red"><u>{{ 'Yorum yapabilmek için hesabınıza Giriş Yapmalısınız...' }}</u></h3>
-          </a>
+          <h4>Yorum Ekle</h4>
+          <textarea [(ngModel)]="newComment" class="form-control" rows="3" placeholder="Yorumunuzu yazın"></textarea>
+          <button class="btn btn-primary mt-2" (click)="addComment()">Yorumu Gönder</button>
         </div>
-      </ng-template>
 
-
+        <ng-template #loginPrompt>
+          <div class="mt-5 text-center">
+            <a routerLink="/user-auth">
+              <h3 class="red"><u>{{ 'Yorum yapabilmek için hesabınıza Giriş Yapmalısınız...' }}</u></h3>
+            </a>
+          </div>
+        </ng-template>
+      </div>
     </div>
   </div>
-</div>
 </div>

@@ -1,15 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {ProductService} from '../services/product.service';
-import {cart, product} from '../data-type';
-import {Comments, CommentsService} from "../services/comments.service";
-import {UserService} from "../services/user.service";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ProductService } from '../services/product.service';
+import { cart, product } from '../data-type';
+import { Comments, CommentsService, Reply } from "../services/comments.service";
+import { UserService } from "../services/user.service";
 
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css'],
-
 })
 export class ProductDetailsComponent implements OnInit {
   productData: undefined | product;
@@ -24,27 +23,38 @@ export class ProductDetailsComponent implements OnInit {
   currentRating: number = 0;
   sortAscending = true;
 
-  constructor(private activeRoute: ActivatedRoute,
-              private product: ProductService,
-              private commentsService: CommentsService,
-              private userService: UserService) {
-  }
+  // Yeni: Yanıt içeriğini her yorum için ayrı saklama
+  replyContentMap: { [key: string]: string } = {}; // Boş bir obje olarak tanımla
+
+
+
+  constructor(
+    private activeRoute: ActivatedRoute,
+    private product: ProductService,
+    private commentsService: CommentsService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
-    this.isAuthenticated = !!localStorage.getItem('user');
+    const user = localStorage.getItem('user');
+    const seller = localStorage.getItem('seller');
+    this.isAuthenticated = !!(user || seller);
     let productId = this.activeRoute.snapshot.paramMap.get('productId');
     console.warn(productId);
 
-    productId && this.product.getProduct(productId).subscribe((result) => {
+    productId &&
+    this.product.getProduct(productId).subscribe((result) => {
       this.productData = result;
       let cartData = localStorage.getItem('localCart');
       if (productId && cartData) {
         let items = JSON.parse(cartData);
-        items = items.filter((item: product) => productId === item.id.toString());
+        items = items.filter(
+          (item: product) => productId === item.id.toString()
+        );
         if (items.length) {
-          this.removeCart = true
+          this.removeCart = true;
         } else {
-          this.removeCart = false
+          this.removeCart = false;
         }
       }
 
@@ -54,8 +64,10 @@ export class ProductDetailsComponent implements OnInit {
         this.product.getCartList(userId);
 
         this.product.cartData.subscribe((result) => {
-
-          let item = result.filter((item: product) => productId?.toString() === item.productId?.toString())
+          let item = result.filter(
+            (item: product) =>
+              productId?.toString() === item.productId?.toString()
+          );
 
           if (item.length) {
             this.cartData = item[0];
@@ -64,81 +76,83 @@ export class ProductDetailsComponent implements OnInit {
         });
         this.product.getCartList(userId);
       }
-    })
+    });
     this.loadComments(productId);
-
   }
 
-  //-------------------------------------------------
   minus() {
     if (this.productQuantity > 1) {
-      this.productQuantity -= 1
+      this.productQuantity -= 1;
     }
   }
 
   plush() {
-    return this.productQuantity += 1
+    return (this.productQuantity += 1);
   }
 
   addProduct() {
     this.removeCart = true;
     if (this.productData) {
-      this.productData.quantity = this.productQuantity
+      this.productData.quantity = this.productQuantity;
 
       if (!localStorage.getItem('user')) {
-        this.product.localAddToCart(this.productData)
+        this.product.localAddToCart(this.productData);
       } else {
-        let user = localStorage.getItem('user')
+        let user = localStorage.getItem('user');
         let userId = user && JSON.parse(user).id;
-        let cartData: cart = {...this.productData, userId, productId: this.productData.id}
+        let cartData: cart = {
+          ...this.productData,
+          userId,
+          productId: this.productData.id,
+        };
 
-        delete cartData.id
+        delete cartData.id;
         this.product.userAddToCart(cartData).subscribe((result) => {
           if (result) {
             this.product.getCartList(userId);
-            this.removeCart = true
+            this.removeCart = true;
           }
-        })
-
+        });
       }
     }
   }
 
   removeTocart(id: any) {
     if (!localStorage.getItem('user')) {
-      this.product.removeItemsFromCart(id)
-      //this.removeCart = false;
+      this.product.removeItemsFromCart(id);
     }
     {
-      console.warn("cartData", this.cartData);
+      console.warn('cartData', this.cartData);
 
-      this.cartData && this.product.removeToCartApi(this.cartData.id)
-        .subscribe((result) => {
-          let user = localStorage.getItem('user');
-          let userId = user && JSON.parse(user).id;
-          this.product.getCartList(userId)
-        })
+      this.cartData &&
+      this.product.removeToCartApi(this.cartData.id).subscribe((result) => {
+        let user = localStorage.getItem('user');
+        let userId = user && JSON.parse(user).id;
+        this.product.getCartList(userId);
+      });
     }
-    this.removeCart = false
+    this.removeCart = false;
   }
 
   loadComments(productId: string | null): void {
     this.commentsService.getCommentsByProductId(productId).subscribe((result) => {
       this.comments = result;
     });
-
   }
 
   addComment(): void {
     if (this.newComment.trim()) {
       const user = JSON.parse(localStorage.getItem('user') || '{}');
+      const seller = JSON.parse(localStorage.getItem('seller') || '{}');
+
       const commentData: Comments = {
-        averageRating: 0, ratings: undefined,
-        userName: user.name,
+        averageRating: 0,
+        ratings: undefined,
+        userName: seller.name ? `${seller.name} (Satıcı)` : user.name,
         productId: this.productData?.id,
-        userId: user.id,
+        userId: user.id || seller.id,
         content: this.newComment,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       };
 
       this.commentsService.addComment(commentData).subscribe((comment) => {
@@ -156,15 +170,59 @@ export class ProductDetailsComponent implements OnInit {
       this.commentsService.rateComment(commentId, userId, stars).subscribe((updatedComment) => {
         const index = this.comments.findIndex((c) => c.id === commentId);
         if (index > -1) {
-          this.comments[index] = {...this.comments[index], ...updatedComment};
-          this.comments[index].averageRating = stars;
+          const comment = this.comments[index];
+          comment.currentUserRating = stars;
+
+          if (!comment.ratings) {
+            comment.ratings = [];
+          }
+
+          const totalRatings = comment.ratings.reduce(
+            (sum: number, rating: number) => sum + rating,
+            0
+          );
+          const ratingCount = comment.ratings.length;
+
+          comment.averageRating = ratingCount ? totalRatings / ratingCount : 0;
+          this.comments[index] = { ...comment, ...updatedComment };
         }
       });
     } else {
-      console.warn('User must be logged in to rate a comment.');
+      console.warn('Kullanıcı giriş yapmadan yorumları puanlayamaz.');
     }
   }
 
+  // Yeni: Yanıt ekleme fonksiyonu
+  addReply(commentId: string | undefined, replyContent: string): void {
+    if (!replyContent || !replyContent.trim()) return; // Boş yanıtları önlemek için kontrol
+
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const seller = JSON.parse(localStorage.getItem('seller') || '{}');
+    const userName = seller.name ? `${seller.name} (Satıcı)` : user.name;
+
+    const reply: Reply = {
+      id: this.generateRandomId(),
+      userName: userName,
+      userId: user.id || seller.id,
+      content: replyContent.trim(),
+      timestamp: new Date().toISOString(),
+    };
+
+    const commentIndex = this.comments.findIndex((c) => c.id === commentId);
+    if (commentIndex > -1) {
+      // Eğer replies null veya undefined ise boş bir dizi olarak başlat
+      if (!this.comments[commentIndex].replies) {
+        this.comments[commentIndex].replies = [];
+      }
+      this.comments[commentIndex].replies!.push(reply); // Yanıtı ekle
+      this.replyContentMap[commentId || ''] = ''; // Yanıt alanını sıfırla
+    }
+  }
+
+  // Rastgele bir ID oluşturma
+  generateRandomId(): string {
+    return Math.random().toString(36).substring(2, 15);
+  }
 
   toggleSortOrder(): void {
     this.sortAscending = !this.sortAscending;
@@ -174,5 +232,4 @@ export class ProductDetailsComponent implements OnInit {
         : b.averageRating - a.averageRating;
     });
   }
-
 }
