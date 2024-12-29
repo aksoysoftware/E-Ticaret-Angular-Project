@@ -828,6 +828,20 @@
       "isUser": false,
       "timestamp": "2024-12-29T09:06:17.579Z",
       "answeredBySeller": false
+    },
+    {
+      "id": "e5d7",
+      "text": "asdfasdf",
+      "isUser": true,
+      "timestamp": "2024-12-29T15:03:14.071Z",
+      "answeredBySeller": false
+    },
+    {
+      "id": "6eb3",
+      "text": "Destek ekibi yakında sizinle iletişime geçecektir.",
+      "isUser": false,
+      "timestamp": "2024-12-29T15:03:15.079Z",
+      "answeredBySeller": false
     }
   ],
   "user": [
