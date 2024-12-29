@@ -42,7 +42,6 @@ export class CartPageComponent implements OnInit {
       });
     } else {
       let userStore = localStorage.getItem('localCart');
-      console.log("userStore: " + JSON.stringify(userStore, null, 2));
       if (userStore) {
         const userData = JSON.parse(userStore);
         this.cartData = userData;
@@ -118,7 +117,6 @@ export class CartPageComponent implements OnInit {
       // Discounted total price'ı ProductService'e gönder
       this.product.setDiscountedTotalPrice(this.priceSummary.total);
 
-      console.log('Discount Applied:', this.priceSummary.total); // Kontrol için log
     } else {
       this.invalidDiscount = true;
       this.discountApplied = false;
@@ -141,7 +139,6 @@ export class CartPageComponent implements OnInit {
     if (localStorage.getItem('user')) {
       // Kullanıcı giriş yaptıysa, sunucuda güncelleme
       this.product.updateCartQuantity(productId, quantity).subscribe(() => {
-        console.log('Sepet güncellendi.');
         this.call(); // Sepeti yeniden yükle
       });
     } else {
@@ -153,7 +150,6 @@ export class CartPageComponent implements OnInit {
         if (itemIndex !== -1) {
           cartItems[itemIndex].quantity = quantity;
           localStorage.setItem('localCart', JSON.stringify(cartItems));
-          console.log('Local cart güncellendi.');
           this.call(); // Sepeti yeniden yükle
         }
       }

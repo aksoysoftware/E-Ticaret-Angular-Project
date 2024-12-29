@@ -15,8 +15,7 @@ export class SellerAddProductComponent {
 
   submint(data:product){
     this.product.addProduct(data).subscribe((result)=>{
-      //console.log(result)
-      //show masseg to user seller
+
       if(result){
         this.addPrductMesg='Ürün başarıyla eklendi'
       }

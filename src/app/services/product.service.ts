@@ -18,7 +18,6 @@ export class ProductService {
   private discountedTotalPrice = new BehaviorSubject<number | null>(null); // Varsayılan null
 
   setDiscountedTotalPrice(price: number) {
-    console.log('Discounted Total Price Set:', price); // Kontrol için log
     this.discountedTotalPrice.next(price);
   }
 

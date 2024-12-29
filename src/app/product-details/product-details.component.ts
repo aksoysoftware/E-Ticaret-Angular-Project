@@ -54,7 +54,6 @@ export class ProductDetailsComponent implements OnInit {
         this.product.getCartList(userId);
 
         this.product.cartData.subscribe((result) => {
-          console.log(result)
 
           let item = result.filter((item: product) => productId?.toString() === item.productId?.toString())
 

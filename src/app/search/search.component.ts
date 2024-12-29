@@ -22,17 +22,14 @@ export class SearchComponent implements OnInit {
       this.Call();
     })
     this.Call();
-   
+
   }
 
   Call(){
-    // console.log("call searg page")
-    this.word=this.route.snapshot.paramMap.get('word'); 
-     console.log('word = ',this.word)
+    this.word=this.route.snapshot.paramMap.get('word');
 
     this.word && this.product.searchProducts(this.word).subscribe((result)=>{
       this.productDetails=result
-      //console.log(result)
       if(result.length==0){
         this.noDataPersent='Not Found Any Product...';
       }

@@ -77,7 +77,6 @@ export class HomeComponent implements OnInit {
 
       // Mesajı database'e kaydet
       this.chatService.saveMessage(message).subscribe(() => {
-        console.log('Mesaj kaydedildi');
       });
 
       // Destek mesajını simüle et
@@ -92,7 +91,6 @@ export class HomeComponent implements OnInit {
 
         // Destek mesajını database'e kaydet
         this.chatService.saveMessage(supportMessage).subscribe(() => {
-          console.log('Destek mesajı kaydedildi');
         });
       }, 1000);
     }
@@ -110,6 +108,5 @@ export class HomeComponent implements OnInit {
   handleComparisonSaved(): void {
     // Karşılaştırma kaydedildiğinde app-compare bileşenini gizle
     this.showComparison = false;
-    console.log('Comparison component hidden');
   }
 }

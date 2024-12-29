@@ -139,7 +139,6 @@ export class UserService {
 
   private getLoggedUser(): any {
     const user = localStorage.getItem('user');
-    console.log(user)
     return user ? JSON.parse(user) : null;
   }
 

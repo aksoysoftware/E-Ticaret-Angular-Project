@@ -15,7 +15,6 @@ export class SellerAuthComponent implements OnInit {
   singupMsg: string = ''
 
   ngOnInit(): void {
-    console.log("auth load")
     this.seller.reloadSeller();
   }
 

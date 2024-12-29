@@ -24,7 +24,6 @@ export class CheckoutComponent implements OnInit {
       } else {
         this.calculateTotalPrice(); // İndirim uygulanmamışsa hesapla
       }
-      console.log('Total Price in Checkout:', this.totalPrice); // Kontrol için log
     });
 
     if(this.totalPrice === null || this.totalPrice === 0) {
@@ -56,7 +55,6 @@ export class CheckoutComponent implements OnInit {
       price += productPrice;
     });
 
-    console.log('Hesaplanan Fiyat:', price); // Sepet toplamını logla
 
     if (price > 0) {
       this.totalPrice = price + price / 10 + 100 - price / 100 * 8;
@@ -64,7 +62,6 @@ export class CheckoutComponent implements OnInit {
       this.totalPrice = 0;
     }
 
-    console.log('Toplam Tutar:', this.totalPrice); // Toplam tutarı logla
   }
 
 

@@ -27,7 +27,7 @@ export class SellerChatComponent implements OnInit {
     };
 
     this.chatService.saveMessage(answeredMessage).subscribe(() => {
-      console.log('Mesaj cevaplandı ve kaydedildi');
+
       this.messages = this.messages.filter((msg) => msg.id !== messageId); // Mesajı listeden kaldır
     });
   }
