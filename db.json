@@ -130,6 +130,420 @@
       "id": "16"
     },
     {
+      "name": "Dizüstü Bilgisayar",
+      "price": "15000",
+      "color": "Gri",
+      "category": "Elektronik",
+      "description": "Yüksek performanslı Asus dizüstü bilgisayar",
+      "url": "https://tse1.mm.bing.net/th?id=OIP.hxEkIR6KkKyqtEf61Q4SoQHaHa&pid=Api",
+      "isCampaign": true,
+      "isPopular": true,
+      "id": "17"
+    },
+    {
+      "name": "Kablosuz Kulaklık",
+      "price": "750",
+      "color": "Mor",
+      "category": "Elektronik",
+      "description": "Kablosuz Bluetooth özellikli JBL kulaklık",
+      "url": "https://tse4.mm.bing.net/th?id=OIP.5lgdMJx0Kd4VzAM-gLTH4wHaHa&pid=Api",
+      "isCampaign": false,
+      "isPopular": true,
+      "id": "18"
+    },
+    {
+      "name": "Spor Ayakkabı",
+      "price": "500",
+      "color": "Siyah",
+      "category": "Ayakkabı",
+      "description": "Rahat ve şık siyah spor ayakkabı",
+      "url": "https://tse3.mm.bing.net/th?id=OIP.MjB2KgliPhzTDB_hEJ_QjAHaJP&pid=Api",
+      "isCampaign": true,
+      "isPopular": false,
+      "id": "19"
+    },
+    {
+      "name": "Akıllı Telefon",
+      "price": "10000",
+      "color": "Mavi",
+      "category": "Elektronik",
+      "description": "Son model Samsung Galaxy S23 akıllı telefon",
+      "url": "https://tse3.mm.bing.net/th?id=OIP.ifAJOHjFr8pbMqdutjrx9wHaHa&pid=Api",
+      "isCampaign": false,
+      "isPopular": true,
+      "id": "20"
+    },
+    {
+      "name": "Sırt Çantası",
+      "price": "300",
+      "color": "Siyah",
+      "category": "Aksesuar",
+      "description": "Su geçirmez Bevitton sırt çantası",
+      "url": "https://tse3.mm.bing.net/th?id=OIP.9yZlzEKIKkE0DnPhY17BqAHaLH&pid=Api",
+      "isCampaign": true,
+      "isPopular": false,
+      "id": "21"
+    }, {
+      "name": "Kablosuz Gürültü Engelleyici Kulaklık",
+      "price": "3500",
+      "color": "Siyah",
+      "category": "Elektronik",
+      "description": "Sony WH-1000XM4 kablosuz gürültü engelleyici kulaklık",
+      "url": "https://tse2.mm.bing.net/th?id=OIP.FLMLUykSkBsT8UFMS17zCQHaFj&pid=Api",
+      "id": "22"
+    },
+    {
+      "name": "Dizüstü Bilgisayar",
+      "price": "18000",
+      "color": "Gümüş",
+      "category": "Elektronik",
+      "description": "Apple MacBook Air M1 dizüstü bilgisayar",
+      "url": "https://tse1.mm.bing.net/th?id=OIP.-AVsAarVRrP26kQ_oHCmgQHaHb&pid=Api",
+      "id": "23",
+      "isCampaign": true,
+      "isPopular": true
+    },
+    {
+      "name": "Tablet",
+      "price": "4500",
+      "color": "Mistik Siyah",
+      "category": "Elektronik",
+      "description": "Samsung Galaxy Tab S7 FE Android tablet",
+      "url": "https://tse2.mm.bing.net/th?id=OIP.7GlJuagOR856LjHAAKiriAHaE8&pid=Api",
+      "id": "24",
+      "isCampaign": true,
+      "isPopular": true
+    },
+    {
+      "name": "Aynasız Fotoğraf Makinesi",
+      "price": "7000",
+      "color": "Siyah",
+      "category": "Elektronik",
+      "description": "Canon EOS M50 Mark II aynasız dijital fotoğraf makinesi",
+      "url": "https://tse3.mm.bing.net/th?id=OIP.n_qAwMJ_97PaF_8e70lBuAHaHa&pid=Api",
+      "id": "25",
+      "isCampaign": true,
+      "isPopular": true
+    },
+    {
+      "name": "Koşu Ayakkabısı",
+      "price": "1200",
+      "color": "Beyaz",
+      "category": "Ayakkabı",
+      "description": "Nike Air Zoom Pegasus 38 erkek koşu ayakkabısı",
+      "url": "https://tse4.mm.bing.net/th?id=OIP.LOFq0Y8d52G6Uupe-a3ohwHaHa&pid=Api",
+      "id": "26"
+    },
+    {
+      "name": "Kadın Spor Ayakkabı",
+      "price": "1400",
+      "color": "Siyah",
+      "category": "Ayakkabı",
+      "description": "Adidas Ultraboost 21 kadın spor ayakkabısı",
+      "url": "https://tse2.mm.bing.net/th?id=OIP.JoQDzpqDgFXBHE4N3JWf-AHaHa&pid=Api",
+      "id": "27"
+    },
+    {
+      "name": "QLED 4K Smart TV",
+      "price": "9000",
+      "color": "Siyah",
+      "category": "Elektronik",
+      "description": "Samsung 55Q60T 55 inç QLED 4K Smart TV",
+      "url": "https://tse2.mm.bing.net/th?id=OIP.npTVL2RdxICips_SYwAAvAHaHa&pid=Api",
+      "id": "28",
+      "isCampaign": true,
+      "isPopular": true
+    },
+    {
+      "name": "Kablosuz Süpürge",
+      "price": "6500",
+      "color": "Nikel-Mavi",
+      "category": "Ev Aletleri",
+      "description": "Dyson V11 Absolute kablosuz süpürge",
+      "url": "https://tse2.mm.bing.net/th?id=OIP.jG2beR7FCgIgwyV2oA4LoQHaHa&pid=Api",
+      "id": "29"
+    },
+    {
+      "name": "Akıllı Saat",
+      "price": "4000",
+      "color": "Kırmızı",
+      "category": "Elektronik",
+      "description": "Apple Watch Series 7 GPS 45mm akıllı saat",
+      "url": "https://tse2.mm.bing.net/th?id=OIP.bufsDCaxRCoDg23gitVp4wHaI2&pid=Api",
+      "id": "30",
+      "isCampaign": true,
+      "isPopular": true
+    },
+    {
+      "name": "Bluetooth Hoparlör",
+      "price": "2500",
+      "color": "Gri",
+      "category": "Elektronik",
+      "description": "Bose SoundLink Revolve+ Bluetooth hoparlör",
+      "url": "https://tse4.mm.bing.net/th?id=OIP.JBADJWS8r6SRZChic-J8NwHaHa&pid=Api",
+      "id": "31",
+      "isCampaign": true,
+      "isPopular": true
+    },  {
+      "name": "Kablosuz Gürültü Engelleyici Kulaklık",
+      "price": "3500",
+      "color": "Siyah",
+      "category": "Elektronik",
+      "description": "Sony WH-1000XM4 kablosuz gürültü engelleyici kulaklık",
+      "url": "https://tse2.mm.bing.net/th?id=OIP.FLMLUykSkBsT8UFMS17zCQHaFj&pid=Api",
+      "id": "32"
+    },
+    {
+      "name": "Dizüstü Bilgisayar",
+      "price": "18000",
+      "color": "Gümüş",
+      "category": "Elektronik",
+      "description": "Apple MacBook Air M1 dizüstü bilgisayar",
+      "url": "https://tse1.mm.bing.net/th?id=OIP.-AVsAarVRrP26kQ_oHCmgQHaHb&pid=Api",
+      "id": "33"
+    },
+    {
+      "name": "Tablet",
+      "price": "4500",
+      "color": "Mistik Siyah",
+      "category": "Elektronik",
+      "description": "Samsung Galaxy Tab S7 FE Android tablet",
+      "url": "https://tse2.mm.bing.net/th?id=OIP.7GlJuagOR856LjHAAKiriAHaE8&pid=Api",
+      "id": "34"
+    },
+    {
+      "name": "Aynasız Fotoğraf Makinesi",
+      "price": "7000",
+      "color": "Siyah",
+      "category": "Elektronik",
+      "description": "Canon EOS M50 Mark II aynasız dijital fotoğraf makinesi",
+      "url": "https://tse3.mm.bing.net/th?id=OIP.n_qAwMJ_97PaF_8e70lBuAHaHa&pid=Api",
+      "id": "35"
+    },
+    {
+      "name": "Koşu Ayakkabısı",
+      "price": "1200",
+      "color": "Beyaz",
+      "category": "Ayakkabı",
+      "description": "Nike Air Zoom Pegasus 38 erkek koşu ayakkabısı",
+      "url": "https://tse4.mm.bing.net/th?id=OIP.LOFq0Y8d52G6Uupe-a3ohwHaHa&pid=Api",
+      "id": "36"
+    },
+    {
+      "name": "Kadın Spor Ayakkabı",
+      "price": "1400",
+      "color": "Siyah",
+      "category": "Ayakkabı",
+      "description": "Adidas Ultraboost 21 kadın spor ayakkabısı",
+      "url": "https://tse2.mm.bing.net/th?id=OIP.JoQDzpqDgFXBHE4N3JWf-AHaHa&pid=Api",
+      "id": "37"
+    },
+    {
+      "name": "QLED 4K Smart TV",
+      "price": "9000",
+      "color": "Siyah",
+      "category": "Elektronik",
+      "description": "Samsung 55Q60T 55 inç QLED 4K Smart TV",
+      "url": "https://tse2.mm.bing.net/th?id=OIP.npTVL2RdxICips_SYwAAvAHaHa&pid=Api",
+      "id": "38"
+    },
+    {
+      "name": "Kablosuz Süpürge",
+      "price": "6500",
+      "color": "Nikel-Mavi",
+      "category": "Ev Aletleri",
+      "description": "Dyson V11 Absolute kablosuz süpürge",
+      "url": "https://tse2.mm.bing.net/th?id=OIP.jG2beR7FCgIgwyV2oA4LoQHaHa&pid=Api",
+      "id": "39"
+    },
+    {
+      "name": "Akıllı Saat",
+      "price": "4000",
+      "color": "Kırmızı",
+      "category": "Elektronik",
+      "description": "Apple Watch Series 7 GPS 45mm akıllı saat",
+      "url": "https://tse2.mm.bing.net/th?id=OIP.bufsDCaxRCoDg23gitVp4wHaI2&pid=Api",
+      "id": "40"
+    },
+    {
+      "name": "Bluetooth Hoparlör",
+      "price": "2500",
+      "color": "Gri",
+      "category": "Elektronik",
+      "description": "Bose SoundLink Revolve+ Bluetooth hoparlör",
+      "url": "https://tse4.mm.bing.net/th?id=OIP.JBADJWS8r6SRZChic-J8NwHaHa&pid=Api",
+      "id": "41"
+    }, {
+      "id": 42,
+      "name": "Logitech MX Master 3 Kablosuz Mouse",
+      "price": 950,
+      "color": "Grafit",
+      "category": "Elektronik",
+      "description": "Ergonomik tasarıma sahip, yüksek hassasiyetli kablosuz mouse.",
+      "url": "https://tse4.mm.bing.net/th?id=OIP.uNoXiRgJUnBGi0NLovkK4gHaHa&pid=Api"
+    },
+    {
+      "id": 43,
+      "name": "Samsung Galaxy Buds Pro Kablosuz Kulaklık",
+      "price": 1200,
+      "color": "Siyah",
+      "category": "Elektronik",
+      "description": "Aktif gürültü engelleme özelliğine sahip, yüksek kaliteli ses sunan kablosuz kulaklık.",
+      "url": "https://tse3.mm.bing.net/th?id=OIP.64MlrkM9aqau__zNYHNM2wHaJ4&pid=Api"
+    },
+    {
+      "id": 44,
+      "name": "Dell XPS 13 Dizüstü Bilgisayar",
+      "price": 15000,
+      "color": "Gümüş",
+      "category": "Elektronik",
+      "description": "13 inç ekranlı, Intel i7 işlemcili, 16 GB RAM ve 512 GB SSD'ye sahip dizüstü bilgisayar.",
+      "url": "https://tse2.mm.bing.net/th?id=OIP.zQ1srk_s0l_q1gORf2u9cgHaE8&pid=Api"
+    },
+    {
+      "id": 45,
+      "name": "Apple iPad Pro 11 inç Tablet",
+      "price": 10000,
+      "color": "Uzay Grisi",
+      "category": "Elektronik",
+      "description": "M1 çipli, 128 GB depolama alanına sahip tablet.",
+      "url": "https://tse3.mm.bing.net/th?id=OIP.1TFvf7Tg0B8i0SeoMdap0gHaHa&pid=Api"
+    },
+    {
+      "id": 46,
+      "name": "Sony PlayStation 5 Oyun Konsolu",
+      "price": 12000,
+      "color": "Beyaz",
+      "category": "Elektronik",
+      "description": "Yeni nesil oyun deneyimi sunan oyun konsolu.",
+      "url": "https://tse4.mm.bing.net/th?id=OIP.1gTpzQsvThfkRXv1wzcGcAHaHa&pid=Api"
+    },
+    {
+      "id": 47,
+      "name": "Microsoft Surface Pro 7 2'si 1 Arada",
+      "price": 9500,
+      "color": "Platin",
+      "category": "Elektronik",
+      "description": "12.3 inç dokunmatik ekranlı, Intel i5 işlemcili, 8 GB RAM ve 256 GB SSD'ye sahip cihaz.",
+      "url": "https://tse3.mm.bing.net/th?id=OIP.LlVzTdjQmV8HkJm_Ccy3AgHaFj&pid=Api"
+    },
+    {
+      "id": 48,
+      "name": "GoPro HERO9 Black Aksiyon Kamerası",
+      "price": 4000,
+      "color": "Siyah",
+      "category": "Elektronik",
+      "description": "5K video çekimi yapabilen, su geçirmez aksiyon kamerası.",
+      "url": "https://tse1.mm.bing.net/th?id=OIP.JlWdn5wdc5pouRlfHF3uCgHaLH&pid=Api"
+    },
+    {
+      "id": 49,
+      "name": "JBL Charge 5 Bluetooth Hoparlör",
+      "price": 1500,
+      "color": "Mavi",
+      "category": "Elektronik",
+      "description": "Su geçirmez, yüksek ses kalitesine sahip taşınabilir hoparlör.",
+      "url": "https://tse4.mm.bing.net/th?id=OIP.wsfjyAuTX2YwQ30wcR-9kwHaHa&pid=Api"
+    },
+    {
+      "id": 50,
+      "name": "Canon PIXMA G3411 Yazıcı",
+      "price": 1200,
+      "color": "Siyah",
+      "category": "Elektronik",
+      "description": "Kablosuz bağlantı özellikli, çok fonksiyonlu yazıcı.",
+      "url": "https://tse4.mm.bing.net/th?id=OIP.XBt65qzgAq8PnmS5JLIOnAHaHa&pid=Api"
+    },
+    {
+      "id": 51,
+      "name": "Asus ROG Strix G15 Gaming Laptop",
+      "price": 14000,
+      "color": "Siyah",
+      "category": "Elektronik",
+      "description": "15.6 inç ekranlı, AMD Ryzen 7 işlemcili, 16 GB RAM ve 1 TB SSD'ye sahip oyun laptopu.",
+      "url": "https://tse2.mm.bing.net/th?id=OIP.eeAMN14xJ25k4zLfaycDSQHaFJ&pid=Api"
+    },{
+      "id": 52,
+      "name": "Logitech G502 HERO Gaming Mouse",
+      "price": 1200,
+      "color": "Siyah",
+      "category": "Elektronik",
+      "description": "Yüksek performanslı, programlanabilir tuşlara sahip oyun faresi.",
+      "url": "https://tse3.mm.bing.net/th?id=OIP.aHA0PfVUfTfaqQRr8Or6pwHaHa&pid=Api"
+    },
+    {
+      "id": 53,
+      "name": "Apple MacBook Pro 16-inch",
+      "price": 45000,
+      "color": "Gümüş",
+      "category": "Elektronik",
+      "description": "M2 Pro çipli, 16 GB RAM ve 512 GB SSD'ye sahip dizüstü bilgisayar.",
+      "url": "https://tse2.mm.bing.net/th?id=OIP.POQQf7QMSspZQLv31nSDtQHaE8&pid=Api"
+    },
+    {
+      "id": 54,
+      "name": "Samsung Galaxy Tab S8",
+      "price": 12000,
+      "color": "Siyah",
+      "category": "Elektronik",
+      "description": "11 inç ekranlı, 128 GB depolama alanına sahip tablet.",
+      "url": "https://tse3.mm.bing.net/th?id=OIP.82As9Vo5QruuCScWVgqC5AHaEK&pid=Api"
+    },
+    {
+      "id": 55,
+      "name": "Sony WH-1000XM5 Kablosuz Kulaklık",
+      "price": 5000,
+      "color": "Siyah",
+      "category": "Elektronik",
+      "description": "Aktif gürültü engelleme özellikli, yüksek kaliteli ses sunan kulaklık.",
+      "url": "https://tse3.mm.bing.net/th?id=OIP.5BRmJJY2vVSZ6sLrGpD6WwHaHa&pid=Api"
+    },
+    {
+      "id": 56,
+      "name": "Canon EOS R6 Fotoğraf Makinesi",
+      "price": 30000,
+      "color": "Siyah",
+      "category": "Elektronik",
+      "description": "20 MP çözünürlüklü, tam kare aynasız fotoğraf makinesi.",
+      "url": "https://tse1.mm.bing.net/th?id=OIP.f0NgOjBksh_IJjjdavRpHAHaHa&pid=Api"
+    },
+    {
+      "id": 57,
+      "name": "Nintendo Switch OLED Modeli",
+      "price": 8000,
+      "color": "Neon Kırmızı ve Mavi",
+      "category": "Elektronik",
+      "description": "7 inç OLED ekranlı, taşınabilir oyun konsolu.",
+      "url": "https://tse1.mm.bing.net/th?id=OIP.hkcDpgScGBGcn5HwSx44_wHaEK&pid=Api"
+    },
+    {
+      "id": 58,
+      "name": "Bose QuietComfort Kablosuz Kulak İçi Kulaklık",
+      "price": 3500,
+      "color": "Siyah",
+      "category": "Elektronik",
+      "description": "Gürültü engelleme özellikli, yüksek kaliteli ses sunan kulak içi kulaklık.",
+      "url": "https://tse4.mm.bing.net/th?id=OIP.1nQ_K6hPi8xSLubYomffxAHaGT&pid=Api"
+    },
+    {
+      "id": 59,
+      "name": "Fitbit Versa 3 Akıllı Saat",
+      "price": 2000,
+      "color": "Siyah",
+      "category": "Elektronik",
+      "description": "Dahili GPS ve kalp atış hızı izleme özellikli akıllı saat.",
+      "url": "https://tse2.mm.bing.net/th?id=OIP.hO3M_lb6JnlfCzEfQad01wHaH0&pid=Api"
+    },
+    {
+      "id": 60,
+      "name": "Dell XPS 15 Dizüstü Bilgisayar",
+      "price": 25000,
+      "color": "Gümüş",
+      "category": "Elektronik",
+      "description": "15 inç ekranlı, Intel i7 işlemcili, 16 GB RAM ve 512 GB SSD'ye sahip dizüstü bilgisayar.",
+      "url": "https://tse4.mm.bing.net/th?id=OIP.rm7XvB0UpTW48hC4CiQ2agHaEg&pid=Api"
+    },
+    {
       "id": "5f91",
       "name": "m",
       "price": 25000,
@@ -137,15 +551,6 @@
       "category": "x",
       "description": "gyuıfvhjıghjı",
       "url": "data:image/jpeg;base64,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"
-    },
-    {
-      "id": "2ee7",
-      "name": "Apple iPhone 16 Pro Max 256 GB Siyah Titanyum (İthalatçı Garantili)",
-      "price": 85.49836,
-      "color": "Titanyum",
-      "category": "Cep Telefonu",
-      "description": "Apple iPhone 16 Pro Max 256 GB Siyah Titanyum (İthalatçı Garantili)",
-      "url": "https://www.google.com/aclk?sa=l&ai=DChcSEwjzy6rJsMiKAxXS8XkEHTziBYkYABABGgJ3Zg&co=1&gclid=Cj0KCQiAvbm7BhC5ARIsAFjwNHtUI81Pewh02iUQz0HF1XYgCOijH8XLm95eW4BQuYkQ4QcMIVwK5aIaAi8mEALw_wcB&sig=AOD64_13OtNOL673qNfaQ810e1riZrRg8Q&ctype=5&q=&ved=0ahUKEwixk6XJsMiKAxX_VfEDHfKEN6YQww8Ixwc&adurl="
     },
     {
       "name": "Telefon Tutacağı",
