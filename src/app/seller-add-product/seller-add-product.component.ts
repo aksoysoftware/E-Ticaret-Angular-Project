@@ -18,11 +18,11 @@ export class SellerAddProductComponent {
       //console.log(result)
       //show masseg to user seller
       if(result){
-        this.addPrductMesg='Product is successfully added'
+        this.addPrductMesg='Ürün başarıyla eklendi'
       }
-      
+
       //after 5 ses msg is deleted
-      setTimeout(() => this.addPrductMesg=undefined, 3000);     
-    })  
+      setTimeout(() => this.addPrductMesg=undefined, 3000);
+    })
   }
 }

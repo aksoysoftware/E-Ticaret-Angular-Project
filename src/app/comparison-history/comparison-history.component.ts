@@ -17,7 +17,9 @@ export class ComparisonHistoryComponent implements OnInit {
 
   getComparisonHistory(): void {
     this.productService.getComparisonHistory().subscribe((data: any) => {
-      this.comparisonHistory = data;
+      this.comparisonHistory = data.sort((a: any, b: any) => {
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
+      });
     });
   }
 }
