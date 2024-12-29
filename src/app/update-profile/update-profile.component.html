@@ -66,7 +66,7 @@
         id="newPassword"
         name="newPassword"
         type="password"
-        [(ngModel)]="userData.newPassword"
+        [(ngModel)]="userData.password"
         #newPassword="ngModel"
         required
         minlength="6"
@@ -94,7 +94,7 @@
       <div *ngIf="confirmNewPassword.invalid && confirmNewPassword.touched" class="error-message">
         Yeni şifre tekrar zorunludur.
       </div>
-      <div *ngIf="userData.newPassword !== userData.confirmNewPassword && confirmNewPassword.touched" class="error-message">
+      <div *ngIf="userData.password !== userData.confirmNewPassword && confirmNewPassword.touched" class="error-message">
         Yeni şifreler eşleşmiyor.
       </div>
     </div>
@@ -102,7 +102,7 @@
     <!-- Submit Button -->
     <button
       type="submit"
-      [disabled]="updateForm.invalid || userData.newPassword !== userData.confirmNewPassword"
+      [disabled]="updateForm.invalid || userData.password !== userData.confirmNewPassword"
       class="btn btn-primary w-100"
     >
       Güncelle

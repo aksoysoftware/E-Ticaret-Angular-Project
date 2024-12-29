@@ -139,15 +139,16 @@ export class UserService {
 
   private getLoggedUser(): any {
     const user = localStorage.getItem('user');
+    console.log(user)
     return user ? JSON.parse(user) : null;
   }
 
 
   updateProfileWithPassword(updatedData: {
+    password: string;
     name: string;
-    newPassword: string;
     email: string;
-    currentPassword: string;
+    currentPassword: string
   }): Observable<any> {
     const user = this.getLoggedUser();
     if (user?.id) {
@@ -157,7 +158,7 @@ export class UserService {
             ...user,
             name: updatedData.name,
             email: updatedData.email,
-            password: updatedData.newPassword
+            password: updatedData.password
           };
           localStorage.setItem('user', JSON.stringify(updatedUser));
           return response;

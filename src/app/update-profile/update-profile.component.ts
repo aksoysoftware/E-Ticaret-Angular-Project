@@ -12,7 +12,7 @@ export class UpdateProfileComponent implements OnInit {
     name: '',
     email: '',
     currentPassword: '',
-    newPassword: '',
+    password: '',
     confirmNewPassword: '',
   };
   updateSuccess = false;
@@ -38,12 +38,12 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   onSubmit(updateForm: any): void {
-    if (updateForm.valid && this.userData.newPassword === this.userData.confirmNewPassword) {
-      const { name, email, currentPassword, newPassword } = this.userData;
+    if (updateForm.valid && this.userData.password === this.userData.confirmNewPassword) {
+      const { name, email, currentPassword, password } = this.userData;
 
 
       if (this.userService.verifyCurrentPassword(currentPassword)) {
-        this.userService.updateProfileWithPassword({ name, email, currentPassword, newPassword }).subscribe(
+        this.userService.updateProfileWithPassword({ name, email, currentPassword, password }).subscribe(
           (response) => {
             this.updateSuccess = true;
             this.updateError = false;

@@ -113,7 +113,7 @@
     },
     {
       "name": " Diamond Earbuds",
-      "price": "5200000",
+      "price": 130000,
       "color": "White",
       "category": "Electronic",
       "description": "18 karat gold and more than 208 diamonds",
@@ -183,7 +183,8 @@
       "isCampaign": true,
       "isPopular": false,
       "id": "21"
-    }, {
+    },
+    {
       "name": "Kablosuz Gürültü Engelleyici Kulaklık",
       "price": "3500",
       "color": "Siyah",
@@ -284,7 +285,8 @@
       "id": "31",
       "isCampaign": true,
       "isPopular": true
-    },  {
+    },
+    {
       "name": "Kablosuz Gürültü Engelleyici Kulaklık",
       "price": "3500",
       "color": "Siyah",
@@ -373,7 +375,8 @@
       "description": "Bose SoundLink Revolve+ Bluetooth hoparlör",
       "url": "https://tse4.mm.bing.net/th?id=OIP.JBADJWS8r6SRZChic-J8NwHaHa&pid=Api",
       "id": "41"
-    }, {
+    },
+    {
       "id": 42,
       "name": "Logitech MX Master 3 Kablosuz Mouse",
       "price": 950,
@@ -462,7 +465,8 @@
       "category": "Elektronik",
       "description": "15.6 inç ekranlı, AMD Ryzen 7 işlemcili, 16 GB RAM ve 1 TB SSD'ye sahip oyun laptopu.",
       "url": "https://tse2.mm.bing.net/th?id=OIP.eeAMN14xJ25k4zLfaycDSQHaFJ&pid=Api"
-    },{
+    },
+    {
       "id": 52,
       "name": "Logitech G502 HERO Gaming Mouse",
       "price": 1200,
@@ -807,10 +811,9 @@
     {
       "name": "Muhammed",
       "email": "muhammed@gmail.com",
-      "oldPassword": "123456",
-      "newPassword": "123456",
-      "id": "1",
-      "isAsked": false
+      "currentPassword": "1234567",
+      "password": "1qazxc",
+      "id": "1"
     },
     {
       "name": "Aman",
@@ -914,7 +917,7 @@
   "comments": [
     {
       "id": "5702",
-      "averageRating": 4.5,
+      "averageRating": 4,
       "userName": "Aman",
       "productId": "10",
       "userId": "2",
@@ -923,7 +926,7 @@
       "ratings": [
         {
           "userId": "2",
-          "stars": 5
+          "stars": 4
         },
         {
           "userId": "1",
@@ -1092,6 +1095,25 @@
         {
           "userId": "24ba",
           "stars": 3
+        },
+        {
+          "userId": "2",
+          "stars": 3
+        }
+      ]
+    },
+    {
+      "id": "875e",
+      "averageRating": 1,
+      "userName": "Muhammed",
+      "productId": "5",
+      "userId": "1",
+      "content": "bune ",
+      "timestamp": "2024-12-29T08:15:14.045Z",
+      "ratings": [
+        {
+          "userId": "1",
+          "stars": 1
         }
       ]
     }
