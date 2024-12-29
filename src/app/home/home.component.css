@@ -1,48 +1,64 @@
-.img-home{
-    width: 1280px;
-    height: 600px;
+.img-home {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
-.black{
-    color: black;
+.black {
+  color: #333;
 }
-.green{
-    color: green;
+
+.green {
+  color: #28a745;
 }
-.card-img{
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
+
+.card-img {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 200px;
+  border-radius: 8px 8px 0 0;
 }
+
 .card {
-    width: 18%;
-    height: 400px;
-  }
+  width: 100%;
+  max-width: 300px;
+  margin: 10px auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
 
+.float-right {
+  float: right;
+}
 
-.float-right{
-    position: relative;
-    float: right;
+.card-style {
+  border: 1px solid #28a745;
+  background-color: #f9f9f9;
 }
-.card-style{
-    width: 16rem;
-    border-color: aquamarine;
-}
-.card-body{
-    background-color: aquamarine;
 
+.card-body {
+  background-color: #e9f7ef;
+  text-align: center;
+  padding: 10px;
 }
-a{
-    text-decoration: none;
+
+a {
+  text-decoration: none;
+  color: #007bff;
 }
-h2{
-    z-index: 10;
+
+a:hover {
+  color: #0056b3;
 }
 
 .card-hower:hover {
-    transform: scale(1.1);
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
 .live-chat-container {
@@ -78,6 +94,7 @@ h2{
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .chat-header {
@@ -85,25 +102,27 @@ h2{
   color: white;
   padding: 10px;
   text-align: center;
-  border-radius: 8px 8px 0 0;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 .chat-messages {
   flex: 1;
   overflow-y: auto;
   padding: 10px;
+  font-size: 14px;
 }
 
 .message {
   margin: 5px 0;
+  padding: 8px 10px;
+  border-radius: 12px;
 }
 
 .user-message {
   text-align: right;
   background: #d4edda;
   display: inline-block;
-  padding: 5px 10px;
-  border-radius: 12px;
   margin-left: auto;
 }
 
@@ -111,8 +130,6 @@ h2{
   text-align: left;
   background: #f8d7da;
   display: inline-block;
-  padding: 5px 10px;
-  border-radius: 12px;
   margin-right: auto;
 }
 
@@ -125,7 +142,7 @@ h2{
   flex: 1;
   border: none;
   padding: 10px;
-  border-radius: 0 0 0 8px;
+  font-size: 14px;
 }
 
 .chat-input button {
@@ -133,9 +150,6 @@ h2{
   color: white;
   border: none;
   padding: 10px;
-  border-radius: 0 0 8px 0;
+  font-size: 14px;
   cursor: pointer;
 }
-
-
-

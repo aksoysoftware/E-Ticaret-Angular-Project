@@ -18,6 +18,13 @@ export class HomeComponent implements OnInit {
   messages: { text: string; isUser: boolean }[] = [];
   newMessage = '';
 
+  selectedProducts: product[] = [];
+  products: product[] = []; // Ürün listesi
+
+  comparisonHistory: { products: product[]; date: Date }[] = [];
+  showComparison: boolean = true; // Karşılaştırma bileşenini kontrol etmek için
+
+
   constructor(
     private productService: ProductService,
     private commentsService: CommentsService
@@ -26,6 +33,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     // Fetch all products
     this.productService.getAllProducts().subscribe((products) => {
+      this.products = products;
       this.commentsService.getAllComments().subscribe((comments) => {
         // Map products to include comment count
         this.allProduct = products.map((product) => ({
@@ -56,5 +64,19 @@ export class HomeComponent implements OnInit {
         this.messages.push({ text: 'Destek ekibi yakında sizinle iletişime geçecektir.', isUser: false });
       }, 1000);
     }
+  }
+
+  addToCompare(product: product): void {
+    if (!this.selectedProducts.find(p => p.id === product.id)) {
+      this.selectedProducts.push(product);
+    } else {
+      alert('Bu ürün zaten karşılaştırmaya eklendi.');
+    }
+  }
+
+  handleComparisonSaved(): void {
+    // Karşılaştırma kaydedildiğinde app-compare bileşenini gizle
+    this.showComparison = false;
+    console.log('Comparison component hidden');
   }
 }

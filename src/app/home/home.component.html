@@ -21,6 +21,13 @@
         Tüm Ürünler
       </button>
     </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" routerLink="/comparison-history">
+        Karşılaştırma Geçmişi
+      </button>
+    </li>
+
+
   </ul>
   <div class="tab-content mt-3" id="productTabContent">
     <!-- Popüler Ürünler Tab -->
@@ -57,6 +64,7 @@
                 <span>Renk - {{item.color}}</span>
               </div>
               <div class="mt-2 text-center">
+                <button (click)="addToCompare(item)" class="btn btn-primary">Karşılaştır</button>
                 <span><a routerLink="/product-details/{{item.id}}"><b>Detayları Görüntüle</b></a></span>
               </div>
             </div>
@@ -81,6 +89,7 @@
                 <span>Renk - {{item.color}}</span>
               </div>
               <div class="mt-2 text-center">
+                <button (click)="addToCompare(item)" class="btn btn-primary">Karşılaştır</button>
                 <span><a routerLink="/product-details/{{item.id}}"><b>Detayları Görüntüle</b></a></span>
               </div>
             </div>
@@ -88,7 +97,30 @@
         </div>
       </div>
     </div>
+
+    <!-- Karşılaştırma Geçmişi Tab -->
+    <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
+      <div class="row">
+        <div class="col-12">
+          <h3 class="text-center">Karşılaştırma Geçmişi</h3>
+          <ul>
+            <li *ngFor="let comparison of comparisonHistory">
+              Ürünler:
+              <span *ngFor="let product of comparison.products">{{product.name}}</span>
+              - Tarih: {{comparison.date | date:'short'}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <app-compare
+    *ngIf="showComparison && selectedProducts.length !== 0"
+    [compareProducts]="selectedProducts"
+    (comparisonSaved)="handleComparisonSaved()">
+  </app-compare>
+
   <!-- Canlı Destek Butonu -->
   <div class="live-chat-container" [ngClass]="{ 'open': isChatOpen }">
     <button class="live-chat-button" (click)="toggleChat()">

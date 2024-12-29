@@ -9,8 +9,9 @@ import {BehaviorSubject, Observable} from "rxjs";
 export class ProductService {
 
 
-    cartData = new EventEmitter<product[] | []>();
-    productName=new EventEmitter<string>();
+  cartData = new EventEmitter<product[] | []>();
+  productName=new EventEmitter<string>();
+  private apiBaseUrl = 'http://localhost:3000'; // API temel URL'i
 
   constructor(private http: HttpClient) { }
 
@@ -24,6 +25,12 @@ export class ProductService {
   getDiscountedTotalPrice() {
     return this.discountedTotalPrice.asObservable();
   }
+
+  getComparisonHistory() {
+    return this.http.get<{ id: string; date: string; products: any[] }[]>('http://localhost:3000/comparisons');
+  }
+
+
 
   addProduct(data: product) {
     return this.http.post('http://localhost:3000/product', data);
@@ -123,6 +130,10 @@ export class ProductService {
       console.error('Kullanıcı verisi bulunamadı.');
       return new Observable<cart[]>(); // Hata durumunda boş bir Observable döndür
     }
+  }
+
+  saveComparison(comparison: any): Observable<any> {
+    return this.http.post(`${this.apiBaseUrl}/comparisons`, comparison);
   }
 
 

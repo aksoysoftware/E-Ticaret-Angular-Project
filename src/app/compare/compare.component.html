@@ -1,0 +1,29 @@
+<div class="compare-container">
+  <h2>Ürün Karşılaştırma</h2>
+  <table class="compare-table">
+    <thead>
+    <tr>
+      <th>Ürün Adı</th>
+      <th>Fiyat</th>
+      <th>Renk</th>
+      <th>Kategori</th>
+      <th>İşlemler</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of compareProducts">
+      <td>{{ item.name }}</td>
+      <td>₺{{ item.price }}</td>
+      <td>{{ item.color }}</td>
+      <td>{{ item.category }}</td>
+      <td>
+        <button class="btn btn-danger" (click)="removeFromCompare(item.id)">Kaldır</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="text-center mt-3">
+    <button class="btn btn-success" (click)="saveComparison()">Karşılaştır ve Kaydet</button>
+  </div>
+</div>

@@ -24,6 +24,8 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AlertBoxComponent } from './alert-box/alert-box.component';
 import { LoginComponent } from './login/login.component';
 import {UpdateProfileComponent} from "./update-profile/update-profile.component";
+import { CompareComponent } from './compare/compare.component';
+import { ComparisonHistoryComponent } from './comparison-history/comparison-history.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import {UpdateProfileComponent} from "./update-profile/update-profile.component"
     MyOrdersComponent,
     AlertBoxComponent,
     LoginComponent,
-    UpdateProfileComponent
+    UpdateProfileComponent,
+    CompareComponent,
+    ComparisonHistoryComponent
   ],
   imports: [
     BrowserModule,
