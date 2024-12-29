@@ -811,8 +811,8 @@
     {
       "name": "Muhammed",
       "email": "muhammed@gmail.com",
-      "currentPassword": "1234567",
-      "password": "1qazxc",
+      "currentPassword": "1qazxc",
+      "password": "12345678",
       "id": "1"
     },
     {
@@ -850,6 +850,18 @@
       "quantity": 3,
       "productId": "10",
       "userId": "24ba"
+    },
+    {
+      "id": "10d5",
+      "name": "MacBook Pro",
+      "price": "249900",
+      "color": "Gray",
+      "category": "Laptop",
+      "description": "Apple M2 Pro with 12‑core CPU, 19‑core  512GB SSD ",
+      "url": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp16-spacegray-gallery7-202301?wid=2000&hei=1536&fmt=jpeg&qlt=95&.v=1670626224500",
+      "quantity": 22,
+      "userId": "1",
+      "productId": "10"
     }
   ],
   "orders": [
@@ -1094,6 +1106,15 @@
           "stars": 1
         }
       ]
+    },
+    {
+      "id": "c01f",
+      "averageRating": 0,
+      "userName": "Muhammed",
+      "productId": "5",
+      "userId": "1",
+      "content": "casca",
+      "timestamp": "2024-12-29T11:52:36.382Z"
     }
   ]
 }

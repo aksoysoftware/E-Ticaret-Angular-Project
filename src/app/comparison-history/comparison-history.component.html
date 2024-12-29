@@ -5,7 +5,7 @@
   <div *ngIf="comparisonHistory.length > 0; else noHistory">
     <div class="comparison-card" *ngFor="let comparison of comparisonHistory">
       <div class="comparison-header">
-        <h5>Karşılaştırma Tarihi: {{ comparison.date | date: 'medium' }}</h5>
+        <h5>Karşılaştırma Tarihi ve Saati: {{ comparison.date | date: 'dd MMMM yyyy, EEEE HH:mm:ss' }}</h5>
       </div>
       <ul class="comparison-products">
         <li *ngFor="let product of comparison.products">

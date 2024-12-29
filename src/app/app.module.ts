@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -27,6 +27,10 @@ import {UpdateProfileComponent} from "./update-profile/update-profile.component"
 import { CompareComponent } from './compare/compare.component';
 import { ComparisonHistoryComponent } from './comparison-history/comparison-history.component';
 import { SellerChatComponent } from './seller-chat/seller-chat.component';
+import {registerLocaleData} from "@angular/common";
+import localeTr from '@angular/common/locales/tr';
+
+registerLocaleData(localeTr);
 
 @NgModule({
   declarations: [
@@ -60,7 +64,9 @@ import { SellerChatComponent } from './seller-chat/seller-chat.component';
     FontAwesomeModule,
     NgbModule
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'tr' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
