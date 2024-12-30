@@ -25,8 +25,8 @@ export class ProductDetailsComponent implements OnInit {
 
   // Yeni: Yanıt içeriğini her yorum için ayrı saklama
   replyContentMap: { [key: string]: string } = {}; // Boş bir obje olarak tanımla
+  availableColors: string[] = ['Kırmızı', 'Mavi', 'Yeşil', 'Sarı', 'Turuncu', 'Mor', 'Pembe', 'Beyaz', 'Siyah', 'Gri', 'Kahverengi'];
 
-  availableColors: string[] = ['Kırmızı', 'Mavi', 'Yeşil', 'Sarı'];
   selectedColor: string = this.availableColors[0];
 
   constructor(
