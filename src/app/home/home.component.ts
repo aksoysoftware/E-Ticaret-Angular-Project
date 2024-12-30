@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   allProduct: product[] | undefined;
 
   isChatOpen = false;
-  messages: { text: string; isUser: boolean }[] = [];
+  messages: { text: string; isUser: boolean; timestamp: string; answeredBySeller?: boolean }[] = [];
   newMessage = '';
 
   selectedProducts: product[] = [];
@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
 
   comparisonHistory: { products: product[]; date: Date }[] = [];
   showComparison: boolean = true; // Karşılaştırma bileşenini kontrol etmek için
-
+  userId: string | null = null; // Kullanıcının ID'si
 
   constructor(
     private productService: ProductService,
@@ -33,6 +33,9 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // Kullanıcı ID'sini localStorage'den al
+    const user = localStorage.getItem('user');
+    this.userId = user ? JSON.parse(user).id : null;
     // Fetch all products
     this.productService.getAllProducts().subscribe((products) => {
       this.products = products;
@@ -50,51 +53,42 @@ export class HomeComponent implements OnInit {
         this.popularProduct = this.allProduct.filter((item) => item.isPopular);
       });
     });
+    this.loadMessages();
   }
 
   loadMessages(): void {
-    this.chatService.getMessages().subscribe((messages) => {
-      this.messages = messages;
-    });
+    if (this.userId) {
+      // Sadece bu kullanıcıya ait mesajları getir
+      this.chatService.getMessagesByUser(this.userId).subscribe((data) => {
+        this.messages = data.map((msg) => ({
+          ...msg,
+        }));
+      });
+    }
   }
+
+
 
   toggleChat(): void {
     this.isChatOpen = !this.isChatOpen;
   }
 
   sendMessage(): void {
-    if (this.newMessage.trim()) {
-      const message = {
+    if (this.newMessage.trim() && this.userId) {
+      const newMessage = {
         text: this.newMessage,
         isUser: true,
         timestamp: new Date().toISOString(),
-        answeredBySeller: false, // Varsayılan değer
+        answeredBySeller: false,
+        userId: this.userId, // Kullanıcı ID'sini mesajla ilişkilendir
       };
 
-      // Mesajı listeye ekle ve UI'yi güncelle
-      this.messages.push(message);
+      this.messages.push(newMessage);
       this.newMessage = '';
-
-      // Mesajı database'e kaydet
-      this.chatService.saveMessage(message).subscribe(() => {
-      });
-
-      // Destek mesajını simüle et
-      setTimeout(() => {
-        const supportMessage = {
-          text: 'Destek ekibi yakında sizinle iletişime geçecektir.',
-          isUser: false,
-          timestamp: new Date().toISOString(),
-          answeredBySeller: false, // Varsayılan değer
-        };
-        this.messages.push(supportMessage);
-
-        // Destek mesajını database'e kaydet
-        this.chatService.saveMessage(supportMessage).subscribe(() => {
-        });
-      }, 1000);
+      this.chatService.saveMessage(newMessage).subscribe();
     }
   }
+
 
 
   addToCompare(product: product): void {

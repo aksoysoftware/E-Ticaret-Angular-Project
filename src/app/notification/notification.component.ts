@@ -8,6 +8,7 @@ interface Message {
   timestamp: string;
   answeredBySeller: boolean;
   read: boolean;
+  userId: string;
 }
 
 @Component({
@@ -44,20 +45,30 @@ export class NotificationComponent implements OnInit {
   }
 
   respondToMessage(messageId: string, responseText: string): void {
+    // Yanıtlanan mesajı bulun
+    const originalMessage = this.messages.find(msg => msg.id === messageId);
+
+    if (!originalMessage) {
+      console.error('Yanıtlanacak mesaj bulunamadı.');
+      return;
+    }
+
     const newMessage = {
       id: this.generateRandomId(),
       text: responseText,
       isUser: false,
       timestamp: new Date().toISOString(),
       answeredBySeller: true,
-      read: true
+      read: true,
+      userId: originalMessage.userId // Yanıtlanan mesajın userId'sini ekle
     };
 
     this.http.post('http://localhost:3000/messages', newMessage).subscribe(() => {
       this.messages.push(newMessage);
-      this.markAsRead(messageId); // Mark original message as read
+      this.markAsRead(messageId); // Yanıtlanan mesajı okundu olarak işaretle
     });
   }
+
 
   generateRandomId(): string {
     return Math.random().toString(36).substr(2, 9);

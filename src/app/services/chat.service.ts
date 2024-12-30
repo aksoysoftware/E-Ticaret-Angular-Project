@@ -17,4 +17,10 @@ export class ChatService {
   getMessages(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
+
+  getMessagesByUser(userId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}?userId=${userId}`);
+  }
+
+
 }

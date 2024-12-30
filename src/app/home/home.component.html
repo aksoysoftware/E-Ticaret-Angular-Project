@@ -146,16 +146,17 @@
         <h3>Canlı Destek</h3>
       </div>
       <div class="chat-messages">
-        <div class="message" *ngFor="let msg of messages">
-        <span [ngClass]="{ 'user-message': msg.isUser, 'support-message': !msg.isUser }">
-          {{ msg.text }}
-        </span>
+        <div *ngFor="let msg of messages" class="message" [ngClass]="msg.isUser ? 'user-message' : 'support-message'">
+          <div class="message-text">{{ msg.text }}</div>
+          <div class="message-timestamp">{{ msg.timestamp | date: 'short' }}</div>
         </div>
       </div>
+
       <div class="chat-input">
         <input [(ngModel)]="newMessage" placeholder="Mesajınızı yazın..."/>
         <button (click)="sendMessage()">Gönder</button>
       </div>
+
     </div>
   </div>
 </div>
