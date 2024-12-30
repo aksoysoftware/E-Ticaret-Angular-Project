@@ -45,6 +45,16 @@
         <div class="mt-4">
           <span class="text-size"><b>Ürün Ekle</b></span><br>
         </div>
+        <div class="mt-2">
+          <label for="colorSelect" class="text-size"><b>Renk Seçimi</b></label>
+          <select
+            id="colorSelect"
+            class="form-select mt-1"
+            [(ngModel)]="selectedColor"
+            (change)="onColorChange(selectedColor)">
+            <option *ngFor="let color of availableColors" [value]="color">{{ color }}</option>
+          </select>
+        </div>
         <div class="btn-group mt-1" role="group" aria-label="Basic mixed styles example">
           <button type="button" (click)="minus()" class="btn btn-success"><i class="fa-solid fa-minus fa-lg"
                                                                              style="color: #ffffff;"></i></button>

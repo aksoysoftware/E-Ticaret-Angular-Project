@@ -26,11 +26,12 @@ export class ProductDetailsComponent implements OnInit {
   // Yeni: Yanıt içeriğini her yorum için ayrı saklama
   replyContentMap: { [key: string]: string } = {}; // Boş bir obje olarak tanımla
 
-
+  availableColors: string[] = ['Kırmızı', 'Mavi', 'Yeşil', 'Sarı'];
+  selectedColor: string = this.availableColors[0];
 
   constructor(
     private activeRoute: ActivatedRoute,
-    private product: ProductService,
+    private productService: ProductService,
     private commentsService: CommentsService,
     private userService: UserService
   ) {}
@@ -43,7 +44,7 @@ export class ProductDetailsComponent implements OnInit {
     console.warn(productId);
 
     productId &&
-    this.product.getProduct(productId).subscribe((result) => {
+    this.productService.getProduct(productId).subscribe((result) => {
       this.productData = result;
       let cartData = localStorage.getItem('localCart');
       if (productId && cartData) {
@@ -61,9 +62,9 @@ export class ProductDetailsComponent implements OnInit {
       let user = localStorage.getItem('user');
       if (user) {
         let userId = user && JSON.parse(user).id;
-        this.product.getCartList(userId);
+        this.productService.getCartList(userId);
 
-        this.product.cartData.subscribe((result) => {
+        this.productService.cartData.subscribe((result) => {
           let item = result.filter(
             (item: product) =>
               productId?.toString() === item.productId?.toString()
@@ -74,7 +75,7 @@ export class ProductDetailsComponent implements OnInit {
             this.removeCart = true;
           }
         });
-        this.product.getCartList(userId);
+        this.productService.getCartList(userId);
       }
     });
     this.loadComments(productId);
@@ -95,8 +96,10 @@ export class ProductDetailsComponent implements OnInit {
     if (this.productData) {
       this.productData.quantity = this.productQuantity;
 
+      this.productData.color = this.selectedColor;
+
       if (!localStorage.getItem('user')) {
-        this.product.localAddToCart(this.productData);
+        this.productService.localAddToCart(this.productData);
       } else {
         let user = localStorage.getItem('user');
         let userId = user && JSON.parse(user).id;
@@ -104,12 +107,13 @@ export class ProductDetailsComponent implements OnInit {
           ...this.productData,
           userId,
           productId: this.productData.id,
+          color: this.selectedColor,
         };
 
         delete cartData.id;
-        this.product.userAddToCart(cartData).subscribe((result) => {
+        this.productService.userAddToCart(cartData).subscribe((result) => {
           if (result) {
-            this.product.getCartList(userId);
+            this.productService.getCartList(userId);
             this.removeCart = true;
           }
         });
@@ -119,16 +123,16 @@ export class ProductDetailsComponent implements OnInit {
 
   removeTocart(id: any) {
     if (!localStorage.getItem('user')) {
-      this.product.removeItemsFromCart(id);
+      this.productService.removeItemsFromCart(id);
     }
     {
       console.warn('cartData', this.cartData);
 
       this.cartData &&
-      this.product.removeToCartApi(this.cartData.id).subscribe((result) => {
+      this.productService.removeToCartApi(this.cartData.id).subscribe((result) => {
         let user = localStorage.getItem('user');
         let userId = user && JSON.parse(user).id;
-        this.product.getCartList(userId);
+        this.productService.getCartList(userId);
       });
     }
     this.removeCart = false;
@@ -231,5 +235,11 @@ export class ProductDetailsComponent implements OnInit {
         ? a.averageRating - b.averageRating
         : b.averageRating - a.averageRating;
     });
+  }
+
+
+
+  onColorChange(color: string): void {
+    this.selectedColor = color;
   }
 }

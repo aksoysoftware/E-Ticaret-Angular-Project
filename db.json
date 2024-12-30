@@ -936,9 +936,35 @@
       "category": "Laptop",
       "description": "Apple M2 Pro with 12‑core CPU, 19‑core  512GB SSD ",
       "url": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp16-spacegray-gallery7-202301?wid=2000&hei=1536&fmt=jpeg&qlt=95&.v=1670626224500",
-      "quantity": 22,
+      "quantity": 2,
       "userId": "1",
       "productId": "10"
+    },
+    {
+      "id": "5776",
+      "name": "Mouse",
+      "price": "500",
+      "color": "Mavi",
+      "category": "Electronic",
+      "description": "HP Mouse",
+      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdIN7ABCjTyVmmipaJCEJu1oi8fNQk6O5oKw&usqp=CAU",
+      "isCampaign": true,
+      "quantity": 1,
+      "userId": "1",
+      "productId": "6"
+    },
+    {
+      "id": "6099",
+      "name": "Ayakkabı",
+      "price": "3500",
+      "color": "Yeşil",
+      "category": "Footwear",
+      "description": "White shoes",
+      "url": "https://rukminim2.flixcart.com/image/850/1000/l3ahpjk0/shoe/z/d/a/6-2202-6-xtoon-white-original-imagefct8fcmpdkd.jpeg?q=90",
+      "isCampaign": true,
+      "quantity": 1,
+      "userId": "1",
+      "productId": "5"
     }
   ],
   "orders": [
@@ -982,7 +1008,7 @@
   "comments": [
     {
       "id": "bc17",
-      "averageRating": 3,
+      "averageRating": 2,
       "userName": "Efe Berk Karadöl (Satıcı)",
       "productId": "6",
       "userId": "1",
@@ -992,6 +1018,10 @@
         {
           "userId": "24ba",
           "stars": 3
+        },
+        {
+          "userId": "1",
+          "stars": 1
         }
       ]
     },
